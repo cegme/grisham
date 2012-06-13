@@ -4,11 +4,14 @@ paper
 We are looking at ways of modeling  paper and user preferences.
 
 Building CSV Files
-======
+====
 
 Compile the code
+
 	g++ -O3 -o parseDBLP  parseDBLP.cpp 
+
 Run the code
+
 	time ./parseDBLP <dirloc>/DBLPOnlyCitationOct19.txt ./
 
 This will produce 3 files in the directory in the second parameter `author.csv`, 
@@ -17,7 +20,7 @@ This will produce 3 files in the directory in the second parameter `author.csv`,
 
 
 Example `author.csv`
-=======
+=====
 
 	pid|person
 	0|José A. Blakeley
@@ -29,7 +32,7 @@ Example `author.csv`
 
 
 Example `paper.csv`
-=======
+=====
 	pid|papertitle|pubyear|venue|abstract
 	0|OQL[C++]: Extending C++ with an Object Query Capability.|1995|Modern Database Systems|
 	1|Transaction Management in Multidatabase Systems.|1995|Modern Database Systems|
@@ -42,7 +45,7 @@ Example `paper.csv`
 
 
 Example `reference.csv`
-=======
+=====
 	pid|citation
 	4|995520
 	14|1064647
@@ -55,7 +58,7 @@ Example `reference.csv`
 
 
 Postgres Copy Statments
-======
+====
 
 	COPY author FROM '/<path>/author.csv' WITH (FORMAT csv, DELIMITER '|', HEADER True, ENCODING 'utf8');
 	COPY paper FROM '/<path>/paper.csv' WITH (FORMAT csv, DELIMITER '|', HEADER True, ENCODING 'utf8');
@@ -63,9 +66,9 @@ Postgres Copy Statments
 
 
 Postgres Table Schemas
-======
+====
 
-
+.. TODO
 
 
 
