@@ -70,12 +70,14 @@ Postgres Table Schemas
 
 
 
-AUTHOR: 
+AUTHOR:
 ------
 
  Column |       Type        | Modifiers
 --------+-------------------+-----------
+
  pid    | integer           |
+
  person | character varying |
 
 
@@ -86,7 +88,10 @@ REFERENCE:
   Column  |  Type   | Modifiers
 ----------+---------+-----------
  pid      | integer |
+
  citation | integer |
+
+
 
 
 PAPER:
