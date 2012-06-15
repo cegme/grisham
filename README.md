@@ -68,7 +68,36 @@ Postgres Copy Statments
 Postgres Table Schemas
 ====
 
-.. TODO
+
+AUTHOR: 
+------
+
+ Column |       Type        | Modifiers 
+--------+-------------------+-----------
+ pid    | integer           | 
+ person | character varying | 
+
+
+REFERENCE:
+---------
+
+  Column  |  Type   | Modifiers 
+----------+---------+-----------
+ pid      | integer | 
+ citation | integer | 
+
+PAPER:
+-----
+
+   Column   |  Type   | Modifiers 
+------------+---------+-----------
+ id         | integer | 
+ papertitle | text    | 
+ pubyear    | integer | 
+ venue      | text    | 
+ abstract   | text    | 
+
+
 
 
 
