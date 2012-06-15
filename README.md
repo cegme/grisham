@@ -69,27 +69,30 @@ Postgres Table Schemas
 ====
 
 
+
 AUTHOR: 
 ------
 
- Column |       Type        | Modifiers 
+ Column |       Type        | Modifiers
 --------+-------------------+-----------
- pid    | integer           | 
- person | character varying | 
+ pid    | integer           |
+ person | character varying |
+
 
 
 REFERENCE:
 ---------
 
-  Column  |  Type   | Modifiers 
+  Column  |  Type   | Modifiers
 ----------+---------+-----------
- pid      | integer | 
- citation | integer | 
+ pid      | integer |
+ citation | integer |
+
 
 PAPER:
 -----
 
-   Column   |  Type   | Modifiers 
+   Column   |  Type   | Modifiers
 ------------+---------+-----------
  id         | integer | 
  papertitle | text    | 
