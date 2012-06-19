@@ -65,47 +65,48 @@ Postgres Copy Statments
 	COPY reference FROM '/<path>/reference.csv' WITH (FORMAT csv, DELIMITER '|', HEADER True, ENCODING 'utf8');
 
 
+
+Theta File
+====
+
+The theta file contains the documents and an array with the distribution. 
+It should be formated as follows:
+
+	0|{0.3,0.1,0.2,0.4}
+	1|{0.5,0.1,0.2,0.2}
+	2|{0.3,0.1,0.3,0.3}
+
+This file can be copied to the DB using the `COPY' command.
+
+	COPY theta FROM '/<path>/theta.csv' WITH (FORMAT csv, DELIMITER '|', HEADER False, ENCODING 'utf8');
+
+
 Postgres Table Schemas
 ====
 
+	CREATE TABLE author (
+	 pid  integer,
+	 person character varying
+	);
 
 
-AUTHOR:
-------
-
- Column |       Type        | Modifiers
---------+-------------------+-----------
-
- pid    | integer           |
-
- person | character varying |
+	CREATE TABLE reference (
+	 pid integer,
+	 citation integer
+	);
 
 
+	CREATE TABLE paper (
+	 id integer,
+	 papertitle text,
+	 pubyear integer,
+	 venue text,
+	 abstract text
+	);
 
-REFERENCE:
----------
-
-  Column  |  Type   | Modifiers
-----------+---------+-----------
- pid      | integer |
-
- citation | integer |
-
-
-
-
-PAPER:
------
-
-   Column   |  Type   | Modifiers
-------------+---------+-----------
- id         | integer | 
- papertitle | text    | 
- pubyear    | integer | 
- venue      | text    | 
- abstract   | text    | 
-
-
-
+	CREATE TABLE theta (
+		pid integer,
+		topic_distribution double precision[]
+	);
 
 
