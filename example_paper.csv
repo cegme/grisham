@@ -1,0 +1,32 @@
+pid|papertitle|pubyear|venue|abstract
+0|OQL[C++]: Extending C++ with an Object Query Capability.|1995|Modern Database Systems|
+1|Transaction Management in Multidatabase Systems.|1995|Modern Database Systems|
+2|Overview of the ADDS System.|1995|Modern Database Systems|
+3|Multimedia Information Systems: Issues and Approaches.|1995|Modern Database Systems|
+4|Active Database Systems.|1995|Modern Database Systems|
+5|Where Object-Oriented DBMSs Should Do Better: A Critique Based on Early Experiences.|1995|Modern Database Systems|
+6|Distributed Databases.|1995|Modern Database Systems|
+7|An Object-Oriented DBMS War Story: Developing a Genome Mapping Database in C++.|1995|Modern Database Systems|
+8|Cooperative Transactions for Multiuser Environments.|1995|Modern Database Systems|
+9|Schema Architecture of the UniSQL/M Multidatabase System|1995|Modern Database Systems|
+10|Physical Object Management.|1995|Modern Database Systems|
+11|Introduction to Part 1: Next-Generation Database Technology.|1995|Modern Database Systems|
+12|Object-Oriented Database Systems: Promises, Reality, and Future.|1995|Modern Database Systems|
+13|Introduction to Part 2: Technology for Interoperating Legacy Databases.|1995|Modern Database Systems|
+14|On Resolving Schematic Heterogeneity in Multidatabase Systems.|1995|Modern Database Systems|
+15|Requirements for a Performance Benchmark for Object-Oriented Database Systems.|1995|Modern Database Systems|
+16|On View Support in Object-Oriented Databases Systems.|1995|Modern Database Systems|
+17|The POSC Solution to Managing E&P Data.|1995|Modern Database Systems|
+18|C++ Bindings to an Object Database.|1995|Modern Database Systems|
+19|Authorization in Object-Oriented Databases.|1995|Modern Database Systems|
+20|Query Processing in Multidatabase Systems.|1995|Modern Database Systems|
+21|Management of Uncerainty in database Systems.|1995|Modern Database Systems|
+22|Parallel Relational Database Systems.|1995|Modern Database Systems|
+23|Query Processing in Object-Oriented Database Systems.|1995|Modern Database Systems|
+24|Specification and Execution of Transactional Workflows.|1995|Modern Database Systems|
+25|Spatial Data Structures.|1995|Modern Database Systems|An overview is presented of the use of spatial data structures in spatial databases. The focus is on hierarchical data structures, including a number of variants of quadtrees, which sort the data with respect to the space occupied by it. Such techniques are known as spatial indexing methods. Hierarchical data structures are based on the principle of recursive decomposition. They are attractive because they are compact and depending on the nature of the data they save space as well as time and also facilitate operations such as search. Examples are given of the use of these data structures in the representation of different data types such as regions, points, rectangles, lines, and volumes.
+26|Spatial Data Models and Query Processing.|1995|Modern Database Systems|
+27|Pegasus: A Heterogeneous Information Management System.|1995|Modern Database Systems|
+28|Temporal Object-Oriented Databases: A Critical Comparison.|1995|Modern Database Systems|
+29|The OMG Object Model.|1995|Modern Database Systems|
+30|EDA/SQL.|1995|Modern Database Systems|
