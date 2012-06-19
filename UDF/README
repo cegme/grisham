@@ -22,3 +22,7 @@ CREATE OR REPLACE FUNCTION array_sum(integer[], integer[])
 	'/home/cgrant/projects/paper/UDF/testfunc', 'array_sum'
 	Language C strict;
 	
+CREATE OR REPLACE FUNCTION compute(double precision[], double precision[])
+	RETURNS integer AS
+	'/home/virup/paper/UDF/testfunc', 'compute'
+	Language C strict;

@@ -1,6 +1,7 @@
 #include "postgres.h"
 #include "fmgr.h"
 #include "utils/builtins.h"
+#include "utils/array.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -70,18 +71,40 @@ typedef struct {
 
 PG_FUNCTION_INFO_V1(array_sum);
 
+//Datum
+//array_sum(PG_FUNCTION_ARGS)
+//{
+//	int_array* arg0 = PG_GETARG_INT64_P(0);
+//	int_array* arg1 = PG_GETARG_INT64_P(1);
+//
+//	int4 arg0len = VARSIZE(arg0);
+//	int4 arg1len = VARSIZE(arg1);
+//
+//	PG_RETURN_INT32(arg0len + arg1len);
+//}
+
+
+
+PG_FUNCTION_INFO_V1(compute);
+
 Datum
-array_sum(PG_FUNCTION_ARGS)
+compute(PG_FUNCTION_ARGS)
 {
-	int_array* arg0 = PG_GETARG_INT64_P(0);
-	int_array* arg1 = PG_GETARG_INT64_P(1);
+    float4 *array1 = (float4*)ARR_DATA_PTR(PG_GETARG_ARRAYTYPE_P(0));
+    int array1len = ARR_SIZE(PG_GETARG_ARRAYTYPE_P(0));
 
-	int4 arg0len = VARSIZE(arg0);
-	int4 arg1len = VARSIZE(arg1);
+    float8 *array2 = (float8*)ARR_DATA_PTR(PG_GETARG_ARRAYTYPE_P(1));
+    int array2len = ARR_DIMS(PG_GETARG_ARRAYTYPE_P(1))[0];
 
-	PG_RETURN_INT32(arg0len + arg1len);
+    ArrayType *result;
 
+    result = (ArrayType *)palloc0(sizeof(int) + array2len*sizeof(float8));
+    SET_VARSIZE(result, sizeof(int) + sizeof(float8) * array1len);
+    int i;
+    //for(i = 0; i < array1len; i++)
+    //    ((float8*)ARR_DATA_PTR(result))[i] =  array1[i] + array2[i];
 
+    //PG_RETURN_ARRAYTYPE_P(result);
+    PG_RETURN_FLOAT8(array1[0]);
 
 }
-
