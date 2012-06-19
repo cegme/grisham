@@ -1,4 +1,0 @@
-CREATE OR REPLACE FUNCTION value4(real, real)
-  RETURNS real AS
-'<absolute_path>/UDF/testfunc', 'value4'
-  LANGUAGE c VOLATILE STRICT

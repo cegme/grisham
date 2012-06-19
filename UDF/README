@@ -1,0 +1,20 @@
+CREATE OR REPLACE FUNCTION value4(real, real)
+  RETURNS real AS
+'<absolute_path>/UDF/testfunc', 'value4'
+  LANGUAGE c VOLATILE STRICT
+
+CREATE OR REPLACE FUNCTION add_one_float4(real)
+	RETURNS real AS
+	'/home/cgrant/projects/paper/UDF/testfunc', 'add_one_float4'
+	Language C strict;
+
+CREATE OR REPLACE FUNCTION add_two_float4(real, real)
+	RETURNS real AS
+	'/home/cgrant/projects/paper/UDF/testfunc', 'add_two_float4'
+	Language C strict;
+	
+CREATE OR REPLACE FUNCTION array_sum(integer[], integer[])
+	RETURNS integer AS
+	'/home/cgrant/projects/paper/UDF/testfunc', 'array_sum'
+	Language C strict;
+	
