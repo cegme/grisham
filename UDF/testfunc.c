@@ -2,6 +2,9 @@
 #include "fmgr.h"
 #include "utils/builtins.h"
 #include "utils/array.h"
+#include "utils/datum.h"
+#include "utils/numeric.h"
+#include "catalog/pg_type.h"
 #include <math.h>
 #include <stdio.h>
 
@@ -105,6 +108,23 @@ compute(PG_FUNCTION_ARGS)
     //    ((float8*)ARR_DATA_PTR(result))[i] =  array1[i] + array2[i];
 
     //PG_RETURN_ARRAYTYPE_P(result);
-    PG_RETURN_FLOAT8(array1[0]);
+    PG_RETURN_FLOAT4(((float4*)array1)[1]);
 
 }
+
+
+PG_FUNCTION_INFO_V1(RetNull);
+
+Datum
+RetNull(PG_FUNCTION_ARGS)
+{
+    ArrayType *pgarray;
+    unsigned int size = PG_GETARG_INT32(0);
+    float8* array = (float8*) palloc (sizeof(float8)*size);
+    memset(array, 0, sizeof(int)*size);
+    pgarray = construct_array((Datum *)array,size,FLOAT8OID,sizeof(float8),true,'d');
+
+    PG_RETURN_ARRAYTYPE_P(pgarray);
+
+}
+

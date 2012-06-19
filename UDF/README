@@ -26,3 +26,9 @@ CREATE OR REPLACE FUNCTION compute(double precision[], double precision[])
 	RETURNS integer AS
 	'/home/virup/paper/UDF/testfunc', 'compute'
 	Language C strict;
+
+
+CREATE OR REPLACE FUNCTION retnull(integer)
+  RETURNS numeric[] AS
+'/home/virup/paper/UDF/testfunc', 'RetNull'
+  LANGUAGE c  STRICT;
