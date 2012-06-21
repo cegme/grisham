@@ -46,11 +46,11 @@
 				<div class="span9">
 					<ul class="nav nav-tabs" id="maintab">
 						<li class="active"><a href="#keyword" data-toggle="tab">Keyword Paper Search</a></li>
-						<li class=""><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
-						<li class=""><a href="#viz" data-toggle="tab">Graph Explore</a></li>
+						<li><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
+						<li><a href="#viz" data-toggle="tab">Graph Explore</a></li>
 					</ul>
 					<div id="maintabpane" class="tab-content">
-						<div class="tab-pane fade active" id="keyword">
+						<div class="tab-pane fade" id="keyword">
 							<h3>Do Keyword Search</h3>
 							<form class="well form-search" >
 								<input id="kwrd" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
