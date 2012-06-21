@@ -238,9 +238,9 @@ if __name__ == '__main__':
     
     
     # input files
-    IN_DIR = '/home/cgeorge/workspace/paper/'
-    OUT_DIR = '/home/cgeorge/workspace/paper/tm/'
-    FILE_PREFIX = 'example_10000_paper'
+    IN_DIR = '/home/cgrant/projects/paper/'
+    OUT_DIR = '/home/cgrant/projects/paper/topics/'
+    FILE_PREFIX = 'paper_noheader'
     en_sw_file = 'en_stopwords'
     papers_file = IN_DIR + FILE_PREFIX + '.csv'
     dictionary_file = OUT_DIR + FILE_PREFIX + '.dict'
@@ -249,11 +249,12 @@ if __name__ == '__main__':
     lda_topics_file = OUT_DIR + FILE_PREFIX + '.lda_topic_words'
     lsi_topics_file = OUT_DIR + FILE_PREFIX + '.lsi_topic_words'
     lsi_file = OUT_DIR + FILE_PREFIX + '.lsi'
-    num_topics = 20
+    num_topics = 50
     num_passes = 20
     
     # creates the corpus 
-    create_corpus(papers_file, dictionary_file, ldac_file, en_sw_file)
+    if(os.path.exists(dictionary_file) and os.path.exists(ldac_file)):
+        create_corpus(papers_file, dictionary_file, ldac_file, en_sw_file)
     
     paper_ids = list()
     for line in codecs.open(papers_file, mode='r', encoding='utf-8'):
