@@ -5,6 +5,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
@@ -36,6 +37,10 @@
 
 				<div class="span3">
 					<h3>User Options...</h3>
+					<?php
+						// Load some user options/trigger from the db so the "user" can 
+						// configure them.
+					?>
 				</div>
 
 				<div class="span9">
@@ -47,14 +52,26 @@
 					<div id="maintabpane" class="tab-content">
 						<div class="tab-pane fade" id="keyword">
 							<h3>Do Keyword Search</h3>
+							<form class="well form-search" >
+								<input id="kwrd" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
+								<button type="submit" class="btn" onclick="kwQuery(); event.returnValue=false;">Search</button>
+							</form>
+							<div id="k_pane">
+							</div>
 						</div>
 
 						<div class="tab-pane fade" id="alltopics">
 							<h3>Do Topic exploration</h3>
+							<div id="t_pane">
+								<h5>Loading...</h5>	
+							</div>
 						</div>
 
 						<div class="tab-pane fade" id="viz">
 							<h3>Do topic visualization</h3>
+							<div id="v_pane">
+								<h5>Loading...</h5>	
+							</div>
 						</div>
 
 					</div>
@@ -65,10 +82,35 @@
 
 		</div>
 
-	<script>
-		$(function () {
-			$('#maintab a:first').tab('show');
-		})
-	</script>
+		<script type="text/javascript">
+			$(function () {
+				$('#maintab a:first').tab('show');
+			})
+		</script>
+		<script type="text/javascript">
+			function kwQuery() {
+				
+				// TODO Show the pane as loading
+
+				$.ajax({
+					type: "POST",
+					url: "query.php", // TODO define this location
+					dataType: "json",
+					data: {q: escape($("#kwrd").val()),
+						type: "keyword"},
+					success: function(res) {
+						
+						// TODO remove loading message
+
+						// TODO show the results to the screen somehow
+					},
+					error: function(xhr, statusText, errorThrown) {
+						// TODO remove loading message
+
+						// TODO Add an Error message
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
