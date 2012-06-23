@@ -25,12 +25,19 @@
 		// Add LIMIT and OFFSET to the query if present
 		if(isset($_GET['limit'])){
 			$thelimit = rawurldecode($_GET['limit']); 
-			$query = $query . " LIMIT $thelimit ";
-			if(isset($_GET['offset'])){
-				$theoffset = rawurldecode($_GET['offset']); 
-			 	$query = $query . " OFFSET $theoffset";
-			}
+		else
+			$thelimit = 50;
 		}
+		$query = $query . " LIMIT $thelimit ";
+
+		if(isset($_GET['offset'])){
+			$theoffset = rawurldecode($_GET['offset']);
+		else
+			$theoffset = 0;
+		}
+		$query = $query . " OFFSET $theoffset";
+		
+		
 		// END THE QUERY
 		$query = $query . ";";
 
@@ -91,12 +98,17 @@
 		// Add LIMIT and OFFSET to the query if present
 		if(isset($_GET['limit'])){
 			$thelimit = rawurldecode($_GET['limit']); 
-			$query = $query . " LIMIT $thelimit ";
-			if(isset($_GET['offset'])){
-				$theoffset = rawurldecode($_GET['offset']); 
-			 	$query = $query . " OFFSET $theoffset";
-			}
+		else
+			$thelimit = 50;
 		}
+		$query = $query . " LIMIT $thelimit ";
+
+		if(isset($_GET['offset'])){
+			$theoffset = rawurldecode($_GET['offset']);
+		else
+			$theoffset = 0;
+		}
+		$query = $query . " OFFSET $theoffset";
 		
 		// END THE QUERY
 		$query = $query . ";";
