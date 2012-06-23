@@ -5,7 +5,7 @@
 	header('Content-type: application/json');
 
 	// Process the keyword query
-	if(isset($_POST['q']) && isset($_POST['keyword'])) {
+	if(isset($_POST['q']) && isset($_POST['type']) && $_POST['type'] == "keyword") {
 
 		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 

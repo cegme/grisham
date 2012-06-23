@@ -86,8 +86,12 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
+				$('#myTab a').click(function (e) {
+					e.preventDefault();
+					$(this).tab('show');
+				});
 				//$(function () {
-					$('#maintab a:first').tab('show');
+				$('#maintab a:first').tab('show');
 				//});
 			});
 			function kwQuery() {
