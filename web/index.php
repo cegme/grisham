@@ -50,8 +50,9 @@
 						<li><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
 						<li><a href="#viz" data-toggle="tab">Graph Explore</a></li>
 					</ul>
-					<div id="maintabpane" class="tab-content">
-						<div class="tab-pane fade" id="keyword">
+
+					<div class="tab-content" id="maintabpane"> 
+						<div id="keyword" class="tab-pane fade">
 							<h3>Do Keyword Search</h3><div id="k_msg"></div>
 							<form class="well form-search" >
 								<input id="kwrd" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
@@ -85,12 +86,10 @@
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$(function () {
+				//$(function () {
 					$('#maintab a:first').tab('show');
-				});
+				//});
 			});
-		</script>
-		<script type="text/javascript">
 			function kwQuery() {
 				
 				// TODO Show the pane as loading
@@ -98,7 +97,7 @@
 
 				$.ajax({
 					type: "POST",
-					url: "query.php", 
+					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
 						type: "keyword"},
