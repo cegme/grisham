@@ -106,7 +106,7 @@
 						
 						var answertable = [];
 
-						answertable.push("<table class="table table-striped">\n");
+						answertable.push("<table class=\"table table-striped\">\n");
 
 						// Add a table header
 						answertable.push("<thead><tr>");
