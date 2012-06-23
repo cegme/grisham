@@ -2,7 +2,7 @@
 <html>
 <?php
 		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
-		$topicrows;
+		$topicrows = Array();
 ?>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>Grisham</title>
@@ -49,7 +49,7 @@
 					<h3>User Options</h3>
 <?php
 // Allow the user to use the slider to adject properties
-foreach ($row as $topicrows) {
+foreach($topicrows as $row) {
 	print '<label for="tval-$row["tid"]">Topic: $row["tid]</label>\n';
 	print '<input id="tval-$row["tid"]" type="text" readonly="readonly" />\n';
 	print '<div id="slider-topic-$row["tid"]"></div>\n';
@@ -204,7 +204,7 @@ $sldr = '\$function() {\n'.
 '});';
 
 
-foreach($row as $topicrows) {
+foreach($topicrows as $row) {
 	printf($sldr, $row["tid"], $row["tid"], $row["tid"], $row["tid"]);
 }
 ?>
