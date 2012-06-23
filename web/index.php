@@ -90,9 +90,10 @@
 					e.preventDefault();
 					$(this).tab('show');
 				});
-				//$(function () {
-				$('#maintab a:first').tab('show');
-				//});
+				$(function () {
+					$("#keyword").tab('show');
+					$('#maintab a:first').tab('show');
+				});
 			});
 			function kwQuery() {
 				

@@ -55,4 +55,11 @@
 		// Close the connection
 		pg_close($dbconn);
 	}
+	else {
+		$rows["q"] = "null";
+		$rows["querytime"] = -1;
+		$rows["rowcount"] = 0;
+
+		print($rows);
+	}
 ?>
