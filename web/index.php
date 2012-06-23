@@ -145,7 +145,7 @@
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
 						// Add an Error message
-						$("k_msg").append("<div class=\"alert alert-error\">"+statusText+"</div>");
+						$("k_msg").append("<span class=\"label label-error\">"+statusText+"</span>");
 					}
 				});
 			}

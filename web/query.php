@@ -60,7 +60,8 @@
 	}
 	else {
 		//header('Content-type: text/plain');
-		header('Content-type: text/html');
+		//header('Content-type: text/html');
+		header('Content-type: application/json');
 
 		$rows["q"] = "null";
 		$rows["querytime"] = -1;
@@ -69,5 +70,5 @@
 
 		print json_encode($rows);
 	}
-	phpinfo();
+	// phpinfo();
 ?>
