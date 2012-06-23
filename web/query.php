@@ -28,7 +28,7 @@
 			$query = $query . " LIMIT $thelimit ";
 			if(isset($_GET['limit']))
 			 	$query = $query . " OFFSET $theoffset";
-		
+		}
 		// END THE QUERY
 		$query = $query . ";";
 
@@ -93,6 +93,7 @@
 			$query = $query . " LIMIT $thelimit ";
 			if(isset($_GET['limit']))
 			 	$query = $query . " OFFSET $theoffset";
+		}
 		
 		// END THE QUERY
 		$query = $query . ";";
