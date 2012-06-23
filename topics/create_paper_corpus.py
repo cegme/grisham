@@ -223,8 +223,8 @@ def run_lsi(dictionary_file, ldac_file, lsi_file, topics_file, num_topics, paper
     with codecs.open(topics_file, mode='w', encoding='utf-8') as fw:
         fw.write(u'topic_id|topic_words\n')
         for i in range(0, num_topics): 
-            topic_words = u' '.join(w[1] for w in topics[i])
-            fw.write(str(i+1) + u'|' + topic_words + u'\n')
+            topic_words = u"'',''".join(w[1] for w in topics[i])
+            fw.write(str(i+1) + u"|{''" + topic_words + u"''}\n")
 
 if __name__ == '__main__':
     

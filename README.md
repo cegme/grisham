@@ -81,6 +81,23 @@ This file can be copied to the DB using the `COPY' command.
 	COPY theta FROM '/<path>/theta.csv' WITH (FORMAT csv, DELIMITER '|', HEADER False, ENCODING 'utf8');
 
 
+Topic Word file
+====
+
+This file contans a list of the top words for each topic. Each word in the 
+array format needs to be double quoted so that it can be red directly by 
+postgres.
+
+0|{''cat'', ''dog'', ''bird''}
+1|{''fish'', ''shark'', ''dolphin''}
+2|{''snake'', ''frog'', ''iguana''}
+
+
+This file can be copied to the DB using the `COPY' command.
+
+	COPY theta FROM '/<path>/topic_words' WITH (FORMAT csv, DELIMITER '|', HEADER True, ENCODING 'utf8');
+
+
 Postgres Table Schemas
 ====
 
@@ -109,4 +126,7 @@ Postgres Table Schemas
 		topic_distribution double precision[]
 	);
 
-
+	CREATE TABLE topic_words (
+		tid integer, 
+		words varchar[],
+	);
