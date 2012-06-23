@@ -4,7 +4,7 @@
 
 
 	// Process the keyword query
-	if(isset($_POST['q']) && isset($_POST['type']) && $_POST['type'] == "keyword") {
+	if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword") {
 	header('Content-type: application/json');
 
 		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
@@ -56,12 +56,13 @@
 		pg_close($dbconn);
 	}
 	else {
-		header('Content-type: text/plain');
+		//header('Content-type: text/plain');
+		header('Content-type: text/html');
 
 		$rows["q"] = "null";
 		$rows["querytime"] = -1;
 		$rows["rowcount"] = 0;
-		$rows["post"] = $_POST;
+		$rows["GET"] = $_GET;
 
 		print json_encode($rows);
 	}

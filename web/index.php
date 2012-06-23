@@ -102,7 +102,7 @@
 				$("#k_msg").empty();
 
 				$.ajax({
-					type: "POST",
+					type: "GET",
 					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
