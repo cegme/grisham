@@ -21,8 +21,16 @@
 						 "FROM paper left join author ON id=pid ".
 						 "WHERE person ILIKE '%$keyword%' OR ".
 						 "papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%' ".
-						 "ORDER BY type, pubyear DESC ".
-						 "LIMIT $thelimit OFFSET $theoffset;";
+						 "ORDER BY type, pubyear DESC ";
+
+		// Add LIMIT and OFFSET to the query if present
+		if(isset($_GET['limit'])){
+			$query = $query . " LIMIT $thelimit ";
+			if(isset($_GET['limit']))
+			 	$query = $query . " OFFSET $theoffset";
+		
+		// END THE QUERY
+		$query = $query . ";";
 
 		// Make a query to the DB
 		list($tic_usec, $tic_sec) = explode(" ", microtime());
@@ -78,8 +86,16 @@
 			  " from (select sum(ln(1 - value.t-$smallestDouble)) + ln(value.pi+$smallestDouble) - ln(1-value.pi-$smallestDouble) as weight, value.pid as pid ".
        				" from (select unnest(tab.topic_distribution) as t, tab.pid as pid, tab.topic_distribution[$id] as Pi".
 					" from  (select pid, topic_distribution from theta) as tab)".
-			"as value GROUP BY value.pid, value.pi) as comparetable ORDER BY comparetable.weight DESC".
-			" LIMIT $thelimit OFFSET $theoffset;";
+			"as value GROUP BY value.pid, value.pi) as comparetable ORDER BY comparetable.weight DESC";
+
+		// Add LIMIT and OFFSET to the query if present
+		if(isset($_GET['limit'])){
+			$query = $query . " LIMIT $thelimit ";
+			if(isset($_GET['limit']))
+			 	$query = $query . " OFFSET $theoffset";
+		
+		// END THE QUERY
+		$query = $query . ";";
 		
 		// Make a query to the DB
 		list($tic_usec, $tic_sec) = explode(" ", microtime());
