@@ -58,11 +58,11 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 
 // Allow the user to use the slider to adject properties
 foreach($topicrows as $row) {
-	//$topicrows[] = $line;
-	print '<label for="tval-$row["tid"]">Topic: $row["tid]</label>\n';
-	print '<input id="tval-$row["tid"]" type="text" readonly="readonly" />\n';
-	print '<div id="slider-topic-$row["tid"]"></div>\n';
-	print '<hr/>';
+	$tid = $row["tid"];
+	print "<label for='tval-$tid'>Topic: $tid</label>\n";
+	print "<input id='tval-$tid' type='text' readonly='readonly' />\n";
+	print "<div id='slider-topic-$tid'></div>\n";
+	print "<hr/>";
 }
 ?>
 				</div>
