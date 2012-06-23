@@ -240,7 +240,7 @@ if __name__ == '__main__':
     # input files
     IN_DIR = '/home/cgrant/projects/paper/'
     OUT_DIR = '/home/cgrant/projects/paper/topics/'
-    FILE_PREFIX = 'paper_noheader'
+    FILE_PREFIX = 'paper_noheader_nounicode'
     en_sw_file = 'en_stopwords'
     papers_file = IN_DIR + FILE_PREFIX + '.csv'
     dictionary_file = OUT_DIR + FILE_PREFIX + '.dict'
@@ -249,11 +249,11 @@ if __name__ == '__main__':
     lda_topics_file = OUT_DIR + FILE_PREFIX + '.lda_topic_words'
     lsi_topics_file = OUT_DIR + FILE_PREFIX + '.lsi_topic_words'
     lsi_file = OUT_DIR + FILE_PREFIX + '.lsi'
-    num_topics = 50
-    num_passes = 20
+    num_topics = 25
+    num_passes = 10
     
     # creates the corpus 
-    if(os.path.exists(dictionary_file) and os.path.exists(ldac_file)):
+    if(not os.path.exists(dictionary_file) or not os.path.exists(ldac_file)):
         create_corpus(papers_file, dictionary_file, ldac_file, en_sw_file)
     
     paper_ids = list()

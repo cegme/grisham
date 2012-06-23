@@ -7,13 +7,19 @@
 	// Process the keyword query
 	if(isset($_POST['q']) && isset($_POST['keyword'])) {
 
-		// TODO make a DB user with query only access
-		// TODO update fields
-		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=** password=** options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
+		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
 		// Decode query
-		// TODO actually build a proper query
-		$query = rawurldecode($_POST['q']);
+		$keyword = rawurldecode($_POST['q']); // Get the keyword
+
+		$query = "SELECT person, papertitle, pubyear, venue, abstract, ".
+						 "CASE WHEN (person ILIKE '%$keyword%') THEN 'author' ".
+	     			 "		 WHEN (papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%') THEN 'paper' ".
+	     			 "ELSE 'none' END as type ".
+						 "FROM paper left join author ON id=pid ".
+						 "WHERE person ILIKE '%$keyword%' OR ".
+						 "papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%' ".
+						 "ORDER BY type, pubyear DESC;";
 
 		// Make a query to the DB
 		list($tic_usec, $tic_sec) = explode(" ", microtime());

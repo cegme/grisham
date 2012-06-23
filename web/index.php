@@ -83,9 +83,11 @@
 		</div>
 
 		<script type="text/javascript">
-			$(function () {
-				$('#maintab a:first').tab('show');
-			})
+			$(document).ready(function() {
+				$(function () {
+					$('#maintab a:first').tab('show');
+				});
+			});
 		</script>
 		<script type="text/javascript">
 			function kwQuery() {
@@ -94,18 +96,43 @@
 
 				$.ajax({
 					type: "POST",
-					url: "query.php", // TODO define this location
+					url: "query.php", 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
 						type: "keyword"},
 					success: function(res) {
 						
-						// TODO remove loading message
+						var answertable = [];
 
-						// TODO show the results to the screen somehow
+						answertable.push("<table class="table table-striped">\n");
+
+						// Add a table header
+						answertable.push("<thead><tr>");
+						for(var i=0;i < 2 && res["headers"] != undefined && i < res["headers"].length; ++i) {
+							answertable.push("<th><h4>"+res["headers"][i]+"</h4></th>");
+						}
+						answertable.push("</tr></thead>");
+
+						answertable.push("<tbody>");
+						for (var i=0; i < res["rowcount"]; ++i){
+							answertable.push("<tr>");
+							answertable.push("<td>" + res[i]["person"] + "</td>");
+							answertable.push("<td>" + res[i]["papertitle"] + "</td>");
+							answertable.push("</tr>");
+						}
+						answertable.push("</tbody>");
+						answertable.push("</table>\n");
+
+						// Remove loading message
+						$("k_pane").empty();
+
+						// Append to k_pane
+						$("#k_pane").append(answertable.join(""));
+
+
 					},
 					error: function(xhr, statusText, errorThrown) {
-						// TODO remove loading message
+						$("k_pane").empty();
 
 						// TODO Add an Error message
 					}

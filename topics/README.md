@@ -13,6 +13,11 @@ Then download the corpus into nltk. We recommend downloading `all`.
 
 ### Running the topic modeling
 
+You may want to remove all the unicode for better processing, here
+is a quick perl script for that.
+
+	perl -i.bk -pe ‘s/[^[:ascii:]]//g;’ paper_noheader.csv
+
 Specify the `IN_DIR` In the create\_topic\_models.py. This directory should
 contain the paper.csv (is the file you are building from) and the stopwords 
 file (`en_sw_file`). 
