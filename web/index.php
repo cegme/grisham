@@ -72,7 +72,7 @@
 // TODO add links to the click and go to the new page
 // TODO Make a new page such that a user can go back to the original ont
 // Give the tables some style
-/*$twquery = "SELECT tid, words FROM topic_words;";
+$twquery = "SELECT tid, words FROM topic_words;";
 
 $result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
 print "<table>";
@@ -84,7 +84,6 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	print "</tr>";
 }
 print "</table>";
-*/
 ?>
 							</div>
 						</div>

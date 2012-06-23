@@ -267,8 +267,8 @@ if __name__ == '__main__':
     # run LDA 
     run_lda(dictionary_file, ldac_file, theta_file, lda_topics_file, num_topics, num_passes, paper_ids)
     
-    # run LSI 
-    run_lsi(dictionary_file, ldac_file, lsi_file, lsi_topics_file, num_topics, paper_ids)   
+    # run LSI  -- Lets stop this for a while
+    # run_lsi(dictionary_file, ldac_file, lsi_file, lsi_topics_file, num_topics, paper_ids)   
     
     print '\n\nExecution time:', (time() - tm) 
     
