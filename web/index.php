@@ -60,7 +60,7 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 foreach($topicrows as $row) {
 	$tid = $row["tid"];
 	print "<label for='tval-$tid'>Topic: $tid</label>\n";
-	print "<input id='tval-$tid' type='text' readonly='readonly' />\n";
+	// print "<input id='tval-$tid' type='text' readonly='readonly' />\n";
 	print "<div id='slider-topic-$tid'></div>\n";
 	print "<hr/>";
 }
@@ -93,7 +93,7 @@ foreach($topicrows as $row) {
 // TODO Make a new page such that a user can go back to the original ont
 // Give the tables some style
 print "<table>";
-while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+foreach($topicrows as $line) { 
 	$tid = $line["tid"];
 	$words = $line["words"];
 	print "<tr>";
@@ -198,7 +198,7 @@ pg_free_result($result);
 $sldr = "\$(function() {\n".
 "\t\$('#slider-topic-%d').slider({\n".
 "\t\trange: 'min', \n".
-"\t\tvalue: 2.8571428, // (1/35)*100, \n".
+"\t\tvalue: 30, // (1/35)*100 is uniform, \n".
 "\t\tmin: 0,\n".
 "\t\tmax: 100,\n".
 "\t\tslide: function( event, ui ) {\n".
