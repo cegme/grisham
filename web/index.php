@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.21.custom.css" />
 
 		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
 		<script type="text/javascript" src="development-bundle/ui/minified/jquery.ui.core.min.js"></script>
 		<script type="text/javascript" src="development-bundle/ui/minified/jquery.ui.slider.min.js"></script>
 
@@ -191,7 +191,7 @@ pg_free_result($result);
 <?php
 // This is a slider template, it takes an integer for topic id starting at 1
 // Params: (1,topicid), (2,topicid), (3, topicid), (4, topicid)
-$sldr = "\$function() {\n".
+$sldr = "\$(function() {\n".
 "\t\$('#slider-topic-%d').slider({\n".
 "\t\trange: 'min', \n".
 "\t\tvalue: 2.8571428, // (1/35)*100, \n".
