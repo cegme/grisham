@@ -23,18 +23,18 @@
 						 "ORDER BY type, pubyear DESC ";
 
 		// Add LIMIT and OFFSET to the query if present
-		if(isset($_GET['limit'])){
+		if(isset($_GET['limit']))
 			$thelimit = rawurldecode($_GET['limit']); 
 		else
 			$thelimit = 50;
-		}
+		
 		$query = $query . " LIMIT $thelimit ";
 
-		if(isset($_GET['offset'])){
+		if(isset($_GET['offset']))
 			$theoffset = rawurldecode($_GET['offset']);
 		else
 			$theoffset = 0;
-		}
+		
 		$query = $query . " OFFSET $theoffset";
 		
 		
@@ -96,18 +96,18 @@
 			"as value GROUP BY value.pid, value.pi) as comparetable ORDER BY comparetable.weight DESC";
 
 		// Add LIMIT and OFFSET to the query if present
-		if(isset($_GET['limit'])){
+		if(isset($_GET['limit']))
 			$thelimit = rawurldecode($_GET['limit']); 
 		else
 			$thelimit = 50;
-		}
+		
 		$query = $query . " LIMIT $thelimit ";
 
-		if(isset($_GET['offset'])){
+		if(isset($_GET['offset']))
 			$theoffset = rawurldecode($_GET['offset']);
 		else
 			$theoffset = 0;
-		}
+		
 		$query = $query . " OFFSET $theoffset";
 		
 		// END THE QUERY
