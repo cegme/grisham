@@ -58,7 +58,7 @@
 							<h3>Do Keyword Search</h3><div id="k_msg"></div>
 							<form class="well form-search" >
 								<input id="kwrd" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
-								<button type="submit" class="btn" onclick="kwQuery(); event.returnValue=false;">Search</button>
+								<button type="submit" class="btn" onclick="kwQuery(0, 50); event.returnValue=false;">Search</button>
 							</form>
 							<div id="k_pane">
 							</div>
