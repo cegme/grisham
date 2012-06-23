@@ -134,12 +134,12 @@
 						// Append to k_pane
 						$("#k_pane").append(answertable.join(""));
 
-						$("#k_msg").append("Time: " + res["querytime"]);
+						$("#k_msg").append("<div class=\"alert alert-info\">" + "Time: " + res["querytime"] + "</div>");
 					},
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
-
-						// TODO Add an Error message
+						// Add an Error message
+						$("k_msg").append("<div class=\"alert alert-error\">"+statusText+"</div>");
 					}
 				});
 			}
