@@ -90,8 +90,8 @@
 					e.preventDefault();
 					$(this).tab('show');
 				});
+				$("#firsttabclick").tab('show');
 				$(function () {
-					$("#keyword").tab('show');
 					$("#firsttabclick").tab('show');
 					$('#maintab a:first').tab('show');
 				});
