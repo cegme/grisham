@@ -70,7 +70,7 @@
 		$id = rawurldecode($_GET['q']); // Get the keyword
 		$thelimit = rawurldecode($_GET['limit']); 
 		$theoffset = rawurldecode($_GET['offset']); 
-		$smallestDouble = "0.000000000001"
+		$smallestDouble = "0.000000000001";
 		
 
 
