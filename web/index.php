@@ -52,8 +52,13 @@ $twquery = "SELECT tid, words FROM topic_words;";
 
 $result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
 
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	$topicrows[] = $line;
+}
+
 // Allow the user to use the slider to adject properties
 foreach($topicrows as $row) {
+	//$topicrows[] = $line;
 	print '<label for="tval-$row["tid"]">Topic: $row["tid]</label>\n';
 	print '<input id="tval-$row["tid"]" type="text" readonly="readonly" />\n';
 	print '<div id="slider-topic-$row["tid"]"></div>\n';
@@ -94,7 +99,6 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	print "<tr>";
 	print "<td>$tid</td><td>$words<td/>";
 	print "</tr>";
-	$topicrows[] = $line;
 }
 print "</table>";
 // Free the result set
