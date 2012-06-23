@@ -46,7 +46,7 @@
 
 				<div class="span9">
 					<ul class="nav nav-tabs" id="maintab">
-						<li class="active"><a href="#keyword" data-toggle="tab">Keyword Paper Search</a></li>
+						<li class="active"><a id="firsttabclick" href="#keyword" data-toggle="tab">Keyword Paper Search</a></li>
 						<li><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
 						<li><a href="#viz" data-toggle="tab">Graph Explore</a></li>
 					</ul>
@@ -92,6 +92,7 @@
 				});
 				$(function () {
 					$("#keyword").tab('show');
+					$("#firsttabclick").tab('show');
 					$('#maintab a:first').tab('show');
 				});
 			});
