@@ -24,10 +24,42 @@ technique that enables us to work on the topic-space rather than on
 the vocabulary-space.
 
 
-
-
 \subsection{User Model}
-A user gives their abstraction of topic preferences.
+When performing search, exploration and discovery over academic papers users 
+may bring particular context to their search. Incorporating this information
+into the search process has been show to be beneficial to 
+users~\cite{DZSRWJ,MZPGSOL}.
+We develop a user model that 
+encapsulates the users personal context and integrates it into their
+search task. 
+
+This model is a distribution of weights for each topic.
+Formally, given a set of topics $T$ the user model is defined as
+$$
+\mathcal{U} = \{u_0, \ldots, u_{|T|}\}
+$$
+where $u_i \in [0,1]$ and $\sum_{t \in T} u_t = 1$.
+We graphically allow the user to select the weights that correspond to
+each topic. This allows the users to change preferences with each query
+for more desirable results.
+
+The user model is used in different ways to provide better feedback to
+the user. After a keyword search, the document results of the search 
+are re-ranked by calculating the KL-divergence of each document and the
+user model. Formally, given the set of result documents $D$:
+
+\begin{equation} \label{eq:KL}
+KL(\mathcal{U}||d) = \sum_{t \in T} u_t \ln \frac{u_t}{d_t}.
+\end{equation}
+where $d \in D$ and $d_t$ is the topic proportion for document $d$ and
+topic $t \in T$. 
+
+In the topic explorer, each topic row is color-coded like a heat 
+based map based on the similarity of the user model to that topic.
+The user can look at this heat map to adjust their topic preferences.
+We use equation~\ref{eq:KL} on the client side to calculate this preference. 
+In the graph explorer the citations for the current paper is ranked
+using equation~\ref{eq:KL}.
 
 
 \subsection{Ranking Function}
@@ -42,7 +74,7 @@ topic $t \in K$, we calculate
 \begin{equation}
 m(d) = \ln \hat{\theta}_{d,t} + \sum_{j \neq t}{\ln (1 - \hat{\theta}_{d,j})}
 \end{equation}
-for all documents $d = 1, 2, ..., D$ in 
+for all documents $d = 1, 2, \ldots, D$ in 
 the document collection, and sort them to rank
 them on relevance. Here, we assume that
 each $\hat{\theta}_d$ is normalized, 
