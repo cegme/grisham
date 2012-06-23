@@ -48,6 +48,10 @@
 				<div class="span3">
 					<h3>User Options</h3>
 <?php
+$twquery = "SELECT tid, words FROM topic_words;";
+
+$result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
+
 // Allow the user to use the slider to adject properties
 foreach($topicrows as $row) {
 	print '<label for="tval-$row["tid"]">Topic: $row["tid]</label>\n';
@@ -83,9 +87,6 @@ foreach($topicrows as $row) {
 // TODO add links to the click and go to the new page
 // TODO Make a new page such that a user can go back to the original ont
 // Give the tables some style
-$twquery = "SELECT tid, words FROM topic_words;";
-
-$result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
 print "<table>";
 while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	$tid = $line["tid"];
@@ -201,7 +202,7 @@ $sldr = "\$function() {\n".
 "\t\t}\n".
 "\t});\n".
 "\t\$( '#tval-%d' ).val( '\$' + \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
-"});";
+"});\n\n";
 
 
 foreach($topicrows as $row) {
