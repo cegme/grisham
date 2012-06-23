@@ -96,9 +96,9 @@
 					$('#maintab a:first').tab('show');
 				});
 			});
-			function kwQuery(offset, limit) {
-				var offset = offset || 0;
-				var limit = limit || 50;
+			function kwQuery(offsetval, limitval) {
+				var offsetval = offsetval || 0;
+				var limitval = limitval || 50;
 				
 				// TODO Show the pane as loading
 				$("#k_msg").empty();
@@ -109,8 +109,8 @@
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
 						type: "keyword",
-						limit: limit,
-						offset: offset},
+						limit: limitval,
+						offset: offsetval},
 					success: function(res) {
 						
 						var answertable = [];
