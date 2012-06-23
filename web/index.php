@@ -190,18 +190,18 @@ pg_free_result($result);
 <?php
 // This is a slider template, it takes an integer for topic id starting at 1
 // Params: (1,topicid), (2,topicid), (3, topicid), (4, topicid)
-$sldr = '\$function() {\n'.
-'\t \$("#slider-topic-%d").slider({\n'.
-'\t\trange: "min", \n'.
-'\t\tvalue: 2.8571428, // (1/35)*100, \n'.
-'\t\tmin: 0,\n'.
-'\t\tmax: 100,\n'.
-'\t\tslide: function( event, ui ) {\n'.
-'\t\t\t\$( "#tval-%d" ).val( "\$" + ui.value );\n'.
-'\t\t}\n'.
-'\t});\n'.
-'\t\$( "#tval-%d" ).val( "\$" + \$( "#slider-topic-%d" ).slider( "value" ) );\n'.
-'});';
+$sldr = "\$function() {\n".
+"\t\$('#slider-topic-%d').slider({\n".
+"\t\trange: 'min', \n".
+"\t\tvalue: 2.8571428, // (1/35)*100, \n".
+"\t\tmin: 0,\n".
+"\t\tmax: 100,\n".
+"\t\tslide: function( event, ui ) {\n".
+"\t\t\t\$( '#tval-%d' ).val( '\$' + ui.value );\n".
+"\t\t}\n".
+"\t});\n".
+"\t\$( '#tval-%d' ).val( '\$' + \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
+"});";
 
 
 foreach($topicrows as $row) {
