@@ -11,8 +11,7 @@
 
 		// Decode query
 		$keyword = rawurldecode($_GET['q']); // Get the keyword
-		$thelimit = rawurldecode($_GET['limit']); 
-		$theoffset = rawurldecode($_GET['offset']); 
+		
 
 		$query = "SELECT person, papertitle, pubyear, venue, abstract, ".
 						 "CASE WHEN (person ILIKE '%$keyword%') THEN 'author' ".
@@ -25,9 +24,12 @@
 
 		// Add LIMIT and OFFSET to the query if present
 		if(isset($_GET['limit'])){
+			$thelimit = rawurldecode($_GET['limit']); 
 			$query = $query . " LIMIT $thelimit ";
-			if(isset($_GET['limit']))
+			if(isset($_GET['limit'])){
+				$theoffset = rawurldecode($_GET['offset']); 
 			 	$query = $query . " OFFSET $theoffset";
+			}
 		}
 		// END THE QUERY
 		$query = $query . ";";
@@ -76,8 +78,6 @@
 
 		// Decode query
 		$id = rawurldecode($_GET['q']); // Get the keyword
-		$thelimit = rawurldecode($_GET['limit']); 
-		$theoffset = rawurldecode($_GET['offset']); 
 		$smallestDouble = "0.000000000001";
 		
 
@@ -90,9 +90,12 @@
 
 		// Add LIMIT and OFFSET to the query if present
 		if(isset($_GET['limit'])){
+			$thelimit = rawurldecode($_GET['limit']); 
 			$query = $query . " LIMIT $thelimit ";
-			if(isset($_GET['limit']))
+			if(isset($_GET['limit'])){
+				$theoffset = rawurldecode($_GET['offset']); 
 			 	$query = $query . " OFFSET $theoffset";
+			}
 		}
 		
 		// END THE QUERY
