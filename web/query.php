@@ -26,7 +26,7 @@
 		if(isset($_GET['limit'])){
 			$thelimit = rawurldecode($_GET['limit']); 
 			$query = $query . " LIMIT $thelimit ";
-			if(isset($_GET['limit'])){
+			if(isset($_GET['offset'])){
 				$theoffset = rawurldecode($_GET['offset']); 
 			 	$query = $query . " OFFSET $theoffset";
 			}
@@ -92,7 +92,7 @@
 		if(isset($_GET['limit'])){
 			$thelimit = rawurldecode($_GET['limit']); 
 			$query = $query . " LIMIT $thelimit ";
-			if(isset($_GET['limit'])){
+			if(isset($_GET['offset'])){
 				$theoffset = rawurldecode($_GET['offset']); 
 			 	$query = $query . " OFFSET $theoffset";
 			}
