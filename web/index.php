@@ -7,6 +7,7 @@
 
 		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-tab.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
 	</head>
@@ -51,7 +52,7 @@
 					</ul>
 					<div id="maintabpane" class="tab-content">
 						<div class="tab-pane fade" id="keyword">
-							<h3>Do Keyword Search</h3>
+							<h3>Do Keyword Search</h3><div id="k_msg"></div>
 							<form class="well form-search" >
 								<input id="kwrd" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
 								<button type="submit" class="btn" onclick="kwQuery(); event.returnValue=false;">Search</button>
@@ -93,6 +94,7 @@
 			function kwQuery() {
 				
 				// TODO Show the pane as loading
+				$("#k_msg").empty();
 
 				$.ajax({
 					type: "POST",
@@ -129,7 +131,7 @@
 						// Append to k_pane
 						$("#k_pane").append(answertable.join(""));
 
-
+						$("#k_msg").append("Time: " + res["querytime"]);
 					},
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
