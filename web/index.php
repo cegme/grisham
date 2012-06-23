@@ -78,7 +78,7 @@ $result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
 print "<table>";
 while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	$tid = $line["tid"];
-	$words = $words["words"];
+	$words = $line["words"];
 	print "<tr>";
 	print "<td>$tid</td><td>$words<td/>";
 	print "</tr>";
