@@ -5,12 +5,14 @@
 
 	// Process the keyword query
 	if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword") {
-	header('Content-type: application/json');
+		header('Content-type: application/json');
 
 		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
 		// Decode query
-		$keyword = rawurldecode($_POST['q']); // Get the keyword
+		$keyword = rawurldecode($_GET['q']); // Get the keyword
+		$thelimit = rawurldecode($_GET['limit']); 
+		$theoffset = rawurldecode($_GET['offset']); 
 
 		$query = "SELECT person, papertitle, pubyear, venue, abstract, ".
 						 "CASE WHEN (person ILIKE '%$keyword%') THEN 'author' ".
@@ -19,7 +21,8 @@
 						 "FROM paper left join author ON id=pid ".
 						 "WHERE person ILIKE '%$keyword%' OR ".
 						 "papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%' ".
-						 "ORDER BY type, pubyear DESC;";
+						 "ORDER BY type, pubyear DESC ".
+						 "LIMIT $thelimit OFFSET $theoffset;";
 
 		// Make a query to the DB
 		list($tic_usec, $tic_sec) = explode(" ", microtime());

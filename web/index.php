@@ -96,7 +96,9 @@
 					$('#maintab a:first').tab('show');
 				});
 			});
-			function kwQuery() {
+			function kwQuery(offset, limit) {
+				var offset = offset || 0;
+				var limit = limit || 50;
 				
 				// TODO Show the pane as loading
 				$("#k_msg").empty();
@@ -106,7 +108,9 @@
 					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
-						type: "keyword"},
+						type: "keyword",
+						limit: limit,
+						offset: offset},
 					success: function(res) {
 						
 						var answertable = [];
@@ -136,7 +140,7 @@
 						// Append to k_pane
 						$("#k_pane").append(answertable.join(""));
 
-						$("#k_msg").append("<div class=\"alert alert-info\">" + "Time: " + res["querytime"] + "</div>");
+						$("#k_msg").append("<span class=\"label label-info\">" + "Time: " + res["querytime"] + "</span>");
 					},
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
