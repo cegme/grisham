@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
+<?php
+		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
+		$topicrows;
+?>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>Grisham</title>
 	<head>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.21.custom.css" />
 
 		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="development-bundle/ui/minified/jquery.ui.core.min.js"></script>
+		<script type="text/javascript" src="development-bundle/ui/minified/jquery.ui.slider.min.js"></script>
+
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tab.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
+
 	</head>
-<?php
-		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
-?>
 	<body>
 		<div class="navbar">
 			<div class="navbar-inner">
@@ -39,11 +46,16 @@
 			<div class="row-fluid">
 
 				<div class="span3">
-					<h3>User Options...</h3>
-					<?php
-						// Load some user options/trigger from the db so the "user" can 
-						// configure them.
-					?>
+					<h3>User Options</h3>
+<?php
+// Allow the user to use the slider to adject properties
+foreach ($row as $topicrows) {
+	print '<label for="tval-$row["tid"]">Topic: $row["tid]</label>\n';
+	print '<input id="tval-$row["tid"]" type="text" readonly="readonly" />\n';
+	print '<div id="slider-topic-$row["tid"]"></div>\n';
+	print '<hr/>';
+}
+?>
 				</div>
 
 				<div class="span9">
@@ -67,7 +79,6 @@
 						<div class="tab-pane fade" id="alltopics">
 							<h3>Do Topic exploration</h3>
 							<div id="t_pane">
-								<h5>Loading...</h5>	
 <?php
 // TODO add links to the click and go to the new page
 // TODO Make a new page such that a user can go back to the original ont
@@ -82,11 +93,11 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	print "<tr>";
 	print "<td>$tid</td><td>$words<td/>";
 	print "</tr>";
+	$topicrows[] = $line;
 }
 print "</table>";
 // Free the result set
 pg_free_result($result);
-
 ?>
 							</div>
 						</div>
@@ -158,6 +169,7 @@ pg_free_result($result);
 
 						// Remove loading message
 						$("k_pane").empty();
+						$("k_msg").empty();
 
 						// Append to k_pane
 						$("#k_pane").append(answertable.join(""));
@@ -171,6 +183,31 @@ pg_free_result($result);
 					}
 				});
 			}
+		</script>
+
+		<script type="text/javascript">
+			// Code for the sliders
+<?php
+// This is a slider template, it takes an integer for topic id starting at 1
+// Params: (1,topicid), (2,topicid), (3, topicid), (4, topicid)
+$sldr = '\$function() {\n'.
+'\t \$("#slider-topic-%d").slider({\n'.
+'\t\trange: "min", \n'.
+'\t\tvalue: 2.8571428, // (1/35)*100, \n'.
+'\t\tmin: 0,\n'.
+'\t\tmax: 100,\n'.
+'\t\tslide: function( event, ui ) {\n'.
+'\t\t\t\$( "#tval-%d" ).val( "\$" + ui.value );\n'.
+'\t\t}\n'.
+'\t});\n'.
+'\t\$( "#tval-%d" ).val( "\$" + \$( "#slider-topic-%d" ).slider( "value" ) );\n'.
+'});';
+
+
+foreach($row as $topicrows) {
+	printf($sldr, $row["tid"], $row["tid"], $row["tid"], $row["tid"]);
+}
+?>
 		</script>
 	</body>
 <?php 
