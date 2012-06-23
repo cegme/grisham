@@ -205,7 +205,7 @@ $sldr = "\$(function() {\n".
 "\t\t\t\$( '#tval-%d' ).val( '\$' + ui.value );\n".
 "\t\t}\n".
 "\t});\n".
-"\t\$( '#tval-%d' ).val( '\$' + \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
+"\t\$( '#tval-%d' ).val( \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
 "});\n\n";
 
 
