@@ -11,7 +11,9 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
 	</head>
-
+<?php
+		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
+?>
 	<body>
 		<div class="navbar">
 			<div class="navbar-inner">
@@ -66,6 +68,23 @@
 							<h3>Do Topic exploration</h3>
 							<div id="t_pane">
 								<h5>Loading...</h5>	
+<?php
+// TODO add links to the click and go to the new page
+// TODO Make a new page such that a user can go back to the original ont
+// Give the tables some style
+$twquery = "SELECT tid, words FROM topic_words;";
+
+$result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
+print "<table>";
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	$tid = $line["tid"];
+	$words = $words["words"];
+	print "<tr>";
+	print "<td>$tid</td><td>$words<td/>";
+	print "</tr>";
+}
+print "</table>";
+?>
 							</div>
 						</div>
 
@@ -140,7 +159,7 @@
 						// Append to k_pane
 						$("#k_pane").append(answertable.join(""));
 
-						$("#k_msg").append("<span class=\"label label-info\">" + "Time: " + res["querytime"] + "</span>");
+						$("#k_msg").append("<span class=\"label label-info\">" + "Time: " + res["querytime"] + " seconds</span>");
 					},
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
