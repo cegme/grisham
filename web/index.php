@@ -84,6 +84,9 @@ while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	print "</tr>";
 }
 print "</table>";
+// Free the result set
+pg_free_result($result);
+
 ?>
 							</div>
 						</div>
@@ -170,4 +173,9 @@ print "</table>";
 			}
 		</script>
 	</body>
+<?php 
+// Close the connection
+pg_close($dbconn);
+?>
 </html>
+
