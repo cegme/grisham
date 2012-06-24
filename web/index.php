@@ -211,7 +211,7 @@ pg_free_result($result);
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
-					var colorval = parseInt(tscores[i] / totalval * 126);
+					var colorval = parseInt(tscores[i] / totalval * 255);
 					$("#divrow-"+t).css('backgroundColor', "rgb("+colorval+", 126, 126)"); // Make the color
 				}
 
