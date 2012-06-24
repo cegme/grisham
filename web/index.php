@@ -203,12 +203,14 @@ pg_free_result($result);
 				var topicSize = $("#topic-table tr").length;
 				var tscores = [];
 				for (var i = 0; i != topicSize; ++i) {
-					tscores.push($("#tval-"+(i+1)).val());
-					totalval += $("#tval-"+(i+1)).val();
+					var t = i+1;
+					tscores.push(parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width')));
+					totalval += parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width'));
 				}
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
+					var t = i+1;
 					var colorval = tscores[i] / totalval * 126;
 					$("#divrow-"+(i+1)).css('backgroundColor',	"rgb("+colorval+", 126, 126)"); // Make the color
 				}
