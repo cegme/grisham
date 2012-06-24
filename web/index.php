@@ -214,7 +214,8 @@ pg_free_result($result);
 					if(max < tscores[i]) max = tscores[i];
 					if(min >= tscores[i]) min = tscores[i];
 				}
-				var ratio = 255.0/(max-min);
+				//var ratio = 255.0/(max-min);
+				var ratio = (max-min)/255.0;
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
