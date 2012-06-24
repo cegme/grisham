@@ -66,7 +66,7 @@ using equation~\ref{eq:KL}.
 We provided several ranking functions to let the user find
 the best papers.
 
-One way to rank is to determine relevant papers 
+One way of ranking is to determine relevant papers 
 given an estimated topic. We use individual papers'
 document topic mixtures, $\hat{\theta_d}$, to rank them 
 on relevance given a topic. For a given 
@@ -81,7 +81,9 @@ each $\hat{\theta}_d$ is normalized,
 i.e., $\sum_{j=1}^{K}{\hat{\theta}_j} = 1$.
 Intuitively, we can see that this equation maximizes the probability
 of a topic $t \in K$ given a document.
-
+That means a document with a higher value of this score is 
+highly relevant for the selected topic $t$, and contains 
+a considerable amount of words from the topic distribution.    
 
 
 
