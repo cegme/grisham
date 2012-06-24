@@ -240,7 +240,7 @@
 			
 
 
-		$query = "select pid, papertitle, pubyear, venue, abstract from precomputed_rank, paper where topic_id=$id and id=pid;";
+		$query = "select pid, papertitle, pubyear, venue, abstract from precomputed_rank, paper where topic_id=$id and id=pid ";
 		
 
 		// Add LIMIT and OFFSET to the query if present
