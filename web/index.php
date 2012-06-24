@@ -220,9 +220,9 @@ pg_free_result($result);
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
-					var red = parseInt(ratio*tscores[i]);
-					var green = parseInt(ratio*tscores[i]);
-					var blue = parseInt(ratio*tscores[i]);
+					var red = parseInt(ratio*(100-tscores[i]));
+					var green = parseInt(ratio*(100-tscores[i]));
+					var blue = parseInt(ratio*(100-tscores[i]));
 					//var colorval = parseInt(tscores[i] /*/ totalval*/ * 255);
 					$("#divrow-"+t).css('backgroundColor', "rgb(255, "+green+","+blue+")"); // Make the color
 					//$("#divrow-"+t).css('backgroundColor', "rgb("+red+", 255, 255)"); // Make the color
