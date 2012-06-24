@@ -97,7 +97,11 @@ foreach($topicrows as $line) {
 	$tid = $line["tid"];
 	$words = $line["words"];
 	print "<tr>";
-	print "<td>$tid</td><td>$words<td/>";
+	//print "<td>$tid</td><td>$words<td/>";
+	print "<div id='divrow-$tid'>\n";
+		print "<span class='label label-info'>$tid</span>|";
+		print "<span>$words</span>";
+	print "</div>\n";
 	print "</tr>";
 }
 print "</table>";
