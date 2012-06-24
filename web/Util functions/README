@@ -1,0 +1,4 @@
+query: Contains the SQL query to compute the rank on the fly
+
+precompute_insert.php : Contains the php code to insert the computed ranks into the table 'precomputed_rank'. It stores 200 papers for each topic.
+

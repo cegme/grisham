@@ -160,7 +160,12 @@
 
 		$query = "select pid from precomputed_rank where topic_id=$id";
 		
+
 		// Add LIMIT and OFFSET to the query if present
+		if(isset($_GET['limit']))
+			$thelimit = rawurldecode($_GET['limit']); 
+		else
+			$thelimit = 50;
 		if(isset($_GET['offset']))
 			$theoffset = rawurldecode($_GET['offset']);
 		else
