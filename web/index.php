@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tab.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-tooltip.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-collapse.js"></script>
 
 	</head>
 	<body>
@@ -97,15 +98,18 @@ foreach($topicrows as $line) {
 	$tid = $line["tid"];
 	$words = explode(",", substr($line["words"], 1, strlen($line["words"])-2));
 	print "<tr>";
-	//print "<td>$tid</td><td>$words<td/>";
+
 	print "<div id='divrow-$tid'>\n";
-		print "<span class='label label-info'>$tid&nbsp;</span>&nbsp;";
+		print "<button class='btn btn-danger' data-toggle='collapse' data-target='#topic-docs-$tid'>";
+		print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
+		print "</button>";
 		print "<span>";
 			foreach(array_slice($words, 0, 10) as $word) { print $word." "; }
 		print "</span>";
-		print "<hr/>";
+		print "<div id='topic-docs-$tid' class='collapse'></div>\n";
+		print "<hr/>\n";
 	print "</div>\n";
-	print "</tr>";
+	print "</tr>\n";
 }
 print "</table>";
 // Free the result set
@@ -132,6 +136,7 @@ pg_free_result($result);
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#topic-btn').click(function() { doTopicChange(); });
+				$(".collapse").collapse(); // Enable collapse
 				$('#maintab a').click(function (e) {
 					e.preventDefault();
 					$(this).tab('show');
@@ -141,6 +146,31 @@ pg_free_result($result);
 					$("#firsttabclick").tab('show');
 					$('#maintab a:first').tab('show');
 				});
+<?php
+foreach($topicrows as $row) { 
+	$tid = $row['tid'];
+	print "\$('#topic-docs-$tid').on('show', function() {\n";
+	print "if ($('#topic-docs-$tid').is(':empty')) {\n";
+	print "\t\$.ajax({\n";
+	print "\t\t\ttype: 'GET',\n";
+	print "\t\t\turl: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', \n";
+	print "\t\t\tdataType: 'json', \n";
+	print "\t\t\tdata: {q: $tid,\n";
+	print "\t\t\t	type: 'rank',\n";
+	print "\t\t\t\tlimit: 50,\n";
+	print "\t\t\t\toffset: 0},\n";
+	print "\t\t\tsuccess: function(res) {\n";
+	print "\t\t\t\t$('#topic-docs-$tid').append(res[0]);\n"; // TODO, more than one paper
+	print "\t\t\t},\n";
+	print "\t\t\terror: function(xhr, statusText, errorThrown) {\n";
+	print "\t\t\t\t//$('k_pane').empty();\n";
+	print "\t\t\t\t// Add an Error message\n";
+	print "\t\t\t\t//$('k_msg').append('<span class=\'label label-error\'>'+statusText+'</span>');\n";
+	print "\t\t\t}\n";
+	print "\t});";
+	print "}\n";
+}
+?>
 			});
 			function kwQuery(offsetval, limitval) {
 				var offsetval = offsetval || 0;
