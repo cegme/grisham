@@ -204,14 +204,14 @@ pg_free_result($result);
 				var tscores = [];
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
-					tscores.push(parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width')));
-					totalval += parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width'));
+					tscores.push(100 * parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width')));
+					totalval += 100 * parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width'));
 				}
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
-					var colorval = parseInt(tscores[i] / totalval * 255);
+					var colorval = parseInt(scores[i] / totalval * 255);
 					$("#divrow-"+t).css('backgroundColor', "rgb("+colorval+", 126, 126)"); // Make the color
 				}
 
