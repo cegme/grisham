@@ -214,8 +214,8 @@ pg_free_result($result);
 					if(max < tscores[i]) max = tscores[i];
 					if(min >= tscores[i]) min = tscores[i];
 				}
-				//var ratio = 255.0/(max-min);
-				var ratio = (max-min)/255.0;
+				var ratio = 255.0/(max-min);
+				//var ratio = (max-min)/255.0;
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
@@ -224,8 +224,8 @@ pg_free_result($result);
 					var green = parseInt(ratio*tscores[i]);
 					var blue = parseInt(ratio*tscores[i]);
 					//var colorval = parseInt(tscores[i] /*/ totalval*/ * 255);
-					//$("#divrow-"+t).css('backgroundColor', "rgb(255, "+green+","+blue+")"); // Make the color
-					$("#divrow-"+t).css('backgroundColor', "rgb("+red+", 255, 255)"); // Make the color
+					$("#divrow-"+t).css('backgroundColor', "rgb(255, "+green+","+blue+")"); // Make the color
+					//$("#divrow-"+t).css('backgroundColor', "rgb("+red+", 255, 255)"); // Make the color
 				}
 
 			}
