@@ -212,7 +212,7 @@ pg_free_result($result);
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
 					var colorval = parseInt(tscores[i] / totalval * 126);
-					$("#divrow-"+t)).css('backgroundColor', "rgb("+colorval+", 126, 126)"); // Make the color
+					$("#divrow-"+t).css('backgroundColor', "rgb("+colorval+", 126, 126)"); // Make the color
 				}
 
 			}
