@@ -209,7 +209,7 @@ pg_free_result($result);
 				}
 
 				// Get the min and max values
-				int max = -1, min = 1000;
+				int max = -1; int min = 1000;
 				for (var i = 0; i != topicSize; ++i) {
 					if(max < tscores[i]) max = tscores[i];
 					if(min >= tscores[i]) min = tscores[i];
