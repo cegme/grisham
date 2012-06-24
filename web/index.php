@@ -100,7 +100,7 @@ foreach($topicrows as $line) {
 	print "<tr>";
 
 	print "<div id='divrow-$tid'>\n";
-		print "<button class='btn' data-toggle='collapse' data-target='#topic-docs-$tid'>\n";
+		print "<button class='btn btn-inverse' data-toggle='collapse' data-target='#topic-docs-$tid'>\n";
 		//print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
 		print "+$tid";
 		print "</button>";
