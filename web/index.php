@@ -86,20 +86,20 @@ foreach($topicrows as $row) {
 						</div>
 
 						<div class="tab-pane fade" id="alltopics">
-							<h3>Do Topic exploration</h3>
+							<h3>Do Topic Exploration <button class="btn btn-primary" id="topic-btn">refresh</button></h3>
 							<div id="t_pane">
 <?php
 // TODO add links to the click and go to the new page
 // TODO Make a new page such that a user can go back to the original ont
 // Give the tables some style
-print "<table>";
+print "<table id='topic-table'>";
 foreach($topicrows as $line) { 
 	$tid = $line["tid"];
 	$words = explode(",", substr($line["words"], 1, strlen($line["words"])-2));
 	print "<tr>";
 	//print "<td>$tid</td><td>$words<td/>";
 	print "<div id='divrow-$tid'>\n";
-		print "<span class='label label-info'>$tid</span>|";
+		print "<span class='label label-info'>$tid&nbsp;</span>&nbsp;";
 		print "<span>";
 			foreach(array_slice($words, 0, 10) as $word) { print $word." "; }
 		print "</span>";
@@ -131,6 +131,7 @@ pg_free_result($result);
 
 		<script type="text/javascript">
 			$(document).ready(function() {
+				$('#topic-btn').click(function() { doTopicChange(); });
 				$('#maintab a').click(function (e) {
 					e.preventDefault();
 					$(this).tab('show');
@@ -195,10 +196,26 @@ pg_free_result($result);
 					}
 				});
 			}
-		</script>
+			function doTopicChange() {
 
-		<script type="text/javascript">
-			// Code for the sliders
+				// Get all the topic values in an array
+				var total = 0.0;
+				var topicSize = $("#topic-table tr").length;
+				var tscores = [];
+				for (var i = 0; i != topicSize; ++i) {
+					tscores.push($("#tval-"+(i+1)).val());
+					total += $("#tval-"+(i+1)).val();
+				}
+
+				// Iterate over all the weights and change the intensities
+				for (var i = 0; i != topicSize; ++i) {
+					$("#divrow-"(i+1)).css('backgroundColor',
+						rgb(tscores[i]/total*126 ,126,126)); // Make the color
+				}
+
+			}
+
+// Code for the sliders
 <?php
 // This is a slider template, it takes an integer for topic id starting at 1
 // Params: (1,topicid), (2,topicid), (3, topicid), (4, topicid)
