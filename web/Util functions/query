@@ -1,0 +1,11 @@
+
+
+
+-------------------
+
+select comparetable.weight, comparetable.pid 
+from (select sum(ln(1 - value.t - 0.0000000000001)) + ln(value.pi+0.0000000000001) - ln(1-value.pi-0.0000000000001) as weight, value.pid as pid 
+       from (select unnest(tab.topic_distribution) as t, tab.pid as pid, tab.topic_distribution[1] as Pi       
+	from  (select pid, topic_distribution from theta LIMIT 20) as tab)
+as value GROUP BY value.pid, value.pi) as comparetable ORDER BY comparetable.weight DESC;
+--------------------
