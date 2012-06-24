@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.21.custom.css" />
 
 		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
 		<script type="text/javascript" src="development-bundle/ui/minified/jquery.ui.core.min.js"></script>
 		<script type="text/javascript" src="development-bundle/ui/minified/jquery.ui.slider.min.js"></script>
 
@@ -48,12 +48,21 @@
 				<div class="span3">
 					<h3>User Options</h3>
 <?php
+$twquery = "SELECT tid, words FROM topic_words;";
+
+$result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
+
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	$topicrows[] = $line;
+}
+
 // Allow the user to use the slider to adject properties
 foreach($topicrows as $row) {
-	print '<label for="tval-$row["tid"]">Topic: $row["tid]</label>\n';
-	print '<input id="tval-$row["tid"]" type="text" readonly="readonly" />\n';
-	print '<div id="slider-topic-$row["tid"]"></div>\n';
-	print '<hr/>';
+	$tid = $row["tid"];
+	print "<label for='tval-$tid'>Topic: $tid</label>\n";
+	// print "<input id='tval-$tid' type='text' readonly='readonly' />\n";
+	print "<div id='slider-topic-$tid'></div>\n";
+	print "<hr/>";
 }
 ?>
 				</div>
@@ -83,17 +92,19 @@ foreach($topicrows as $row) {
 // TODO add links to the click and go to the new page
 // TODO Make a new page such that a user can go back to the original ont
 // Give the tables some style
-$twquery = "SELECT tid, words FROM topic_words;";
-
-$result = pg_query($twquery) or die('Query failed: ' . pg_last_error());
 print "<table>";
-while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+foreach($topicrows as $line) { 
 	$tid = $line["tid"];
 	$words = $line["words"];
 	print "<tr>";
-	print "<td>$tid</td><td>$words<td/>";
+	//print "<td>$tid</td><td>$words<td/>";
+	print "<div id='divrow-$tid'>\n";
+		print "<span class='label label-info'>$tid</span>|";
+		print "<span>";
+			foreach($words as $word){ print $word." "; }
+		print "</span>";
+	print "</div>\n";
 	print "</tr>";
-	$topicrows[] = $line;
 }
 print "</table>";
 // Free the result set
@@ -190,18 +201,18 @@ pg_free_result($result);
 <?php
 // This is a slider template, it takes an integer for topic id starting at 1
 // Params: (1,topicid), (2,topicid), (3, topicid), (4, topicid)
-$sldr = '\$function() {\n'.
-'\t \$("#slider-topic-%d").slider({\n'.
-'\t\trange: "min", \n'.
-'\t\tvalue: 2.8571428, // (1/35)*100, \n'.
-'\t\tmin: 0,\n'.
-'\t\tmax: 100,\n'.
-'\t\tslide: function( event, ui ) {\n'.
-'\t\t\t\$( "#tval-%d" ).val( "\$" + ui.value );\n'.
-'\t\t}\n'.
-'\t});\n'.
-'\t\$( "#tval-%d" ).val( "\$" + \$( "#slider-topic-%d" ).slider( "value" ) );\n'.
-'});';
+$sldr = "\$(function() {\n".
+"\t\$('#slider-topic-%d').slider({\n".
+"\t\trange: 'min', \n".
+"\t\tvalue: 30, // (1/35)*100 is uniform, \n".
+"\t\tmin: 0,\n".
+"\t\tmax: 100,\n".
+"\t\tslide: function( event, ui ) {\n".
+"\t\t\t\$( '#tval-%d' ).val( '\$' + ui.value );\n".
+"\t\t}\n".
+"\t});\n".
+"\t\$( '#tval-%d' ).val( \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
+"});\n\n";
 
 
 foreach($topicrows as $row) {
