@@ -95,13 +95,13 @@ foreach($topicrows as $row) {
 print "<table>";
 foreach($topicrows as $line) { 
 	$tid = $line["tid"];
-	$words = $line["words"];
+	$words = explode(",", substr($line["words"], 1, strlen($line["words"])-2));
 	print "<tr>";
 	//print "<td>$tid</td><td>$words<td/>";
 	print "<div id='divrow-$tid'>\n";
 		print "<span class='label label-info'>$tid</span>|";
 		print "<span>";
-			foreach($words as $word){ print $word." "; }
+			foreach($words as $word) { print $word." "; }
 		print "</span>";
 	print "</div>\n";
 	print "</tr>";
