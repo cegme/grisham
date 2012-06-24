@@ -78,7 +78,7 @@
 ///////////////////////////
 //RANKING FUNCTION STARTS//
 ///////////////////////////
-	else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank") {
+	else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank_realtime") {
 		header('Content-type: application/json');
 
 		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
@@ -113,6 +113,64 @@
 		// END THE QUERY
 		$query = $query . ";";
 		
+		// Make a query to the DB
+		list($tic_usec, $tic_sec) = explode(" ", microtime());
+		$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+		list($toc_usec, $toc_sec) = explode(" ", microtime());
+
+		$querytime = $toc_sec + $toc_usec - ($tic_sec + $tic_usec); // Query time
+
+		// Iterate over results
+		$rows = array();
+		while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+			$rows[] = $line;
+		}
+		
+		$rows["q"] = urldecode($query);
+		$rows["querytime"] = $querytime;
+		$rows["rowcount"] = pg_num_rows($result);
+
+		if ($rows["rowcount"] > 0) {
+			$rows["headers"] = array_keys($rows[0]);
+		}
+		else {
+			// Some default header for no result
+			$rows["headers"] = array(0 => 100, "color" => "red"); 
+		}
+
+		// Show the json result
+		print json_encode($rows); 
+
+		// Free the result set
+		pg_free_result($result);
+		
+		// Close the connection
+		pg_close($dbconn);
+	}
+////////////////// RANK precomputed ///////////////////
+	else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank") {
+		header('Content-type: application/json');
+
+		$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
+
+		// Decode query
+		$id = rawurldecode($_GET['q']); // Get the keyword
+			
+
+
+		$query = "select pid from precomputed_rank where topic_id=$id";
+		
+		// Add LIMIT and OFFSET to the query if present
+		if(isset($_GET['offset']))
+			$theoffset = rawurldecode($_GET['offset']);
+		else
+			$theoffset = 0;
+		
+		$query = $query . " OFFSET $theoffset";
+		
+		// END THE QUERY
+		$query = $query . ";";	
+
 		// Make a query to the DB
 		list($tic_usec, $tic_sec) = explode(" ", microtime());
 		$result = pg_query($query) or die('Query failed: ' . pg_last_error());
