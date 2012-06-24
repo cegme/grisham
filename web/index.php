@@ -208,11 +208,21 @@ pg_free_result($result);
 					totalval += 100 * parseInt($("#slider-topic-"+t+" div").css('width')) / parseInt($("#slider-topic-"+t+" div").parent().css('width'));
 				}
 
+				// Get the min and max values
+				int max = -1, min = 1000;
+				for (var i = 0; i != topicSize; ++i) {
+					if(max < tscores[i]) max = tscores[i];
+					if(min >= tscores[i]) min = tscores[i];
+				}
+				double ratio = (max-min)/255.0;
+
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
-					var colorval = parseInt(tscores[i] /*/ totalval*/ * 255);
-					$("#divrow-"+t).css('backgroundColor', "rgb("+colorval+", 126, 126)"); // Make the color
+					var green = parseInt(255-ratio*tscores[i]);
+					var blue = parseInt(255-ratio*tscores[i]);
+					//var colorval = parseInt(tscores[i] /*/ totalval*/ * 255);
+					$("#divrow-"+t).css('backgroundColor', "rgb(255, "+green+","+blue+")"); // Make the color
 				}
 
 			}
