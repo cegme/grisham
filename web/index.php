@@ -214,13 +214,13 @@ pg_free_result($result);
 					if(max < tscores[i]) max = tscores[i];
 					if(min >= tscores[i]) min = tscores[i];
 				}
-				var ratio = (max-min)/255.0;
+				var ratio = 255.0/(max-min);
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
 					var t = i+1;
-					var green = parseInt(255-ratio*tscores[i]);
-					var blue = parseInt(255-ratio*tscores[i]);
+					var green = parseInt(ratio*tscores[i]);
+					var blue = parseInt(ratio*tscores[i]);
 					//var colorval = parseInt(tscores[i] /*/ totalval*/ * 255);
 					$("#divrow-"+t).css('backgroundColor', "rgb(255, "+green+","+blue+")"); // Make the color
 				}
