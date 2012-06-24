@@ -100,7 +100,9 @@ foreach($topicrows as $line) {
 	//print "<td>$tid</td><td>$words<td/>";
 	print "<div id='divrow-$tid'>\n";
 		print "<span class='label label-info'>$tid</span>|";
-		print "<span>$words</span>";
+		print "<span>";
+			foreach($words as $word){ print $word." "; }
+		print "</span>";
 	print "</div>\n";
 	print "</tr>";
 }
