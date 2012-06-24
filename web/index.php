@@ -101,9 +101,9 @@ foreach($topicrows as $line) {
 
 	print "<div id='divrow-$tid'>\n";
 		print "<label class='label label-info icon-plus' data-toggle='collapse' data-target='#topic-docs-$tid'>\n";
-		print "\t<span class=''>$tid</span>";
 		//print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
 		print "</label>";
+		print "$tid";
 		print "<span>";
 			foreach(array_slice($words, 0, 10) as $word) { print $word." "; }
 		print "</span>";
