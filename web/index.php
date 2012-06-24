@@ -209,12 +209,12 @@ pg_free_result($result);
 				}
 
 				// Get the min and max values
-				int max = -1; int min = 1000;
+				var max = -1; var min = 1000;
 				for (var i = 0; i != topicSize; ++i) {
 					if(max < tscores[i]) max = tscores[i];
 					if(min >= tscores[i]) min = tscores[i];
 				}
-				double ratio = (max-min)/255.0;
+				var ratio = (max-min)/255.0;
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
