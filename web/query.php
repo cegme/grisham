@@ -96,16 +96,19 @@
 
 		for($i = 0; $i<$size; $i++)
 		{
-			$query = $query . " OR paperindex.word iLIKE '%$words[$i]%' ";
+			$wordsi = $words[$i];
+			$query = $query . " OR paperindex.word iLIKE '%$wordsi%' ";
 		}
 		
-		$query = $query . " ORDER BY type, pubyear DESC "
+		$query = $query . " ORDER BY type, pubyear DESC ";
 
 		// Add LIMIT and OFFSET to the query if present
-		if(isset($_GET['limit']))
+		if(isset($_GET['limit'])) {
 			$thelimit = rawurldecode($_GET['limit']); 
-		else
+		}
+		else {
 			$thelimit = 50;
+		}
 		
 		$query = $query . " LIMIT $thelimit ";
 
@@ -237,7 +240,7 @@
 			
 
 
-		$query = "select pid from precomputed_rank where topic_id=$id";
+		$query = "select pid, papertitle, pubyear, venue, abstract from precomputed_rank, paper where topic_id=$id and id=pid;";
 		
 
 		// Add LIMIT and OFFSET to the query if present
