@@ -199,17 +199,17 @@ pg_free_result($result);
 			function doTopicChange() {
 
 				// Get all the topic values in an array
-				var total = 0.0;
+				var totalval = 0.0;
 				var topicSize = $("#topic-table tr").length;
 				var tscores = [];
 				for (var i = 0; i != topicSize; ++i) {
 					tscores.push($("#tval-"+(i+1)).val());
-					total += $("#tval-"+(i+1)).val();
+					totalval += $("#tval-"+(i+1)).val();
 				}
 
 				// Iterate over all the weights and change the intensities
 				for (var i = 0; i != topicSize; ++i) {
-					val colorval = (tscores[i]/total)*126;
+					var colorval = tscores[i] / totalval * 126;
 					$("#divrow-"+(i+1)).css('backgroundColor',	"rgb("+colorval+", 126, 126)"); // Make the color
 				}
 
