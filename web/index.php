@@ -70,6 +70,8 @@ foreach($topicrows as $row) {
 
 				<div class="span9">
 					<div class="alert alert-warning">This is under construction... there may be outages and speed issues</div> 
+					<div id="gresham-msg"></div>
+					<div id="gresham-loading"></div>
 					<ul class="nav nav-tabs" id="maintab">
 						<li class="active"><a id="firsttabclick" href="#keyword" data-toggle="tab">Keyword Paper Search</a></li>
 						<li><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
@@ -149,15 +151,21 @@ pg_free_result($result);
 				$('#t_paper_pane').hide();
 
 			});
-				function showError(text) {
-					// TODO show the error text
+				function showError(msg) {
+					// Show the error text
+					$("#gresham-msg").empty();
+					$("#gresham-msg").hide();
+					$("#gresham-msg").append("<span class=\"label label-error\">"+msg+"</span>");
+					$("#gresham-msg").slideDown('fast').delay(2000).slideUp(800);
 				}
 				function toggleLoading(show) { 
 					if(show) { 
-						// TODO
+						$("#gresham-loading").empty();
+						$("#gresham-loading").append("<img src='img/loader1.gif'></img>");
 					}
 					else{
-						// TODO
+						$("#gresham-loading").hide();
+						$("#gresham-loading").empty();
 					}
 				}
 				function makePaperDiv(paper) {
@@ -236,6 +244,7 @@ pg_free_result($result);
 				// TODO Show the pane as loading
 				$("#k_msg").empty();
 
+				toggleLoading(true);
 				$.ajax({
 					type: "GET",
 					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
@@ -275,11 +284,13 @@ pg_free_result($result);
 						$("#k_pane").append(answertable.join(""));
 
 						$("#k_msg").append("<span class=\"label label-info\">" + "Time: " + res["querytime"] + " seconds</span>");
+						toggleLoading(false);
 					},
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
 						// Add an Error message
 						$("k_msg").append("<span class=\"label label-error\">"+statusText+"</span>");
+						toggleLoading(false);
 					}
 				});
 			}
