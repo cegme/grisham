@@ -175,7 +175,7 @@ pg_free_result($result);
 							$('#t_pane').hide('slow');
 								
 							$('#t_paper_pane').empty();
-							for(var i = 0; i != res["rowcount"]; ++i)
+							for(var i = 0; i != res["rowcount"]; ++i) {
 								$('#t_paper_pane').append("<div>"+res[i]+"</div>"); // TODO fix the show
 							}
 							$('#t_paper_pane').show('slow');
