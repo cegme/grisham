@@ -101,7 +101,7 @@ foreach($topicrows as $line) {
 	$words = explode(",", substr($line["words"], 1, strlen($line["words"])-2));
 	print "<tr>";
 
-	print "<div id='divrow-$tid' onclick=\"showPaper('$tid');>event.returnValue=false;\"\n";
+	print "<div id='divrow-$tid' onclick=\"showPaper('$tid');>event.returnValue=false;\">\n";
 		//print "<button class='btn btn-inverse' data-toggle='collapse in' data-target='#topic-docs-$tid'>\n";
 		//print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
 		print "+$tid";
