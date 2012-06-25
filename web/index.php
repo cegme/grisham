@@ -161,7 +161,13 @@ pg_free_result($result);
 					}
 				}
 				function makePaperDiv(paper) {
-					// TODO
+                    var string = "<div><ul>";
+                    string.concat("<li>Paper      : "); string.concat(paper.papertitle); string.concat("</li>");
+                    string.concat("<li>Author     : "); string.concat(paper.author); string.concat("</li>");
+                    string.concat("<li>Conference : "); string.concat(paper.venue); string.concat(" Year : "); string.concat(paper.pubyear);string.concat("</li>");
+                    string.concat("</ul></div>");
+
+                   return string; 
 				}
 				function showPaper(tid) {
 					toggleLoading(true);	
