@@ -175,8 +175,10 @@ pg_free_result($result);
 							$('#t_pane').hide('slow');
 								
 							$('#t_paper_pane').empty();
-							$('#t_paper_pane').append(res[0]); // TODO fix the show
-							$('#t_paper_pane').show('2000');
+							for(var i = 0; i != res["rowcount"]; ++i)
+								$('#t_paper_pane').append("<div>"+res[i]+"</div>"); // TODO fix the show
+							}
+							$('#t_paper_pane').show('slow');
 						},
 						error: function(xhr, statusText, errorThrown) {
 							// TODO Add an Error message
