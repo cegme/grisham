@@ -97,7 +97,7 @@
 		for($i = 0; $i<$size; $i++)
 		{
 			$wordsi = $splitwords[$i];
-			$query = $query . " OR paperindex.word iLIKE '%$splitwordsi%' ";
+			$query = $query . " OR paperindex.word iLIKE '%$wordsi%' ";
 		}
 		
 		$query = $query . " ORDER BY type, pubyear DESC ";
