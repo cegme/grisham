@@ -104,14 +104,14 @@ foreach($topicrows as $line) {
 	print "<div id='divrow-$tid' onclick=\"showPaper('$tid');event.returnValue=false;\">\n";
 		//print "<button class='btn btn-inverse' data-toggle='collapse in' data-target='#topic-docs-$tid'>\n";
 		//print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
-		print "+$tid";
+		print "<span class='badge badge-inverse'>$tid</span>";
 		//print "</button>";
 		print "<span>";
-			foreach(array_slice($words, 0, 10) as $word) { print "<span class='label label-inverse'>".$word."</span> "; }
+			foreach(array_slice($words, 0, 10) as $word) { print "<span class=''>$word</span> "; }
 		print "</span>";
 		//print "<div id='topic-docs-$tid' class='collapse'></div>\n";
+		print "<hr/>\n";
 	print "</div>\n";
-	print "<hr/>\n";
 	print "</tr>\n";
 }
 print "</table>";
