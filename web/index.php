@@ -89,6 +89,7 @@ foreach($topicrows as $row) {
 
 						<div class="tab-pane fade" id="alltopics">
 							<h3>Do Topic Exploration <button class="btn btn-primary" id="topic-btn">refresh</button></h3>
+							<div id="t_paper_pane"></div>
 							<div id="t_pane">
 <?php
 // TODO add links to the click and go to the new page
@@ -100,15 +101,15 @@ foreach($topicrows as $line) {
 	$words = explode(",", substr($line["words"], 1, strlen($line["words"])-2));
 	print "<tr>";
 
-	print "<div id='divrow-$tid'>\n";
-		print "<button class='btn btn-inverse' data-toggle='collapse in' data-target='#topic-docs-$tid'>\n";
+	print "<div id='divrow-$tid' onclick=\"showPaper('$tid');>event.returnValue=false;\"\n";
+		//print "<button class='btn btn-inverse' data-toggle='collapse in' data-target='#topic-docs-$tid'>\n";
 		//print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
 		print "+$tid";
-		print "</button>";
+		//print "</button>";
 		print "<span>";
 			foreach(array_slice($words, 0, 10) as $word) { print $word." "; }
 		print "</span>";
-		print "<div id='topic-docs-$tid' class='collapse'>DFASFDASSAFSDFSDFDSFSDFDSFGDSFSADSADASASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDSADASDSADASDASDASDSDASDASDAS\nDASDASDASD\nDASdasda\nsdadsasda</div>\n";
+		print "<div id='topic-docs-$tid' class='collapse'></div>\n";
 		print "<hr/>\n";
 	print "</div>\n";
 	print "</tr>\n";
@@ -138,18 +139,53 @@ pg_free_result($result);
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#topic-btn').click(function() { doTopicChange(); });
-				$(".collapse").collapse({toggle: true}); // Enable collapse
 				$('#maintab a').click(function (e) {
 					e.preventDefault();
 					$(this).tab('show');
 				});
 				$("#firsttabclick").tab('show');
-				$(function () {
-					$("#firsttabclick").tab('show');
-					$('#maintab a:first').tab('show');
-				});
+				$("#firsttabclick").tab('show');
+				$('#maintab a:first').tab('show');
+				$('#t_paper_pane').hide();
+
+				function showError(text) {
+					// TODO show the error text
+				}
+				function toggleLoading(show) { 
+					if(show) { 
+						// TODO
+					}
+					else{
+						// TODO
+					}
+				}
+				function showPaper(tid) {
+					toggleLoading(true);	
+
+					$.ajax({
+						type: 'GET',
+						url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', 
+						dataType: 'json', 
+						data: {q: tid,
+							type: 'rank',
+							limit: 50,
+							offset: 0},
+						success: function(res) {
+							$('#t_pane').hide('slow');
+								
+							$('#t_paper_pane').empty();
+							$('#t_paper_pane').append(res[0]); // TODO fix the show
+							$('#t_paper_pane').show('2000');
+						},
+						error: function(xhr, statusText, errorThrown) {
+							// TODO Add an Error message
+							//$('k_msg').append('<span class=\'label label-error\'>'+statusText+'</span>');
+							toggleLoading(false);
+						}
+					});
+				}
 <?php
-foreach($topicrows as $row) { 
+/*foreach($topicrows as $row) { 
 	$tid = $row['tid'];
 	print "\$('#topic-docs-$tid').on('show', function() {\n";
 	print "\tif ($('#topic-docs-$tid').is(':empty')) {\n";
@@ -172,7 +208,7 @@ foreach($topicrows as $row) {
 	print "\t});";
 	print "}\n";
 	print "});";
-}
+}*/
 ?>
 			});
 			function kwQuery(offsetval, limitval) {
