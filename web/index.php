@@ -154,7 +154,7 @@ pg_free_result($result);
 				function showError(msg) {
 					// Show the error text
 					$("#gresham-msg").empty();
-					$("#gresham-msg").hide();
+					//$("#gresham-msg").hide();
 					$("#gresham-msg").append("<span class=\"label label-error\">"+msg+"</span>");
 					$("#gresham-msg").slideDown('fast').delay(2000).slideUp(800);
 				}
@@ -162,6 +162,7 @@ pg_free_result($result);
 					if(show) { 
 						$("#gresham-loading").empty();
 						$("#gresham-loading").append("<img src='img/loader1.gif'></img>");
+						$("#gresham-loading").show();
 					}
 					else{
 						$("#gresham-loading").hide();
