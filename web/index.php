@@ -148,6 +148,7 @@ pg_free_result($result);
 				$('#maintab a:first').tab('show');
 				$('#t_paper_pane').hide();
 
+			});
 				function showError(text) {
 					// TODO show the error text
 				}
@@ -210,7 +211,6 @@ pg_free_result($result);
 	print "});";
 }*/
 ?>
-			});
 			function kwQuery(offsetval, limitval) {
 				var offsetval = offsetval || 0;
 				var limitval = limitval || 50;
