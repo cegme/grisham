@@ -138,7 +138,7 @@ pg_free_result($result);
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#topic-btn').click(function() { doTopicChange(); });
-				$(".collapse").collapse(); // Enable collapse
+				$(".collapse").collapse({toggle: true}); // Enable collapse
 				$('#maintab a').click(function (e) {
 					e.preventDefault();
 					$(this).tab('show');
