@@ -21,6 +21,11 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-collapse.js"></script>
 
+		<script type="text/javascript" src="js/Jit/jit-yc.js"></script>
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="papergraph.js"></script>
+		
+
 	</head>
 	<body>
 		<div class="navbar">
@@ -125,8 +130,11 @@ pg_free_result($result);
 
 						<div class="tab-pane fade" id="viz">
 							<h3>Do topic visualization</h3>
+							<div id="log"></div>
 							<div id="v_pane">
-								<h5>Loading...</h5>	
+								<h5>You must use the latest version of chrome.</h5>	
+								<div id="center-container"><div id="infoviz"></div></div>
+								<div id=right-container"><div id="inner-details"></div></div>
 							</div>
 						</div>
 
@@ -149,7 +157,7 @@ pg_free_result($result);
 				$("#firsttabclick").tab('show');
 				$('#maintab a:first').tab('show');
 				$('#t_paper_pane').hide();
-
+				initializeGraphExplorer();
 			});
 				function showError(msg) {
 					// Show the error text
@@ -319,13 +327,14 @@ $sldr = "\$(function() {\n".
 "\t\t}\n".
 "\t});\n".
 "\t\$( '#tval-%d' ).val( \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
-"});\n\n";
+"});\n";
 
 
 foreach($topicrows as $row) {
 	printf($sldr, $row["tid"], $row["tid"], $row["tid"], $row["tid"]);
 }
 ?>
+
 		</script>
 	</body>
 <?php 
