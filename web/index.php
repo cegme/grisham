@@ -107,11 +107,11 @@ foreach($topicrows as $line) {
 		print "+$tid";
 		//print "</button>";
 		print "<span>";
-			foreach(array_slice($words, 0, 10) as $word) { print $word." "; }
+			foreach(array_slice($words, 0, 10) as $word) { print "<span class='label label-inverse'>".$word."</span> "; }
 		print "</span>";
-		print "<div id='topic-docs-$tid' class='collapse'></div>\n";
-		print "<hr/>\n";
+		//print "<div id='topic-docs-$tid' class='collapse'></div>\n";
 	print "</div>\n";
+	print "<hr/>\n";
 	print "</tr>\n";
 }
 print "</table>";
@@ -161,13 +161,13 @@ pg_free_result($result);
 					}
 				}
 				function makePaperDiv(paper) {
-                    var string = "<div><ul>";
-                    string.concat("<li>Paper      : "); string.concat(paper.papertitle); string.concat("</li>");
-                    string.concat("<li>Author     : "); string.concat(paper.author); string.concat("</li>");
-                    string.concat("<li>Conference : "); string.concat(paper.venue); string.concat(" Year : "); string.concat(paper.pubyear);string.concat("</li>");
-                    string.concat("</ul></div>");
+                    var mydiv = "<div><ul>";
+                    mydiv.concat("<li>Paper      : "); mydiv.concat(paper.papertitle); mydiv.concat("</li>");
+                    mydiv.concat("<li>Author     : "); mydiv.concat(paper.author); mydiv.concat("</li>");
+                    mydiv.concat("<li>Conference : "); mydiv.concat(paper.venue); mydiv.concat(" Year : "); mydiv.concat(paper.pubyear);mydiv.concat("</li>");
+                    mydiv.concat("</ul></div>");
 
-                   return string; 
+                   return mydiv; 
 				}
 				function showPaper(tid) {
 					toggleLoading(true);	
