@@ -92,7 +92,7 @@
 		 		" WHEN (papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%') THEN 'paper' ".
 		 		" ELSE 'none' END as type ".
 		 "from paper LEFT JOIN author on paper.id=author.pid, paperindex
-		 where paper.id = paperindex.pid ";
+		 where paper.id = paperindex.pid AND author.pid = paperindex.pid";
 
 		for($i = 0; $i<$size; $i++)
 		{
