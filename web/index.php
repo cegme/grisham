@@ -203,6 +203,7 @@ pg_free_result($result);
 								$('#t_paper_pane').append(makePaperDiv(res[i])); // TODO fix the show
 							}
 							$('#t_paper_pane').show('slow');
+							toggleLoading(false);
 						},
 						error: function(xhr, statusText, errorThrown) {
 							// TODO Add an Error message
@@ -211,32 +212,6 @@ pg_free_result($result);
 						}
 					});
 				}
-<?php
-/*foreach($topicrows as $row) { 
-	$tid = $row['tid'];
-	print "\$('#topic-docs-$tid').on('show', function() {\n";
-	print "\tif ($('#topic-docs-$tid').is(':empty')) {\n";
-	print "\t\$.ajax({\n";
-	print "\t\t\ttype: 'GET',\n";
-	print "\t\t\turl: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', \n";
-	print "\t\t\tdataType: 'json', \n";
-	print "\t\t\tdata: {q: $tid,\n";
-	print "\t\t\t	type: 'rank',\n";
-	print "\t\t\t\tlimit: 50,\n";
-	print "\t\t\t\toffset: 0},\n";
-	print "\t\t\tsuccess: function(res) {\n";
-	print "\t\t\t\t$('#topic-docs-$tid').append(res[0]);\n"; // TODO, more than one paper
-	print "\t\t\t},\n";
-	print "\t\t\terror: function(xhr, statusText, errorThrown) {\n";
-	print "\t\t\t\t//$('k_pane').empty();\n";
-	print "\t\t\t\t// Add an Error message\n";
-	print "\t\t\t\t//$('k_msg').append('<span class=\'label label-error\'>'+statusText+'</span>');\n";
-	print "\t\t\t}\n";
-	print "\t});";
-	print "}\n";
-	print "});";
-}*/
-?>
 			function kwQuery(offsetval, limitval) {
 				var offsetval = offsetval || 0;
 				var limitval = limitval || 50;
