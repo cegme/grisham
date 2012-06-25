@@ -69,6 +69,7 @@ foreach($topicrows as $row) {
 				</div>
 
 				<div class="span9">
+					<div class="alert alert-warning">This is under construction... there may be outages and speed issues</div> 
 					<ul class="nav nav-tabs" id="maintab">
 						<li class="active"><a id="firsttabclick" href="#keyword" data-toggle="tab">Keyword Paper Search</a></li>
 						<li><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
