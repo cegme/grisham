@@ -1,9 +1,14 @@
 \section{\system}
 
-In this section we discuss each part of \system.
+\system is a web-based system build on top of the PostgreSQL
+open source database system. Computation for visualization is performed
+using HTML, CSS and javascript.
+Calculations are performed using in-database computation through AJAX calls
+and client side javascript.
+In this section we discuss each part of \system. 
 
 \subsection{Data pre-processing and topic learning}
-First, we tokenize the raw paper texts based on the python NLTK toolkit and a
+First, we tokenize the raw text based on the python NLTK toolkit and a
 predefined regular expression. Second, we standardize them by removing noise terms
 and stop-words. Third, we represent each document in a sparse 
 bag-of-words format, after building a vocabulary of
@@ -55,11 +60,12 @@ where $d \in D$ and $d_t$ is the topic proportion for document $d$ and
 topic $t \in T$. 
 
 In the topic explorer, each topic row is color-coded like a heat 
-based map based on the similarity of the user model to that topic.
+based map based on the similarity of the user model to that topic (see Figure~\ref{fig:topic_exploration}).
 The user can look at this heat map to adjust their topic preferences.
 We use equation~\ref{eq:KL} on the client side to calculate this preference. 
 In the graph explorer the citations for the current paper is ranked
-using equation~\ref{eq:KL}.
+using equation~\ref{eq:KL}. The citations of that paper that are most
+similar to the user model are ranked the highest.
 
 
 \subsection{Ranking Function}
@@ -88,9 +94,6 @@ a considerable amount of words from the topic distribution.
 
 
 
-\subsection{Visualization}
-At times it is important to allow the user to do exploritory search.
-
-\ceg{Christan will fill this in.}
-
+%\subsection{Visualization}
+%At times it is important to allow the user to do exploritory search.
 
