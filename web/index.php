@@ -161,13 +161,13 @@ pg_free_result($result);
 					}
 				}
 				function makePaperDiv(paper) {
-                    var mydiv = "<div><ul>";
-                    mydiv.concat("<li>Paper      : "); mydiv.concat(paper["papertitle"]); mydiv.concat("</li>");
-                    mydiv.concat("<li>Author     : "); mydiv.concat(paper["author"]); mydiv.concat("</li>");
-                    mydiv.concat("<li>Conference : "); mydiv.concat(paper["venue"]); mydiv.concat(" Year : "); mydiv.concat(paper["pubyear"]);mydiv.concat("</li>");
-                    mydiv.concat("</ul></div>");
+					var mydiv = "<div><ul>";
+					mydiv.append("<li>Paper      : "); mydiv.append(paper["papertitle"]); mydiv.append("</li>");
+					mydiv.append("<li>Author     : "); mydiv.append(paper["author"]); mydiv.append("</li>");
+					mydiv.append("<li>Conference : "); mydiv.append(paper["venue"]); mydiv.append(" Year : "); mydiv.append(paper["pubyear"]);mydiv.append("</li>");
+					mydiv.append("</ul></div>");
 
-                   return mydiv; 
+					return mydiv; 
 				}
 				function showPaper(tid) {
 					toggleLoading(true);	
@@ -184,7 +184,7 @@ pg_free_result($result);
 							$('#t_pane').hide('slow');
 								
 							$('#t_paper_pane').empty();
-							for(var i = 0; i != res["rowcount"]; ++i) {
+							for(var i = 0; i != res["rowcount"] && i < 10; ++i) {
 								//$('#t_paper_pane').append("<div>"+res[i]["papertitle"]+"</div>"); // TODO fix the show
 								$('#t_paper_pane').append(makePaperDiv(res[i])); // TODO fix the show
 							}
