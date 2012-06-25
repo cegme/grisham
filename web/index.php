@@ -265,7 +265,7 @@ pg_free_result($result);
 					error: function(xhr, statusText, errorThrown) {
 						$("k_pane").empty();
 						// Add an Error message
-						$("k_msg").append("<span class=\"label label-error\">"+statusText+"</span>");
+						showError(statusText);
 						toggleLoading(false);
 					}
 				});
