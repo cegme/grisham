@@ -87,7 +87,7 @@
 		$splitwords = explode(" ", $keyword);
 		$size = count($splitwords);
 
-		$query = "SELECT person, papertitle, pubyear, venue, abstract ".
+		$query = "SELECT person, papertitle, pubyear, venue, abstract, ".
 				" CASE WHEN (person ILIKE '%$keyword%') THEN 'author' ".
 		 		" WHEN (papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%') THEN 'paper' ".
 		 		" ELSE 'none' END as type ".
