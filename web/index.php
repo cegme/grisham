@@ -169,6 +169,10 @@ pg_free_result($result);
 
 					return mydiv; 
 				}
+				function hidePaper() {
+					$('#t_paper_pane').hide('slow');
+					$('#t_pane').show('slow');
+				}
 				function showPaper(tid) {
 					toggleLoading(true);	
 
@@ -184,6 +188,8 @@ pg_free_result($result);
 							$('#t_pane').hide('slow');
 								
 							$('#t_paper_pane').empty();
+							$('#t_paper_pane').append("<i class='icon-remove' onclick='hidePaper(); event.returnValue=false;'></i>");
+							$('#t_paper_pane').append("<h4>Topic " + tid + "<h4>");
 							for(var i = 0; i != res["rowcount"] && i < 10; ++i) {
 								//$('#t_paper_pane').append("<div>"+res[i]["papertitle"]+"</div>"); // TODO fix the show
 								$('#t_paper_pane').append(makePaperDiv(res[i])); // TODO fix the show
