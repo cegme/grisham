@@ -98,10 +98,10 @@ print "<table id='topic-table'>";
 foreach($topicrows as $line) { 
 	$tid = $line["tid"];
 	$words = explode(",", substr($line["words"], 1, strlen($line["words"])-2));
-	print "<tr>";
+	//print "<tr>";
 
 	print "<div id='divrow-$tid'>\n";
-		print "<button class='btn btn-inverse' data-toggle='collapse' data-target='#topic-docs-$tid'>\n";
+		print "<button class='btn btn-inverse' data-toggle='collapse in' data-target='#topic-docs-$tid'>\n";
 		//print "\t<span class='label label-info icon-plus'>$tid&nbsp;</span>&nbsp;";
 		print "+$tid";
 		print "</button>";
@@ -111,7 +111,7 @@ foreach($topicrows as $line) {
 		print "<div id='topic-docs-$tid' class='collapse'>DFASFDASSAFSDFSDFDSFSDFDSFGDSFSADSADASASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDSADASDSADASDASDASDSDASDASDAS\nDASDASDASD\nDASdasda\nsdadsasda</div>\n";
 		print "<hr/>\n";
 	print "</div>\n";
-	print "</tr>\n";
+	//print "</tr>\n";
 }
 print "</table>";
 // Free the result set
