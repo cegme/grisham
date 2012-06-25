@@ -162,10 +162,10 @@ pg_free_result($result);
 				}
 				function makePaperDiv(paper) {
 					var mydiv = "<div><ul>";
-					mydiv.append("<li>Paper      : "); mydiv.append(paper["papertitle"]); mydiv.append("</li>");
-					mydiv.append("<li>Author     : "); mydiv.append(paper["author"]); mydiv.append("</li>");
-					mydiv.append("<li>Conference : "); mydiv.append(paper["venue"]); mydiv.append(" Year : "); mydiv.append(paper["pubyear"]);mydiv.append("</li>");
-					mydiv.append("</ul></div>");
+					mydiv.push("<li>Paper      : "); mydiv.append(paper["papertitle"]); mydiv.append("</li>");
+					mydiv.push("<li>Author     : "); mydiv.append(paper["author"]); mydiv.append("</li>");
+					mydiv.push("<li>Conference : "); mydiv.append(paper["venue"]); mydiv.append(" Year : "); mydiv.append(paper["pubyear"]);mydiv.append("</li>");
+					mydiv.push("</ul></div>");
 
 					return mydiv; 
 				}
