@@ -152,7 +152,7 @@ pg_free_result($result);
 foreach($topicrows as $row) { 
 	$tid = $row['tid'];
 	print "\$('#topic-docs-$tid').on('show', function() {\n";
-	print "\tif ($('#topic-docs-$tid').is(':empty')) {\n";
+	//print "\tif ($('#topic-docs-$tid').is(':empty')) {\n";
 	print "\t\$.ajax({\n";
 	print "\t\t\ttype: 'GET',\n";
 	print "\t\t\turl: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', \n";
@@ -170,7 +170,7 @@ foreach($topicrows as $row) {
 	print "\t\t\t\t//$('k_msg').append('<span class=\'label label-error\'>'+statusText+'</span>');\n";
 	print "\t\t\t}\n";
 	print "\t});";
-	print "}\n";
+	//print "}\n";
 	print "});";
 }
 ?>
