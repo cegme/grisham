@@ -226,7 +226,7 @@ pg_free_result($result);
 					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
-						type: "keyword",
+						type: "keyword_realtime",
 						limit: limitval,
 						offset: offsetval},
 					success: function(res) {
