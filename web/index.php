@@ -108,7 +108,7 @@ foreach($topicrows as $line) {
 		print "<span>";
 			foreach(array_slice($words, 0, 10) as $word) { print $word." "; }
 		print "</span>";
-		print "<div id='topic-docs-$tid' class='collapse'></div>\n";
+		print "<div id='topic-docs-$tid' class='collapse'>DFASFDASSAFSDFSDFDSFSDFDSFGDSFSADSADASASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDSADASDSADASDASDASDSDASDASDAS\nDASDASDASD\nDASdasda\nsdadsasda</div>\n";
 		print "<hr/>\n";
 	print "</div>\n";
 	print "</tr>\n";
