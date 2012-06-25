@@ -85,7 +85,7 @@
 		
 
 		$splitwords = explode(" ", $keyword);
-		$size = count($words);
+		$size = count($splitwords);
 
 		$query = "SELECT person, papertitle, pubyear, venue, abstract ".
 				" CASE WHEN (person ILIKE '%$keyword%') THEN 'author' ".
@@ -96,8 +96,8 @@
 
 		for($i = 0; $i<$size; $i++)
 		{
-			$wordsi = $words[$i];
-			$query = $query . " OR paperindex.word iLIKE '%$wordsi%' ";
+			$wordsi = $splitwords[$i];
+			$query = $query . " OR paperindex.word iLIKE '%$splitwordsi%' ";
 		}
 		
 		$query = $query . " ORDER BY type, pubyear DESC ";
