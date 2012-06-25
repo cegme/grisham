@@ -160,6 +160,9 @@ pg_free_result($result);
 						// TODO
 					}
 				}
+				function makePaperDiv(paper) {
+					// TODO
+				}
 				function showPaper(tid) {
 					toggleLoading(true);	
 
@@ -176,7 +179,8 @@ pg_free_result($result);
 								
 							$('#t_paper_pane').empty();
 							for(var i = 0; i != res["rowcount"]; ++i) {
-								$('#t_paper_pane').append("<div>"+res[i]+"</div>"); // TODO fix the show
+								//$('#t_paper_pane').append("<div>"+res[i]["papertitle"]+"</div>"); // TODO fix the show
+								$('#t_paper_pane').append(makePaperDiv(res[i])); // TODO fix the show
 							}
 							$('#t_paper_pane').show('slow');
 						},
