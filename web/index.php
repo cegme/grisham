@@ -162,9 +162,9 @@ pg_free_result($result);
 				}
 				function makePaperDiv(paper) {
                     var mydiv = "<div><ul>";
-                    mydiv.concat("<li>Paper      : "); mydiv.concat(paper.papertitle); mydiv.concat("</li>");
-                    mydiv.concat("<li>Author     : "); mydiv.concat(paper.author); mydiv.concat("</li>");
-                    mydiv.concat("<li>Conference : "); mydiv.concat(paper.venue); mydiv.concat(" Year : "); mydiv.concat(paper.pubyear);mydiv.concat("</li>");
+                    mydiv.concat("<li>Paper      : "); mydiv.concat(paper["papertitle"]); mydiv.concat("</li>");
+                    mydiv.concat("<li>Author     : "); mydiv.concat(paper["author"]); mydiv.concat("</li>");
+                    mydiv.concat("<li>Conference : "); mydiv.concat(paper["venue"]); mydiv.concat(" Year : "); mydiv.concat(paper["pubyear"]);mydiv.concat("</li>");
                     mydiv.concat("</ul></div>");
 
                    return mydiv; 
