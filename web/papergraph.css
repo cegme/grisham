@@ -1,8 +1,12 @@
-#container {
-    width: 1000px;
-    height: 600px;
-    margin:0 auto;
+#infovis {
     position:relative;
+    width:600px;
+    height:600px;
+    margin:auto;
+    overflow:hidden;
+}
+
+#container {
 }
 
 #log {
@@ -13,10 +17,4 @@
     color:#23A4FF;
 }
 
-#infovis {
-    position:relative;
-    width:600px;
-    height:600px;
-    margin:auto;
-    overflow:hidden;
-}
+
