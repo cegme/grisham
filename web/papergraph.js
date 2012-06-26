@@ -470,6 +470,8 @@ function initializeGraphExplorer() {
   // end
   // init ForceDirected
   var fd = new $jit.ForceDirected({
+		height: 600,
+		width: 600, 
     //id of the visualization container
     injectInto: 'infovis',
     //Enable zooming and panning
