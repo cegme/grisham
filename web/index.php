@@ -131,8 +131,8 @@ pg_free_result($result);
 							<h3>Do topic visualization</h3>
 							<div id="log"></div>
 							<div id="v_pane">
-								<h5>You must use the latest version of chrome.</h5>	
-								<div id="center-container"><div id="infoviz" onload='initializeGraphExplorer();' style="width:600px;height:600px;" ></div></div>
+								<h5 onclick="initializeGraphExplorer(); event.returnValue=false;">You must use the latest version of chrome.</h5>	
+								<div id="center-container" ><div id="infoviz" style="width:600px;height:600px;" ></div></div>
 								<div id=right-container"><div id="inner-details"></div></div>
 							</div>
 						</div>
@@ -155,9 +155,9 @@ pg_free_result($result);
 				//$("#firsttabclick").tab('show');
 				$('#maintab a:last').tab('show');
 				$('#t_paper_pane').hide();
-				$('a[data-toggle="tab"]').on('shown', function (e) {
-					initializeGraphExplorer();
-				});
+				//$('a[data-toggle="tab"]').on('shown', function (e) {
+				//	initializeGraphExplorer();
+				//});
 			});
 				function showError(msg) {
 					// Show the error text
