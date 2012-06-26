@@ -23,7 +23,7 @@
 
 		<script type="text/javascript" src="js/Jit/jit-yc.js"></script>
 		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="papergraph.js"></script>
+		<!-- <script type="text/javascript" src="papergraph.js"></script> -->
 		
 
 	</head>
@@ -330,7 +330,6 @@ $sldr = "\$(function() {\n".
 "\t});\n".
 "\t\$( '#tval-%d' ).val( \$( '#slider-topic-%d' ).slider( 'value' ) );\n".
 "});\n";
-
 
 foreach($topicrows as $row) {
 	printf($sldr, $row["tid"], $row["tid"], $row["tid"], $row["tid"]);
