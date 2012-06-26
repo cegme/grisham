@@ -75,7 +75,7 @@ if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword_realti
     // Close the connection
     pg_close($dbconn);
 }
-else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword") {
+else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword_realtime") {
     header('Content-type: application/json');
 
     $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
