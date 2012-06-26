@@ -81,7 +81,7 @@ foreach($topicrows as $row) {
 					<ul class="nav nav-tabs" id="maintab">
 						<li class="active"><a id="firsttabclick" href="#keyword" data-toggle="tab">Keyword Paper Search</a></li>
 						<li><a href="#alltopics" data-toggle="tab">Topic Explore</a></li>
-						<li><a href="#viz" data-toggle="tab">Graph Explore</a></li>
+						<li><a href="#viz" id="ge" data-toggle="tab">Graph Explore</a></li>
 					</ul>
 
 					<div class="tab-content" id="maintabpane"> 
@@ -155,7 +155,9 @@ pg_free_result($result);
 				$("#firsttabclick").tab('show');
 				$('#maintab a:first').tab('show');
 				$('#t_paper_pane').hide();
-				//initializeGraphExplorer();
+				$('a[data-toggle="tab"]').on('shown', function (e) {
+					initializeGraphExplorer();
+				});
 			});
 				function showError(msg) {
 					// Show the error text
