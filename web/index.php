@@ -22,8 +22,8 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap-collapse.js"></script>
 
 		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-		<!-- TODO <script type="text/javascript" src="js/Jit/jit-yc.js"></script> -->
-		<!-- TODO <script type="text/javascript" src="papergraph.js"></script> -->
+		<!-- TODO <script type="text/javascript" src="js/Jit/jit-yc.js"></script>
+		 TODO <script type="text/javascript" src="papergraph.js"></script> -->
 		
 
 	</head>
