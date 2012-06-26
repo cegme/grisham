@@ -153,7 +153,7 @@ pg_free_result($result);
 					e.preventDefault();
 					$(this).tab('show');
 				});
-				$(funciton() {
+				$(function() {
 					$("#firsttabclick").tab('show');
 					$("#firsttabclick").tab('show');
 					$('#maintab a:first').tab('show');
