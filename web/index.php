@@ -139,7 +139,7 @@ pg_free_result($result);
 
 					</div>
 				</div>
-				<div id="infoviz"></div>
+				<div id="infoviz" class="span9"></div>
 
 				<footer><p>&copy; Christan Grant 2012</p></footer>
 			</div>
