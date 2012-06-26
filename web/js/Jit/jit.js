@@ -2725,7 +2725,7 @@ var Canvas;
       var id = $.type(opt.injectInto) == 'string'? 
           opt.injectInto:opt.injectInto.id,
           idLabel = id + "-label", 
-          wrapper = $(id),
+          wrapper = $('infoviz'), // Was 'wrapper =$(id),' but it didn't work so cegme changed it
           width = opt.width || wrapper.offsetWidth,
           height = opt.height || wrapper.offsetHeight;
       this.id = id;
