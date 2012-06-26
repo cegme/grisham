@@ -497,7 +497,7 @@ function initializeGraphExplorer() {
       style: 'bold'
     },
     //Add Tips
-    Tips: {
+    /*Tips: {
       enable: true,
       onShow: function(tip, node) {
         //count connections
@@ -507,7 +507,7 @@ function initializeGraphExplorer() {
         tip.innerHTML = "<div class=\"tip-title\">" + node.name + "</div>"
           + "<div class=\"tip-text\"><b>connections:</b> " + count + "</div>";
       }
-    },
+    }*/,
     // Add node events
     Events: {
       enable: true,
