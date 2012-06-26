@@ -25,6 +25,10 @@ var Log = {
   }
 };
 function initializeGraphExplorer() {
+	$("#infoviz").css('min-height','600px');
+	$("#infoviz").css('min-width','600px');
+	$("#infoviz").css('height','600px');
+	$("#infoviz").css('width','600px');
   // init data
   var json = [
       {
@@ -497,7 +501,7 @@ function initializeGraphExplorer() {
       style: 'bold'
     },
     //Add Tips
-    /*Tips: {
+    Tips: {
       enable: true,
       onShow: function(tip, node) {
         //count connections
@@ -507,7 +511,7 @@ function initializeGraphExplorer() {
         tip.innerHTML = "<div class=\"tip-title\">" + node.name + "</div>"
           + "<div class=\"tip-text\"><b>connections:</b> " + count + "</div>";
       }
-    },*/
+    },
     // Add node events
     Events: {
       enable: true,
