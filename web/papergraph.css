@@ -1,21 +1,24 @@
+#v_pane {
+	background-color: gray; 
+}
+
 #infovis {
-    position:relative;
-    width:600px;
-    height:600px;
-    margin:auto;
-    overflow:hidden;
-		background-color: black; 
+	position:relative;
+	width:600px;
+	height:600px;
+	margin:auto;
+	overflow:hidden;
 }
 
 #container {
 }
 
 #log {
-    position:absolute;
-    top:10px;
-    font-size:1.0em;
-    font-weight:bold;
-    color:#23A4FF;
+	position:absolute;
+	top:10px;
+	font-size:1.0em;
+	font-weight:bold;
+	color:#23A4FF;
 }
 
 
