@@ -159,7 +159,7 @@ pg_free_result($result);
 					$('#maintab a:first').tab('show');
 				});
 				$('#t_paper_pane').hide();
-				initializeGraphExplorer();
+				// TODO initializeGraphExplorer();
 			});
 				function showError(msg) {
 					// Show the error text
