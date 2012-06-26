@@ -91,8 +91,8 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword")
         " CASE WHEN (person ILIKE '%$keyword%') THEN 'author' ".
         " WHEN (papertitle ILIKE '%$keyword%' OR abstract ILIKE '%$keyword%') THEN 'paper' ".
         " ELSE 'none' END as type ".
-        "from paper LEFT JOIN author on paper.id=author.pid, paperindex
-        where paper.id = paperindex.pid AND author.pid = paperindex.pid";
+        "FROM paper LEFT JOIN author ON paper.id=author.pid, paperindex ". 
+        "WHERE paper.id = paperindex.pid AND author.pid = paperindex.pid";
 
     for($i = 0; $i<$size; $i++)
     {
