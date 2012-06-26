@@ -98,8 +98,6 @@ foreach($topicrows as $row) {
 							<div id="t_paper_pane"></div>
 							<div id="t_pane">
 <?php
-// TODO add links to the click and go to the new page
-// TODO Make a new page such that a user can go back to the original ont
 // Give the tables some style
 print "<table id='topic-table'>";
 foreach($topicrows as $line) { 
@@ -155,7 +153,7 @@ pg_free_result($result);
 				$("#firsttabclick").tab('show');
 				$('#maintab a:first').tab('show');
 				$('#t_paper_pane').hide();
-				// TODO initializeGraphExplorer();
+				initializeGraphExplorer();
 			});
 				function showError(msg) {
 					// Show the error text
