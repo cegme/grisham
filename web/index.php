@@ -153,9 +153,11 @@ pg_free_result($result);
 					e.preventDefault();
 					$(this).tab('show');
 				});
-				$("#firsttabclick").tab('show');
-				$("#firsttabclick").tab('show');
-				$('#maintab a:first').tab('show');
+				$(funciton() {
+					$("#firsttabclick").tab('show');
+					$("#firsttabclick").tab('show');
+					$('#maintab a:first').tab('show');
+				});
 				$('#t_paper_pane').hide();
 				initializeGraphExplorer();
 			});
@@ -234,7 +236,7 @@ pg_free_result($result);
 					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
-						type: "keyword",
+						type: "keyword_realtime",
 						limit: limitval,
 						offset: offsetval},
 					success: function(res) {
