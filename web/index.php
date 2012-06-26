@@ -22,6 +22,7 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap-popover.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap-collapse.js"></script>
 
+		<script type="text/javascript" src="js/Jit/jit.js"></script>
 		<script type="text/javascript" src="js/Jit/jit-yc.js"></script>
 		<script type="text/javascript" src="papergraph.js"></script>
 		
