@@ -132,14 +132,13 @@ pg_free_result($result);
 							<div id="log"></div>
 							<div id="v_pane">
 								<h5 onclick="initializeGraphExplorer(); event.returnValue=false;">You must use the latest version of chrome.</h5>	
-								<div id="center-container"><div id="infoviz_old"></div></div>
+								<div id="center-container"><div id="infoviz"></div></div>
 								<div id=right-container"><div id="inner-details"></div></div>
 							</div>
 						</div>
 
 					</div>
 				</div>
-				<div id="infoviz" class="span9"></div>
 
 				<footer><p>&copy; Christan Grant 2012</p></footer>
 			</div>
