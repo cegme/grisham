@@ -295,6 +295,76 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank") {
 ///////////////////////////
 //RANKING FUNCTION ENDS ///
 ///////////////////////////
+// Process the keyword query
+else if(isset($_GET['q']) && isset($_GET['type']) && isset($_GET['pid']) && isset($_GET['model']) && $_GET['type'] == "neighborhood") {
+    header('Content-type: application/json');
+
+    $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
+
+    // Decode query
+    $keyword = rawurldecode($_GET['q']); // Get the keyword
+    $model = rawurldecode($_GET['model']);
+    $pid = rawurldecode($_GET['pid']);
+
+
+    $query = "select r.citation as pid, viru_kl(t.topic_distribution, ARRAY$model::double precision[]) as score ".
+             "from reference as r , theta as t ".
+             "where r.pid = $pid  AND t.pid = r.citation;";
+
+
+    // Add LIMIT and OFFSET to the query if present
+    if(isset($_GET['limit']))
+        $thelimit = rawurldecode($_GET['limit']); 
+    else
+        $thelimit = 50;
+
+    $query = $query . " LIMIT $thelimit ";
+
+    if(isset($_GET['offset']))
+        $theoffset = rawurldecode($_GET['offset']);
+    else
+        $theoffset = 0;
+
+    $query = $query . " OFFSET $theoffset";
+
+
+    // END THE QUERY
+    $query = $query . ";";
+
+    // Make a query to the DB
+    list($tic_usec, $tic_sec) = explode(" ", microtime());
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+    list($toc_usec, $toc_sec) = explode(" ", microtime());
+
+    $querytime = $toc_sec + $toc_usec - ($tic_sec + $tic_usec); // Query time
+
+    // Iterate over results
+    $rows = array();
+    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+        $rows[] = $line;
+    }
+
+    $rows["q"] = urldecode($query);
+    $rows["querytime"] = $querytime;
+    $rows["rowcount"] = pg_num_rows($result);
+
+    if ($rows["rowcount"] > 0) {
+        $rows["headers"] = array_keys($rows[0]);
+    }
+    else {
+        // Some default header for no result
+        $rows["headers"] = array(0 => 100, "color" => "red"); 
+    }
+
+    // Show the json result
+    print json_encode($rows); 
+
+    // Free the result set
+    pg_free_result($result);
+
+    // Close the connection
+    pg_close($dbconn);
+}
 else {
     //header('Content-type: text/plain');
     //header('Content-type: text/html');
