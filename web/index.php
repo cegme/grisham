@@ -130,7 +130,7 @@ pg_free_result($result);
 							<h3>Do topic visualization</h3>
 							<div id="log"></div>
 							<div id="v_pane">
-								<h5 id="h5graph" onclick="initializeGraphExplorer(); $(this).hide('fast'); event.returnValue=false;">Click Here to Show the graph</h5>	
+								<h5 id="h5graph" onclick="initializeGraphExplorer(); event.returnValue=false;">Click Here to Show the graph</h5>	
 
 								<div id="right-container">
 									<form class="well form-search">

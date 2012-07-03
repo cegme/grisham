@@ -148,7 +148,7 @@ function initializeGraphExplorer() {
   });
 	myjson = json;
   // load JSON data.
-  fd.loadJSON(myjson);
+  //fd.loadJSON(myjson);
   //fd.loadJSON(json);
 
   // compute positions incrementally and animate.
@@ -172,31 +172,6 @@ function initializeGraphExplorer() {
 }
 // TODO Use Ajax/events to change. See: http://thejit.org/static/v20/Jit/Examples/Treemap/example2.code.html
 
-
-function getPaper(paperid) {
-	// Get the paper from the api and returns the neighbors and all information 
-	// about the neighbors in json format
-	toggleLoading(true);	
-	
-	$.ajax({
-		type: 'GET',
-		url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php',
-		dataType: 'json',
-		data: {q: paperid,
-			type: 'citations',
-			limit: 20,
-			offset: 0},
-		success: function(res) {
-			toggleLoading(false);
-
-		},
-		error: function(xhr, statusText, errorThrown) {
-			toggleLoading(false);
-
-		}
-	});
-
-}
 
 function updatePaperGraph(paperid) {
 
