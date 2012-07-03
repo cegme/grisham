@@ -134,8 +134,8 @@ pg_free_result($result);
 
 								<div id="right-container">
 									<form class="well form-search">
-										<label for="graphpaperid">Enter the paper id you wish to start with</label>
-										<input id="graphpaperid" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
+										<label for="graphpaperid">Paper id:</label><br/>
+										<input id="graphpaperid" type="text" class="input-small search-query" placeholder="Enter Keywords"/>
 										<button type="submit" class="btn" onclick="setMainPaper(); event.returnValue=false;">Show</button>
 									</form>
 									<div id="inner-details">

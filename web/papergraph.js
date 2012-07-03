@@ -37,441 +37,7 @@ function initializeGraphExplorer() {
 	$("#infoviz").css('width','600px');
   // init data
   var json = [
-      {
-        "adjacencies": [
-            "graphnode21", 
-            {
-              "nodeTo": "graphnode1",
-              "nodeFrom": "graphnode0",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode13",
-              "nodeFrom": "graphnode0",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode14",
-              "nodeFrom": "graphnode0",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode15",
-              "nodeFrom": "graphnode0",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode16",
-              "nodeFrom": "graphnode0",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode17",
-              "nodeFrom": "graphnode0",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#83548B",
-          "$type": "circle",
-          "$dim": 10
-        },
-        "id": "graphnode0",
-        "name": "graphnode0"
-      }, {
-        "adjacencies": [
-            {
-              "nodeTo": "graphnode2",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode4",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode5",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode6",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode7",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode8",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode10",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode11",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode12",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode13",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode14",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode15",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode16",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode17",
-              "nodeFrom": "graphnode1",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#EBB056",
-          "$type": "circle",
-          "$dim": 11
-        },
-        "id": "graphnode1",
-        "name": "graphnode1"
-      }, {
-        "adjacencies": [
-            {
-              "nodeTo": "graphnode5",
-              "nodeFrom": "graphnode2",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode9",
-              "nodeFrom": "graphnode2",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode18",
-              "nodeFrom": "graphnode2",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#416D9C",
-          "$type": "circle",
-          "$dim": 7
-        },
-        "id": "graphnode2",
-        "name": "graphnode2"
-      }, {
-        "adjacencies": [
-            {
-              "nodeTo": "graphnode5",
-              "nodeFrom": "graphnode3",
-              "data": {
-                "$color": "#909291"
-              }
-            }, {
-              "nodeTo": "graphnode9",
-              "nodeFrom": "graphnode3",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode10",
-              "nodeFrom": "graphnode3",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode12",
-              "nodeFrom": "graphnode3",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#416D9C",
-          "$type": "square",
-          "$dim": 10
-        },
-        "id": "graphnode3",
-        "name": "graphnode3"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#83548B",
-          "$type": "square",
-          "$dim": 11
-        },
-        "id": "graphnode4",
-        "name": "graphnode4"
-      }, {
-        "adjacencies": [
-          {
-            "nodeTo": "graphnode9",
-            "nodeFrom": "graphnode5",
-            "data": {
-              "$color": "#909291"
-            }
-          }
-        ],
-        "data": {
-          "$color": "#C74243",
-          "$type": "triangle",
-          "$dim": 8
-        },
-        "id": "graphnode5",
-        "name": "graphnode5"
-      }, {
-        "adjacencies": [
-            {
-              "nodeTo": "graphnode10",
-              "nodeFrom": "graphnode6",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode11",
-              "nodeFrom": "graphnode6",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#83548B",
-          "$type": "circle",
-          "$dim": 11
-        },
-        "id": "graphnode6",
-        "name": "graphnode6"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#EBB056",
-          "$type": "triangle",
-          "$dim": 12
-        },
-        "id": "graphnode7",
-        "name": "graphnode7"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#C74243",
-          "$type": "star",
-          "$dim": 10
-        },
-        "id": "graphnode8",
-        "name": "graphnode8"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#83548B",
-          "$type": "circle",
-          "$dim": 12
-        },
-        "id": "graphnode9",
-        "name": "graphnode9"
-      }, {
-        "adjacencies": [
-          {
-            "nodeTo": "graphnode11",
-            "nodeFrom": "graphnode10",
-            "data": {
-              "$color": "#909291"
-            }
-          }
-        ],
-        "data": {
-          "$color": "#70A35E",
-          "$type": "triangle",
-          "$dim": 11
-        },
-        "id": "graphnode10",
-        "name": "graphnode10"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#70A35E",
-          "$type": "circle",
-          "$dim": 11
-        },
-        "id": "graphnode11",
-        "name": "graphnode11"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#83548B",
-          "$type": "triangle",
-          "$dim": 10
-        },
-        "id": "graphnode12",
-        "name": "graphnode12"
-      }, {
-        "adjacencies": [
-          {
-            "nodeTo": "graphnode14",
-            "nodeFrom": "graphnode13",
-            "data": {
-              "$color": "#557EAA"
-            }
-          }
-        ],
-        "data": {
-          "$color": "#EBB056",
-          "$type": "star",
-          "$dim": 7
-        },
-        "id": "graphnode13",
-        "name": "graphnode13"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#EBB056",
-          "$type": "triangle",
-          "$dim": 12
-        },
-        "id": "graphnode14",
-        "name": "graphnode14"
-      }, {
-        "adjacencies": [
-            {
-              "nodeTo": "graphnode16",
-              "nodeFrom": "graphnode15",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode17",
-              "nodeFrom": "graphnode15",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#83548B",
-          "$type": "triangle",
-          "$dim": 11
-        },
-        "id": "graphnode15",
-        "name": "graphnode15"
-      }, {
-        "adjacencies": [
-          {
-            "nodeTo": "graphnode17",
-            "nodeFrom": "graphnode16",
-            "data": {
-              "$color": "#557EAA"
-            }
-          }
-        ],
-        "data": {
-          "$color": "#C74243",
-          "$type": "star",
-          "$dim": 7
-        },
-        "id": "graphnode16",
-        "name": "graphnode16"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#416D9C",
-          "$type": "circle",
-          "$dim": 7
-        },
-        "id": "graphnode17",
-        "name": "graphnode17"
-      }, {
-        "adjacencies": [
-            {
-              "nodeTo": "graphnode19",
-              "nodeFrom": "graphnode18",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }, {
-              "nodeTo": "graphnode20",
-              "nodeFrom": "graphnode18",
-              "data": {
-                "$color": "#557EAA"
-              }
-            }
-        ],
-        "data": {
-          "$color": "#EBB056",
-          "$type": "triangle",
-          "$dim": 9
-        },
-        "id": "graphnode18",
-        "name": "graphnode18"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#70A35E",
-          "$type": "circle",
-          "$dim": 8
-        },
-        "id": "graphnode19",
-        "name": "graphnode19"
-      }, {
-        "adjacencies": [],
-        "data": {
-          "$color": "#C74243",
-          "$type": "star",
-          "$dim": 8
-        },
-        "id": "graphnode20",
-        "name": "graphnode20"
-      }
+      
   ];
   // end
   // init ForceDirected
@@ -606,40 +172,101 @@ function initializeGraphExplorer() {
 }
 // TODO Use Ajax/events to change. See: http://thejit.org/static/v20/Jit/Examples/Treemap/example2.code.html
 
+
+function getPaper(paperid) {
+	// Get the paper from the api and returns the neighbors and all information 
+	// about the neighbors in json format
+	toggleLoading(true);	
+	
+	$.ajax({
+		type: 'GET',
+		url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php',
+		dataType: 'json',
+		data: {q: paperid,
+			type: 'citations',
+			limit: 20,
+			offset: 0},
+		success: function(res) {
+			toggleLoading(false);
+
+		},
+		error: function(xhr, statusText, errorThrown) {
+			toggleLoading(false);
+
+		}
+	});
+
+}
+
 function updatePaperGraph(paperid) {
 
 	// TODO ajax call to update the proper paper citations and add the to the graph
 
-	var testobj = [
-		{ "adjacencies" : [
-				{ 
-					"nodeTo": "citation1",
-					"nodeFrom": "papertitle1",
-					"data" : {
-							"$color" : "#557EAA",
-							"lineWidth": 0.8
-					}
-				},
-				{
-					"nodeTo": "citation2",
-					"nodeFrom": "papertitle1",
-					"data" : {
-							"$color" : "#007EAA",
-							"$lineWidth": 1.8
-					}
+	$.ajax({
+		type: 'GET',
+		url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php',
+		dataType: 'json',
+		data: {q: paperid,
+			type: 'citations',
+			limit: 20,
+			offset: 0},
+		success: function(res) {
+
+			var testobj = [
+				{ "adjacencies" : [
+						{ 
+							"nodeTo": "citation1",
+							"nodeFrom": "papertitle1",
+							"data" : {
+									"$color" : "#557EAA",
+									"$lineWidth": 0.8
+							}
+						},
+						{
+							"nodeTo": "citation2",
+							"nodeFrom": "papertitle1",
+							"data" : {
+									"$color" : "#007EAA",
+									"$lineWidth": 1.8
+							}
+						}
+					],
+					"data": {
+						"$color": "#83548B",
+						"$type": "circle",
+						"$dim": 10
+					},
+					"id":"pid",
+					"name": "the paper title",
+					"venue": "The venue",
+					"year": 1993,
+					"abstract": "The abstract of the paper",
+					"topic": JSON.parse("{0.0100963818836,0.0165756126332,0.103387881871,0.0109071161021,0.325175976789,0.013806549356}0.0100963818836,0.0165756126332,0.103387881871,0.0109071161021,0.325175976789,0.013806549356}".replace("{","]").replace("}","]") )
 				}
-			],
-			"data": {
-				"$color": "#83548B",
-				"$type": "circle",
-				"$dim": 10
-			},
-			"id":"pid",
-			"name": "papertitle1"
+			];
+
+			var citations = [];
+			for (var i = 0; i != res["rowcount"]; ++i) {
+				var ref = res[i];
+				ref['name'] = JSON.parse(res[i]['title'].replace("{","[").replace("}","]"));
+				ref['id'] = res[i]['pid'];
+				ref['adjacencies'] = [{'nodeTo': ''+paperid, "data": {'$color': '#ff00ff', '$lineWidth': 1.0 }  }];
+				ref['data'] = {'$color': '#ff00ff', '$type': 'circle', '$dim': 8 };
+				
+				citations.push(ref);
+			}
+
+			myjson = $jit.util.extend(myjson, citations);
+			//myjson = $jit.util.extend(myjson, testobj);
+			myfd.loadJSON(myjson);
+			myfd.refresh();
+
+			toggleLoading(false);
+		},
+		error: function(xhr, statusText, errorThrown) {
+			toggleLoading(false);
+
 		}
-	];
-	// TODO -- posible create nodes for citation 2 and 2
-	myjson = $jit.util.extend(myjson, testobj);
-	myfd.loadJSON(myjson);
-	myfd.refresh();
+	});
+	return false;
 }
