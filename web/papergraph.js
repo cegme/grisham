@@ -224,7 +224,8 @@ function updatePaperGraph(paperid) {
 			var citations = [];
 			for (var i = 0; i != res["rowcount"]; ++i) {
 				var ref = res[i];
-				ref['name'] = JSON.parse(res[i]['title'].replace("{","[").replace("}","]"));
+				ref['topic'] = JSON.parse(res[i]['topic'].replace("{","[").replace("}","]"));
+				ref['name'] = res[i]['title'];
 				ref['id'] = res[i]['pid'];
 				ref['adjacencies'] = [{'nodeTo': ''+paperid, "data": {'$color': '#ff00ff', '$lineWidth': 1.0 }  }];
 				ref['data'] = {'$color': '#ff00ff', '$type': 'circle', '$dim': 8 };
