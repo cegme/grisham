@@ -375,7 +375,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations
 	// Decode query
 	$pid = rawurldecode($_GET['q']);
 
-	$query = "SELECT p.papertitle AS title, p.pubyear AS year, p.venue AS venue, p.abstract AS abstract ".
+	$query = "SELECT p.id AS pid, p.papertitle AS title, p.pubyear AS year, p.venue AS venue, p.abstract AS abstract ".
 				", (SELECT topic_distribution FROM theta AS t WHERE t.pid = p.id LIMIT 1) AS topic ".
 				"FROM reference AS r INNER JOIN paper AS p ON (r.citation = p.id) ".
 				"WHERE r.pid = $pid ";
