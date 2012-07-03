@@ -152,7 +152,7 @@ function initializeGraphExplorer() {
   //fd.loadJSON(json);
 
   // compute positions incrementally and animate.
-  fd.computeIncremental({
+  /*fd.computeIncremental({
     iter: 40,
     property: 'end',
     onStep: function(perc){
@@ -167,6 +167,7 @@ function initializeGraphExplorer() {
       });
     }
   });
+	*/
   // end
 	myfd = fd; // Make it global so we can use it again.
 }
