@@ -321,6 +321,7 @@ pg_free_result($result);
 
 				// Defined in papergraph.js
 				updatePaperGraph(paperid);
+				return false;
 			}
 
 // Code for the sliders

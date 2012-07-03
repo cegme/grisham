@@ -1,5 +1,4 @@
 #v_pane {
-	background-color: gray; 
 }
 
 #infovis {
@@ -8,6 +7,11 @@
 	height:600px;
 	margin:auto;
 	overflow:hidden;
+	background-color: black; 
+}
+
+#right-container {
+	float: right;
 }
 
 #container {
