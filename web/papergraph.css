@@ -6,7 +6,6 @@
 }
 
 #center-container {
-	background-color: black; 
 }
 
 #infovis {
@@ -19,6 +18,7 @@
 
 #right-container {
 	float: right;
+	height: 100%;
 }
 
 #container {

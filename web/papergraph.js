@@ -616,14 +616,16 @@ function updatePaperGraph(paperid) {
 					"nodeTo": "citation1",
 					"nodeFrom": "papertitle1",
 					"data" : {
-							"$color" : "#557EAA"
+							"$color" : "#557EAA",
+							"lineWidth": 0.8
 					}
 				},
 				{
 					"nodeTo": "citation2",
 					"nodeFrom": "papertitle1",
 					"data" : {
-							"$color" : "#007EAA"
+							"$color" : "#007EAA",
+							"$lineWidth": 1.8
 					}
 				}
 			],

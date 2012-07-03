@@ -130,11 +130,13 @@ pg_free_result($result);
 							<h3>Do topic visualization</h3>
 							<div id="log"></div>
 							<div id="v_pane">
-								<h5 onclick="initializeGraphExplorer(); event.returnValue=false;">You must use the latest version of chrome.</h5>	
+								<h5 onclick="initializeGraphExplorer(); $(this).hide('fast'); event.returnValue=false;">Click Here to Show the graph</h5>	
+
 								<div id="right-container">
-									<form class="well form-search" >
+									<form class="well form-search">
+										<label for="graphpaperid">Enter the paper id you wish to start with</label>
 										<input id="graphpaperid" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
-										<button type="submit" class="btn" onclick="setMainPaper(); event.returnValue=false;">Search</button>
+										<button type="submit" class="btn" onclick="setMainPaper(); event.returnValue=false;">Show</button>
 									</form>
 									<div id="inner-details">
 									</div>
