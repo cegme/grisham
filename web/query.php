@@ -366,7 +366,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && isset($_GET['pid']) && isse
     pg_close($dbconn);
 }
 
-else if(isset($_GET['q']) && isset($_GET['type']) && isset($_GET['limit']) && isset($_GET['offset']) && $_GET['type'] == "citations") {
+else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations") {
 	// Return the citations according to the q=paperid	
 	header('Content-type: application/json');
 
