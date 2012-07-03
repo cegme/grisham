@@ -638,6 +638,6 @@ function updatePaperGraph(paperid) {
 	];
 	// TODO -- posible create nodes for citation 2 and 2
 	myjson = $jit.util.extend(myjson, testobj);
-	fd.loadJSON(myjson);
-	fd.refresh();
+	myfd.loadJSON(myjson);
+	myfd.refresh();
 }
