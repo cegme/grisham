@@ -95,7 +95,7 @@ foreach($topicrows as $row) {
 						</div>
 
 						<div class="tab-pane fade" id="alltopics">
-							<h3>Do Topic Exploration <button class="btn btn-primary" id="topic-btn">refresh</button></h3>
+							<h3>Do Topic Exploration <!-- <button class="btn btn-primary" id="topic-btn">refresh</button>--></h3>
 							<div id="t_paper_pane"></div>
 							<div id="t_pane">
 <?php
@@ -146,7 +146,7 @@ pg_free_result($result);
 
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$('#topic-btn').click(function() { doTopicChange(); });
+				//$('#topic-btn').click(function() { doTopicChange(); });
 				$('#maintab a').click(function (e) {
 					e.preventDefault();
 					$(this).tab('show');
@@ -167,7 +167,6 @@ pg_free_result($result);
 				}
 				function toggleLoading(show) { 
 					if(show) { 
-						$("#gresham-loading").empty();
 						$("#gresham-loading").append("<img src='img/loader1.gif'></img>");
 						$("#gresham-loading").show();
 					}
@@ -321,6 +320,7 @@ $sldr = "\$(function() {\n".
 "\t\tvalue: 30, // (1/35)*100 is uniform, \n".
 "\t\tmin: 0,\n".
 "\t\tmax: 100,\n".
+"\t\tstop: function(event, ui) { doTopicChange(); }\n".
 "\t\tslide: function( event, ui ) {\n".
 "\t\t\t\$( '#tval-%d' ).val( '\$' + ui.value );\n".
 "\t\t}\n".
