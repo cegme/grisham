@@ -24,6 +24,12 @@ var Log = {
     this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
   }
 };
+
+// These are the graph object we will manipulate
+var myfd = null;
+var myjson = null;
+
+
 function initializeGraphExplorer() {
 	$("#infoviz").css('min-height','600px');
 	$("#infoviz").css('min-width','600px');
@@ -574,8 +580,11 @@ function initializeGraphExplorer() {
       style.display = '';
     }
   });
+	myjson = json;
   // load JSON data.
-  fd.loadJSON(json);
+  fd.loadJSON(myjson);
+  //fd.loadJSON(json);
+
   // compute positions incrementally and animate.
   fd.computeIncremental({
     iter: 40,
@@ -593,4 +602,42 @@ function initializeGraphExplorer() {
     }
   });
   // end
+	myfd = fd; // Make it global so we can use it again.
+}
+// TODO Use Ajax/events to change. See: http://thejit.org/static/v20/Jit/Examples/Treemap/example2.code.html
+
+function updatePaperGraph(paperid) {
+
+	// TODO ajax call to update the proper paper citations and add the to the graph
+
+	var testobj = [
+		{ "adjacencies" : [
+				{ 
+					"nodeTo": "citation1",
+					"nodeFrom": "papertitle1",
+					"data" : {
+							"$color" : "#557EAA"
+					}
+				},
+				{
+					"nodeTo": "citation2",
+					"nodeFrom": "papertitle1",
+					"data" : {
+							"$color" : "#007EAA"
+					}
+				}
+			],
+			"data": {
+				"$color": "#83548B",
+				"$type": "circle",
+				"$dim": 10
+			},
+			"id":"pid",
+			"name": "papertitle1"
+		}
+	];
+	// TODO -- posible create nodes for citation 2 and 2
+	myjson = $jit.util.extend(myjson, testobj);
+	fd.loadJSON(myjson);
+	fd.refresh();
 }

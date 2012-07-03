@@ -132,7 +132,14 @@ pg_free_result($result);
 							<div id="v_pane">
 								<h5 onclick="initializeGraphExplorer(); event.returnValue=false;">You must use the latest version of chrome.</h5>	
 								<div id="center-container"><div id="infoviz"></div></div>
-								<div id="right-container"><div id="inner-details"></div></div>
+								<div id="right-container">
+									<form class="well form-search" >
+										<input id="graphpaperid" type="text" class="input-medium search-query" placeholder="Enter Keywords"/>
+										<button type="submit" class="btn" onclick="setMainPaper(); event.returnValue=false;">Search</button>
+									</form>
+									<div id="inner-details">
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -308,6 +315,12 @@ pg_free_result($result);
 					//$("#divrow-"+t).css('backgroundColor', "rgb("+red+", 255, 255)"); // Make the color
 				}
 
+			}
+			function setMainPaper() {
+				var paperid = $("#graphpaperid").val();
+
+				// Defined in papergraph.js
+				updatePaperGraph(paperid);
 			}
 
 // Code for the sliders
