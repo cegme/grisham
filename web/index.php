@@ -139,7 +139,7 @@ pg_free_result($result);
 									<div id="inner-details">
 									</div>
 								</div>
-								<div id="center-container"><div id="infoviz"></div></div>
+								<div id='color-container'><div id="center-container"><div id="infoviz"></div></div></div>
 							</div>
 						</div>
 
