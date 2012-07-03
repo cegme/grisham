@@ -320,7 +320,7 @@ $sldr = "\$(function() {\n".
 "\t\tvalue: 30, // (1/35)*100 is uniform, \n".
 "\t\tmin: 0,\n".
 "\t\tmax: 100,\n".
-"\t\tstop: function(event, ui) { doTopicChange(); }\n".
+"\t\tstop: function(event, ui) { doTopicChange(); },\n".
 "\t\tslide: function( event, ui ) {\n".
 "\t\t\t\$( '#tval-%d' ).val( '\$' + ui.value );\n".
 "\t\t}\n".
