@@ -234,16 +234,32 @@ function updatePaperGraph(paperid) {
 				citations.push(ref);
 			}
 			if(res["rowcount"] == 0) {
-				showError("Paper " + paperid + " has no connections.");
+				showError("Paper " + paperid + " has no citations.");
 			}
 			else {
-				showInfo("Paper " + paperid + " has " + res["rowcount"] + " connections.");
+				showInfo("Paper " + paperid + " has " + res["rowcount"] + "citations.");
 			}
 
 			myjson = $jit.util.extend(myjson, citations);
 			//myjson = $jit.util.extend(myjson, testobj);
 			myfd.loadJSON(myjson);
 			myfd.refresh();
+
+			myfd.computeIncremental({
+				iter: 40,
+				property: 'end',
+				onStep: function(perc){
+					Log.write(perc + '% loaded...');
+				},
+				onComplete: function(){
+					Log.write('done');
+					fd.animate({
+						modes: ['linear'],
+						transition: $jit.Trans.Elastic.easeOut,
+						duration: 2500
+					});
+				}
+			});
 
 			toggleLoading(false);
 		},
