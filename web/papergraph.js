@@ -223,6 +223,7 @@ function updatePaperGraph(paperid) {
 				}
 			];
 
+			myfd.graph.addNode({id: paperid} );
 			var citations = [];
 			for (var i = 0; i != res["rowcount"]; ++i) {
 				var ref = res[i];
