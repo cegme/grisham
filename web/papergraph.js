@@ -243,7 +243,7 @@ function updatePaperGraph(paperid) {
 			myjson = $jit.util.extend(myjson, citations);
 			//myjson = $jit.util.extend(myjson, testobj);
 			myfd.loadJSON(myjson);
-			myfd.refresh();
+			//myfd.refresh();
 
 			myfd.computeIncremental({
 				iter: 40,

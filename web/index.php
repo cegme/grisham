@@ -135,7 +135,7 @@ pg_free_result($result);
 								<div id="right-container">
 									<form class="well form-search">
 										<label for="graphpaperid">Paper id:</label><br/>
-										<input id="graphpaperid" value="24" type="text" class="input-min search-query" placeholder="Enter Keywords"/>
+										<input id="graphpaperid" value="24" type="text" class="input-mini search-query" placeholder="Enter Keywords"/>
 										<button type="submit" class="btn" onclick="setMainPaper(); event.returnValue=false;">Show</button>
 									</form>
 									<div id="inner-details">
@@ -177,7 +177,6 @@ pg_free_result($result);
 				function showInfo(msg) {
 					// Show the info text
 					$("#gresham-msg").empty();
-					//$("#gresham-msg").hide();
 					$("#gresham-msg").append("<span class=\"label label-info\">"+msg+"</span>");
 					$("#gresham-msg").slideDown('fast').delay(2000).slideUp(800);
 				}
