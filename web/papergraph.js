@@ -32,9 +32,9 @@ var myjson = null;
 
 function initializeGraphExplorer() {
 	$("#infoviz").css('min-height','600px');
-	$("#infoviz").css('min-width','400px');
+	$("#infoviz").css('min-width','600px');
 	$("#infoviz").css('height','600px');
-	$("#infoviz").css('width','400px');
+	$("#infoviz").css('width','600px');
   // init data
   var json = [
       
