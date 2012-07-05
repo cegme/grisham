@@ -129,7 +129,7 @@ function initializeGraphExplorer() {
     // Add text to the labels. This method is only triggered
     // on label creation and only for DOM labels (not native canvas ones).
     onCreateLabel: function(domElement, node){
-      domElement.innerHTML = node.name;
+      domElement.innerHTML = node.id + " " + node.name;
       var style = domElement.style;
       style.fontSize = "0.8em";
       style.color = "#ddd";
