@@ -233,6 +233,12 @@ function updatePaperGraph(paperid) {
 				
 				citations.push(ref);
 			}
+			if(res["rowcount"] == 0) {
+				showError("Paper " + paperid + " has no connections.");
+			}
+			else {
+				showInfo("Paper " + paperid + " has " + res["rowcount"] + " connections.");
+			}
 
 			myjson = $jit.util.extend(myjson, citations);
 			//myjson = $jit.util.extend(myjson, testobj);
