@@ -233,7 +233,7 @@ function updatePaperGraph(paperid) {
 				ref['data'] = {'$color': '#ff00ff', '$type': 'circle', '$dim': 8 };
 				
 				citations.push(ref);
-				myfd.addNode(ref);
+				myfd.graph.addNode(ref);
 				//myjson.addAdjacence(
 			}
 			if(res["rowcount"] == 0) {
