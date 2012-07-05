@@ -178,6 +178,7 @@ function updatePaperGraph(paperid) {
 
 	// TODO ajax call to update the proper paper citations and add the to the graph
 
+	toggleLoading(true);
 	$.ajax({
 		type: 'GET',
 		url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php',
