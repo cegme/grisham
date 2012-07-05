@@ -233,6 +233,8 @@ function updatePaperGraph(paperid) {
 				ref['data'] = {'$color': '#ff00ff', '$type': 'circle', '$dim': 8 };
 				
 				citations.push(ref);
+				myfd.addNode(ref);
+				//myjson.addAdjacence(
 			}
 			if(res["rowcount"] == 0) {
 				showError("Paper " + paperid + " has no citations.");
@@ -241,10 +243,10 @@ function updatePaperGraph(paperid) {
 				showInfo("Paper " + paperid + " has " + res["rowcount"] + "citations.");
 			}
 
-			myjson = $jit.util.merge(myjson, citations);
 			//myjson = $jit.util.extend(myjson, citations);
 			//myjson = $jit.util.extend(myjson, testobj);
-			myfd.loadJSON(myjson);
+
+			//myfd.loadJSON(myjson);
 			//myfd.refresh();
 
 			myfd.computeIncremental({
