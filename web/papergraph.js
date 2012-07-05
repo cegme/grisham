@@ -32,9 +32,9 @@ var myjson = null;
 
 function initializeGraphExplorer() {
 	$("#infoviz").css('min-height','600px');
-	$("#infoviz").css('min-width','600px');
+	$("#infoviz").css('min-width','400px');
 	$("#infoviz").css('height','600px');
-	$("#infoviz").css('width','600px');
+	$("#infoviz").css('width','400px');
   // init data
   var json = [
       
@@ -83,6 +83,7 @@ function initializeGraphExplorer() {
         node.eachAdjacency(function() { count++; });
         //display node info in tooltip
         tip.innerHTML = "<div class=\"tip-title\">" + node.name + "</div>"
+          + "<div class=\"tip-text\"><b>pid:</b> " + node.id + "</div>"
           + "<div class=\"tip-text\"><b>connections:</b> " + count + "</div>";
       }
     },
@@ -129,7 +130,7 @@ function initializeGraphExplorer() {
     // Add text to the labels. This method is only triggered
     // on label creation and only for DOM labels (not native canvas ones).
     onCreateLabel: function(domElement, node){
-      domElement.innerHTML = node.id + " " + node.name; // Nodes id added here!
+      domElement.innerHTML = node.name; 
       var style = domElement.style;
       style.fontSize = "0.8em";
       style.color = "#ddd";
