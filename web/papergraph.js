@@ -235,7 +235,7 @@ function updatePaperGraph(paperid) {
 				
 				citations.push(ref);
 				myfd.graph.addNode(ref);
-				//myjson.addAdjacence(
+				myfd.graph.addAdjacence({id:paperid},ref,ref['data']);
 			}
 			if(res["rowcount"] == 0) {
 				showError("Paper " + paperid + " has no citations.");
