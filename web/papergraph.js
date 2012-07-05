@@ -129,7 +129,7 @@ function initializeGraphExplorer() {
     // Add text to the labels. This method is only triggered
     // on label creation and only for DOM labels (not native canvas ones).
     onCreateLabel: function(domElement, node){
-      domElement.innerHTML = node.id + " " + node.name;
+      domElement.innerHTML = node.id + " " + node.name; // Nodes id added here!
       var style = domElement.style;
       style.fontSize = "0.8em";
       style.color = "#ddd";
@@ -253,7 +253,7 @@ function updatePaperGraph(paperid) {
 				},
 				onComplete: function(){
 					Log.write('done');
-					fd.animate({
+					myfd.animate({
 						modes: ['linear'],
 						transition: $jit.Trans.Elastic.easeOut,
 						duration: 2500
