@@ -241,7 +241,8 @@ function updatePaperGraph(paperid) {
 				showInfo("Paper " + paperid + " has " + res["rowcount"] + "citations.");
 			}
 
-			myjson = $jit.util.extend(myjson, citations);
+			myjson = $jit.util.merge(myjson, citations);
+			//myjson = $jit.util.extend(myjson, citations);
 			//myjson = $jit.util.extend(myjson, testobj);
 			myfd.loadJSON(myjson);
 			//myfd.refresh();
