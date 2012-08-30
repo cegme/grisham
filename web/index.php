@@ -208,7 +208,8 @@ pg_free_result($result);
 
 					$.ajax({
 						type: 'GET',
-						url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', 
+						url: '/grisham/paper/web/query.php', 
+						//url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', 
 						dataType: 'json', 
 						data: {q: tid,
 							type: 'rank',
@@ -244,7 +245,8 @@ pg_free_result($result);
 				toggleLoading(true);
 				$.ajax({
 					type: "GET",
-					url: "http://neo.cise.ufl.edu/grisham/paper/web/query.php", 
+					url: '/grisham/paper/web/query.php', 
+					//url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php', 
 					dataType: "json",
 					data: {q: escape($("#kwrd").val()),
 						type: "keyword_realtime",

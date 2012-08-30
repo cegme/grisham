@@ -182,7 +182,8 @@ function updatePaperGraph(paperid) {
 	toggleLoading(true);
 	$.ajax({
 		type: 'GET',
-		url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php',
+		url: '/grisham/paper/web/query.php',
+		//url: 'http://neo.cise.ufl.edu/grisham/paper/web/query.php',
 		dataType: 'json',
 		data: {q: paperid,
 			type: 'citations',
