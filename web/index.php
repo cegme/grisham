@@ -155,7 +155,6 @@ pg_free_result($result);
 
 		<script type="text/javascript">
 
-
 // Code for the sliders
 <?php
 // This is a slider template, it takes an integer for topic id starting at 1
