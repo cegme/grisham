@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>Force-Directed Graph</title>
-    <script type="text/javascript" src="d3.v2.min.js"></script>
+    <script type="text/javascript" src="d3.v2.js"></script>
     <style type="text/css">
 
 circle.node {
@@ -48,7 +48,8 @@ var vis = d3.select("#chart").append("svg")
   update();
 });*/
 
-d3.json("http://localhost/grisham/web/query.php?type=d3_citations&q=24", function(json) {
+d3.json("/grisham/web/query.php?type=d3_citations&q=24", function(json) {
+//d3.json("http://localhost/grisham/web/query.php?type=d3_citations&q=24", function(json) {
   root = json;
   root.fixed = true;
   root.x = width / 2;
@@ -123,6 +124,12 @@ function color(d) {
 
 // Toggle children on click.
 function click(d) {
+
+// TODO keep a click counter per node
+// If a node is clicked once, popup the information about the node.
+// If a node is clicked twice and it is a leaf node, expand the each node, retrieving info from the db.
+
+
   if (d.children) {
     d._children = d.children;
     d.children = null;
