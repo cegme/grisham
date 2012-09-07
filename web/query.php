@@ -446,16 +446,20 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citati
 
 	$query = "SELECT p.id AS pid, p.papertitle AS title, p.pubyear AS year, p.venue AS venue, p.abstract AS abstract ".
 				", (SELECT topic_distribution FROM theta AS t WHERE t.pid = p.id LIMIT 1) AS topic ".
+				", (SELECT count(*) FROM reference r1 where r1.pid = p.id) as childcount ".
 				"FROM reference AS r INNER JOIN paper AS p ON (r.citation = p.id) ".
 				"WHERE r.pid = $pid ";
 
+	$query = $query . " ORDER BY childcount DESC ";
+
 	// Add LIMIT and OFFSET to the query if present
+	// NO LIMIT!!!
 	if(isset($_GET['limit']))
 		$thelimit = rawurldecode($_GET['limit']); 
 	else
 		$thelimit = 50;
 
-	$query = $query . " LIMIT $thelimit ";
+	//$query = $query . " LIMIT $thelimit ";
 
 	if(isset($_GET['offset']))
 		$theoffset = rawurldecode($_GET['offset']);
@@ -486,6 +490,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citati
 	$graph["q"] = urldecode($query);
 	$graph["querytime"] = $querytime;
 	$graph["rowcount"] = pg_num_rows($result);
+	$graph["childcount"] = pg_num_rows($result);
 
 	if ($graph["rowcount"] > 0) {
 		$graph["headers"] = array_keys($rows[0]);
@@ -496,6 +501,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citati
 	}
 
 	$graph["name"] = $pid;
+	$graph["pid"] = $pid;
 	$graph["size"] = 5000;
 	$graph["children"] = $rows;
 

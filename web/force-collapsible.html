@@ -48,7 +48,9 @@ var vis = d3.select("#chart").append("svg")
   update();
 });*/
 
-d3.json("/grisham/web/query.php?type=d3_citations&q=24", function(json) {
+d3.json("/grisham/web/query.php?type=d3_citations&q=647", function(json) {
+//d3.json("/grisham/web/query.php?type=d3_citations&q=494", function(json) {
+//d3.json("/grisham/web/query.php?type=d3_citations&q=2497", function(json) {
 //d3.json("http://localhost/grisham/web/query.php?type=d3_citations&q=24", function(json) {
   root = json;
   root.fixed = true;
@@ -119,7 +121,18 @@ function tick() {
 
 // Color leaf nodes orange, and packages white or blue.
 function color(d) {
-  return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
+  if (d._children) // It is collapsed
+		return "#3182bd";
+	else if (d.childcount == 0) // Leaf node and not collapsed
+		return "#bbbbbb";
+	else if (d.children && d.childcount != 0) // Expanded node with children
+		return "#c6dbef";
+	else if (!d.children && d.childcount != 0) // If it has children and is not clicked
+		return "#fd8d3c";
+	else 
+		return "#eeeeee"; // Just a catch all
+		//return "#cccccc";
+  //return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
 }
 
 // Toggle children on click.
@@ -129,15 +142,40 @@ function click(d) {
 // If a node is clicked once, popup the information about the node.
 // If a node is clicked twice and it is a leaf node, expand the each node, retrieving info from the db.
 
+	console.log( d);
+	console.log("Node Clicked => pid: " + d.pid + " children: " + d.childcount + " title: " + d.title );
 
-  if (d.children) {
+	// Change empty children array to null
+	if(d.children && d.children.length == 0) d.children = null;
+
+
+  // This is the code to collaps the nodes. Uncomment to re-enable this behavior
+	if (d.children) {
+		// Collapse Children
     d._children = d.children;
     d.children = null;
-  } else {
+  } 
+	else {
+		// Retrieve Collapsed children
     d.children = d._children;
     d._children = null;
+
+		// If there are no children look for them
+		if(!d.children) {
+			getReferences(d);
+		}
   }
   update();
+}
+
+function getReferences(papernode) {
+	d3.json("/grisham/web/query.php?type=d3_citations&q="+papernode["pid"], function(json) {
+		console.log(json.pid + " has " + json.children.length + " children.");
+		if (json.children.length != 0) {
+			papernode.children = json.children;
+		}
+		update();
+	});
 }
 
 // Returns a list of all nodes under the root.
