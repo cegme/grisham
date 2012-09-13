@@ -23,14 +23,14 @@ if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword_realti
         "ORDER BY type, pubyear DESC ";
 
     // Add LIMIT and OFFSET to the query if present
-    if(isset($_GET['limit']))
+		if(isset($_GET['limit']) && is_numeric($_GET['limit']))
         $thelimit = rawurldecode($_GET['limit']); 
     else
         $thelimit = 50;
 
     $query = $query . " LIMIT $thelimit ";
 
-    if(isset($_GET['offset']))
+    if(isset($_GET['offset']) && is_numeric($_GET['offset']))
         $theoffset = rawurldecode($_GET['offset']);
     else
         $theoffset = 0;
@@ -103,7 +103,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword")
     $query = $query . " ORDER BY type, pubyear DESC ";
 
     // Add LIMIT and OFFSET to the query if present
-    if(isset($_GET['limit'])) {
+		if(isset($_GET['limit']) && is_numeric($_GET['limit'])) {
         $thelimit = rawurldecode($_GET['limit']); 
     }
     else {
@@ -112,7 +112,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword")
 
     $query = $query . " LIMIT $thelimit ";
 
-    if(isset($_GET['offset']))
+    if(isset($_GET['offset']) && is_numeric($_GET['offset']))
         $theoffset = rawurldecode($_GET['offset']);
     else
         $theoffset = 0;
@@ -178,14 +178,14 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank_real
         "as value GROUP BY value.pid, value.pi) as comparetable ORDER BY comparetable.weight DESC";
 
     // Add LIMIT and OFFSET to the query if present
-    if(isset($_GET['limit']))
+		if(isset($_GET['limit']) && is_numeric($_GET['limit']))
         $thelimit = rawurldecode($_GET['limit']); 
     else
         $thelimit = 50;
 
     $query = $query . " LIMIT $thelimit ";
 
-    if(isset($_GET['offset']))
+    if(isset($_GET['offset']) && is_numeric($_GET['offset']))
         $theoffset = rawurldecode($_GET['offset']);
     else
         $theoffset = 0;
@@ -244,11 +244,12 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank") {
 
 
     // Add LIMIT and OFFSET to the query if present
-    if(isset($_GET['limit']))
+		if(isset($_GET['limit']) && is_numeric($_GET['limit']))
         $thelimit = rawurldecode($_GET['limit']); 
     else
         $thelimit = 50;
-    if(isset($_GET['offset']))
+
+    if(isset($_GET['offset']) && is_numeric($_GET['offset']))
         $theoffset = rawurldecode($_GET['offset']);
     else
         $theoffset = 0;
@@ -313,14 +314,14 @@ else if(isset($_GET['q']) && isset($_GET['type']) && isset($_GET['pid']) && isse
 
 
     // Add LIMIT and OFFSET to the query if present
-    if(isset($_GET['limit']))
+		if(isset($_GET['limit']) && is_numeric($_GET['limit']))
         $thelimit = rawurldecode($_GET['limit']); 
     else
         $thelimit = 50;
 
     $query = $query . " LIMIT $thelimit ";
 
-    if(isset($_GET['offset']))
+    if(isset($_GET['offset']) && is_numeric($_GET['offset']))
         $theoffset = rawurldecode($_GET['offset']);
     else
         $theoffset = 0;
@@ -366,14 +367,15 @@ else if(isset($_GET['q']) && isset($_GET['type']) && isset($_GET['pid']) && isse
     pg_close($dbconn);
 }
 
-else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations") {
+else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations" && is_numeric($_GET['q'])) {
 	// Return the citations according to the q=paperid	
 	header('Content-type: application/json');
+
+	$pid = strtolower(rawurldecode($_GET['q']));
 
 	$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
 	// Decode query
-	$pid = rawurldecode($_GET['q']);
 
 	$query = "SELECT p.id AS pid, p.papertitle AS title, p.pubyear AS year, p.venue AS venue, p.abstract AS abstract ".
 				", (SELECT topic_distribution FROM theta AS t WHERE t.pid = p.id LIMIT 1) AS topic ".
@@ -381,14 +383,14 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations
 				"WHERE r.pid = $pid ";
 
 	// Add LIMIT and OFFSET to the query if present
-	if(isset($_GET['limit']))
+	if(isset($_GET['limit']) && is_numeric($_GET['limit']))
 		$thelimit = rawurldecode($_GET['limit']); 
 	else
 		$thelimit = 50;
 
 	$query = $query . " LIMIT $thelimit ";
 
-	if(isset($_GET['offset']))
+	if(isset($_GET['offset']) && is_numeric($_GET['offset']))
 		$theoffset = rawurldecode($_GET['offset']);
 	else
 		$theoffset = 0;
@@ -433,7 +435,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations
 	pg_close($dbconn);
 
 }
-else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citations") {
+else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citations" && is_numeric($_GET['q'])) {
 	// Return the d3_citations according to the q=paperid	
 	// This changes the json format so that it can be read as a graph by d3
 	// This means a format of {"name": "", "size": "", "children" : [] }
@@ -454,14 +456,14 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citati
 
 	// Add LIMIT and OFFSET to the query if present
 	// NO LIMIT!!!
-	if(isset($_GET['limit']))
+	if(isset($_GET['limit']) && is_numeric($_GET['limit']))
 		$thelimit = rawurldecode($_GET['limit']); 
 	else
 		$thelimit = 50;
 
 	//$query = $query . " LIMIT $thelimit ";
 
-	if(isset($_GET['offset']))
+	if(isset($_GET['offset']) && is_numeric($_GET['offset']))
 		$theoffset = rawurldecode($_GET['offset']);
 	else
 		$theoffset = 0;
