@@ -10,7 +10,7 @@ if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword_realti
     $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
     // Decode query
-    $keyword = rawurldecode($_GET['q']); // Get the keyword
+    $keyword = pg_escape_string(stripslashes(rawurldecode($_GET['q']))); // Get the keyword
 
 
     $query = "SELECT person, papertitle, pubyear, venue, abstract, ".
@@ -81,7 +81,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword")
     $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
     // Decode query
-    $keyword = rawurldecode($_GET['q']); // Get the keyword
+    $keyword = pg_escape_string(stripslashes(rawurldecode($_GET['q']))); // Get the keyword
 
 
     $splitwords = explode(" ", $keyword);
@@ -101,7 +101,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "keyword")
     }
 
     $query = $query . " ORDER BY type, pubyear DESC ";
-
+ 
     // Add LIMIT and OFFSET to the query if present
 		if(isset($_GET['limit']) && is_numeric($_GET['limit'])) {
         $thelimit = rawurldecode($_GET['limit']); 
@@ -166,7 +166,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank_real
     $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
     // Decode query
-    $id = rawurldecode($_GET['q']); // Get the keyword
+    $id = pg_escape_string(stripslashes(rawurldecode($_GET['q']))); // Get the keyword
     $smallestDouble = "0.000000000001";
 
 
@@ -236,7 +236,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "rank") {
     $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
     // Decode query
-    $id = rawurldecode($_GET['q']); // Get the keyword
+    $id = pg_escape_string(stripslashes(rawurldecode($_GET['q']))); // Get the keyword
 
 
 
@@ -303,9 +303,9 @@ else if(isset($_GET['q']) && isset($_GET['type']) && isset($_GET['pid']) && isse
     $dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
     // Decode query
-    $keyword = rawurldecode($_GET['q']); // Get the keyword
-    $model = rawurldecode($_GET['model']);
-    $pid = rawurldecode($_GET['pid']);
+    $keyword = pg_escape_string(stripslashes(rawurldecode($_GET['q']))); // Get the keyword
+    $model = pg_escape_string(stripslashes(rawurldecode($_GET['model'])));
+    $pid = pg_escape_string(stripslashes(rawurldecode($_GET['pid'])));
 
 
     $query = "select r.citation as pid, viru_kl(t.topic_distribution, ARRAY$model::double precision[]) as score ".
@@ -371,7 +371,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "citations
 	// Return the citations according to the q=paperid	
 	header('Content-type: application/json');
 
-	$pid = strtolower(rawurldecode($_GET['q']));
+	$pid = pg_escape_string(stripslashes(strtolower(rawurldecode($_GET['q']))));
 
 	$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
@@ -444,7 +444,7 @@ else if(isset($_GET['q']) && isset($_GET['type']) && $_GET['type'] == "d3_citati
 	$dbconn = pg_connect("host=128.227.176.46 dbname=dblp user=john password=madden options='--client_encoding=UTF8'") or die('Could not connect: ' . pg_last_error());
 
 	// Decode query
-	$pid = rawurldecode($_GET['q']);
+	$pid = pg_escape_string(stripslashes(rawurldecode($_GET['q'])));
 
 	$query = "SELECT p.id AS pid, p.papertitle AS title, p.pubyear AS year, p.venue AS venue, p.abstract AS abstract ".
 				", (SELECT topic_distribution FROM theta AS t WHERE t.pid = p.id LIMIT 1) AS topic ".
