@@ -1,0 +1,101 @@
+\section{\system}
+
+\ceg{This section will be split into \textbf{SEARCH} and \textbf{EXPLORATION}}
+
+\system is a web-based system build on top of the PostgreSQL
+open source database system. Computation for visualization is performed
+using HTML, CSS and javascript.
+Calculations are performed using in-database computation through AJAX calls
+and client side javascript.
+In this section we discuss each part of \system. 
+
+\subsection{Data pre-processing and topic learning}
+First, we tokenize the raw text based on the python NLTK toolkit and a
+predefined regular expression. Second, we standardize them by removing noise terms
+and stop-words. Third, we represent each document in a sparse 
+bag-of-words format, after building a vocabulary of
+corpus-words. Last, we use them as input to the topic learning model which will
+in turn learn clusters from the term co-occurrence frequencies of the corresponding
+documents. In this project, we used the Gensim 
+package implementation of the LDA online learning algorithm 
+\cite{rehurek_lrec, hoffman2010online} for topic learning, which is 
+based on the variational inference framework.    
+
+Components of a learned topic model includes the corpus-level topic word association counts
+and document-level topic mixtures. Each estimated topic is represented
+by its topic-word-counts, which is useful for our automatic detection of paper topics. 
+The document-level topic mixtures give an idea of the topicality of a
+particular paper given a topic. This is also quite useful in finding similar papers and
+grouping them together, because topic modeling is a type of dimensionality reduction
+technique that enables us to work on the topic-space rather than on 
+the vocabulary-space.
+
+
+\subsection{User Model}
+When performing search, exploration and discovery over academic papers users 
+may bring particular context to their search. Incorporating this information
+into the search process has been show to be beneficial to 
+users~\cite{DZSRWJ,MZPGSOL}.
+We develop a user model that 
+encapsulates the users personal context and integrates it into their
+search task. 
+
+This model is a distribution of weights for each topic.
+Formally, given a set of topics $T$ the user model is defined as
+$$
+\mathcal{U} = \{u_0, \ldots, u_{|T|}\}
+$$
+where $u_i \in [0,1]$ and $\sum_{t \in T} u_t = 1$.
+We graphically allow the user to select the weights that correspond to
+each topic. This allows the users to change preferences with each query
+for more desirable results.
+
+The user model is used in different ways to provide better feedback to
+the user. After a keyword search, the document results of the search 
+are re-ranked by calculating the KL-divergence of each document and the
+user model. Formally, given the set of result documents $D$:
+
+\begin{equation} \label{eq:KL}
+KL(\mathcal{U}||d) = \sum_{t \in T} u_t \ln \frac{u_t}{d_t}.
+\end{equation}
+where $d \in D$ and $d_t$ is the topic proportion for document $d$ and
+topic $t \in T$. 
+
+In the topic explorer, each topic row is color-coded like a heat 
+based map based on the similarity of the user model to that topic (see Figure~\ref{fig:topic_exploration}).
+The user can look at this heat map to adjust their topic preferences.
+We use equation~\ref{eq:KL} on the client side to calculate this preference. 
+In the graph explorer the citations for the current paper is ranked
+using equation~\ref{eq:KL}. The citations of that paper that are most
+similar to the user model are ranked the highest.
+
+
+\subsection{Ranking Function}
+We provided several ranking functions to let the user find
+the best papers.
+
+One way of ranking is to determine relevant papers 
+given an estimated topic. We use individual papers'
+document topic mixtures, $\hat{\theta_d}$, to rank them 
+on relevance given a topic. For a given 
+topic $t \in K$, we calculate
+\begin{equation}
+m(d) = \ln \hat{\theta}_{d,t} + \sum_{j \neq t}{\ln (1 - \hat{\theta}_{d,j})}
+\end{equation}
+for all documents $d = 1, 2, \ldots, D$ in 
+the document collection, and sort them to rank
+them on relevance. Here, we assume that
+each $\hat{\theta}_d$ is normalized, 
+i.e., $\sum_{j=1}^{K}{\hat{\theta}_j} = 1$.
+Intuitively, we can see that this equation maximizes the probability
+of a topic $t \in K$ given a document.
+That means a document with a higher value of this score is 
+highly relevant for the selected topic $t$, and contains 
+a considerable amount of words from the topic distribution.    
+
+
+
+
+%\subsection{Visualization}
+%At times it is important to allow the user to do exploritory search.
+

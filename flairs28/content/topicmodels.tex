@@ -1,0 +1,39 @@
+\section{Topic Models}
+
+% In this section we give a brief summary of topic models.
+% \ceg{Clint you can fill this in}
+
+Topic modeling allows us to represent the properties of a 
+large collection of documents containing numerous words 
+with a small collection of topics. 
+A topic is represented by a  
+distribution of words in a vocabulary.  This approach to 
+topic modeling hinges on the bag-of-words model in which 
+word occurrences within a document are assumed to be 
+independent of each other. 
+Latent Dirichlet Allocation (LDA) is a well known, probabilistic 
+topic model, which can represent hidden topic structues 
+of the documents in a text corpus \cite{Blei2003}. Due to 
+its fully generative semantics, even at the level of documents, 
+LDA could address the drawbacks of other topic models such as 
+the Latent Semantic Analysis (LSA) and Probabilistic LSA \cite{Hofmann1999, Blei2003}. 
+In LDA, each document is described by 
+a mixture of topics, and words are chosen from the multinomial 
+that results from the mixture of the documents topic 
+multinomials. The topics themselves, as well as the 
+documents are drawn from Dirichlet distributions. 
+
+Topic model analysis depends upon exploring the posterior 
+distribution of model parameters and hidden variables 
+conditioned on observed words. The model parameters are 
+corpus-level topics and document-level topic mixtures. 
+The topic models such as LSA and LDA assumes that 
+we know a-priori the number of topics in the corpus. 
+People have used different approximate inference methods
+such as deterministic approaches -- replace the posterior 
+integral with a tractable lower bound \cite{Blei2003}, 
+and sampling methods -- approximate the posterior integral 
+using an empirical average \cite{Griffiths2004}, for the 
+inference with LDA. 
+
+
