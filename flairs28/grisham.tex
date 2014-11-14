@@ -1,0 +1,52 @@
+\def\year{2015}
+\documentclass[letterpaper]{article}
+\usepackage{aaai}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{ulem}
+\usepackage{alltt}
+\usepackage{graphicx}
+
+\newcommand{\ceg}[1]{{\textcolor{blue}{#1 -- CEG}}}
+\newcommand{\eat}[1]{}
+
+\newcommand{\system}{Grisham\xspace}
+
+\frenchspacing
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+\pdfinfo{
+/Title (Grisham: Topic-Based Publication Exploration)
+/Author (Put All Your Authors Here, Separated by Commas)}
+
+\setcounter{secnumdepth}{0}  
+
+\begin{document}
+
+\title{\system: Topic-Based Publication Exploration}
+\author{Authors}
+\maketitle
+
+\input{content/abstract.tex}
+\input{content/introduction.tex}
+\input{content/relatedwork.tex}
+\input{content/topicmodels.tex}
+\input{content/system.tex}
+\input{content/demo.tex}
+\input{content/discussion.tex}
+\input{content/conclusion.tex}
+
+\section{Acknowledgements}
+This material is based upon work supported by the National Science 
+Foundation Graduate Research Fellowship under Grant No. DGE-$0802270$
+
+
+\bibliography{citation}
+\bibliographystyle{aaai}
+
+\end{document}
