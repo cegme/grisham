@@ -79,19 +79,22 @@ topic distributions are lower dimensional representations of
 documents---compared to document term frequency vectors, in which 
 each element of the vector stands for a term in the corpus 
 vocabulary---and very useful for finding and grouping similar 
-documents in a corpus. Now onwards, we denote $\theta_d^{*}$ for the 
-estimate of document $d$'s latent distribution on the topics, 
-identified via the variational inference algorithm 
-\cite{hoffman2010online}. Similarly, the latent topics in a corpus, 
+documents in a corpus. Similarly, the latent topics in a corpus, 
 which are distributions over the vocabulary terms, are helpful in 
 visualizing the prevalent thematic structure of a corpus and 
-exploring documents related to a specific theme of interest. For 
-$j = 1, 2, \ldots, K$, we denote $\beta_j^{*}$ for the estimate of 
-the latent topic distributions of a corpus, where $K$ is the number 
-of topics in the corpus---it's a constant in the LDA model inference.  
-
-
-
+exploring documents related to a specific theme of interest. Now 
+we describe the notation we use in this paper. For a given corpus, 
+let $D$ be the number of documents in the corpus and $V$ be the 
+number of terms in the corpus vocabulary. The number of topics $K$ 
+in the corpus is a constant and known. For $d = 1, 2, \ldots, D$, we 
+denote the $K$ dimensional vector $\theta_d^{*}$ as the estimate of 
+document $d$'s latent distribution on the topics identified via an 
+approximate posterior inference algorithm. In addition, for $j = 1, 
+2, \ldots, K$, we denote the $V$ dimensional vector $\beta_j^{*}$ as 
+the estimate of $j$th topic distribution. This forms a $K \times V$ 
+topic matrix, whose $j$th row is the $j$th topic and each element 
+$\beta_{jt}^{*}$ represents term $t$'s probability for the 
+$j$th topic.   
 
 
 

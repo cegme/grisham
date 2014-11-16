@@ -78,18 +78,40 @@ using equation~\ref{eq:KL}. The citations of that paper that are most
 similar to the user model are ranked the highest.
 
 
-\subsection{Topic-Based Search and Exploration}
+\subsection{Topic-Based Search}
 
-\system provides several ranking functions to let the user find  
+\system provides several ranking choices to let the user find  
 the best articles. One way of ranking is to identify the topics of 
-real interest, by looking at the most probable words of the estimated 
-topics $\beta_j^{*}$ for the corpus, and then determine relevant 
-articles given the topic of interest. In the next section, we 
-describe how \system helps users visualizing the estimated topics. 
-We exploit estimated topic distributions $\theta_d^{*}$s of 
-individual articles, to rank them on relevance given a topic. Let 
-$t$ be the index for the topic of interest, we calculate
-\cite{George2012}
+real interest, by looking at the most \textsl{informative terms} of 
+the estimated topics $\beta_j^{*}$ for the corpus, and then 
+determine relevant articles given the topic of interest. The 
+simplest way to identify informative terms in a topic is to 
+determine the most probable words by sorting the vocabulary terms in 
+the order of their term probabilities, $\beta_{jt}^{*}$s. In the 
+literature, people have looked at several other methods for finding 
+informative terms~\citeauthor{2012-termite} and evaluating topics
+\cite{Mimno2011}. In this paper, we use a visualization scheme 
+developed in~\cite{Davis2013}, for visualizing the most probable 
+words in a topic. For example, see Figure~\ref{fig:topic-word-cloud} 
+for visualizing a topic which is extracted from a corpus that is 
+built from a subset of Wikipedia articles under the category 
+\textsl{Whales}. 
+       
+\begin{figure*}[htb]\centering 
+\includegraphics[width=.9\textwidth]{images/topic_visualization.png}
+\caption{\textsl{Topic Word Cloud}. Words with high probabilities for the 
+given topic are larger in size and words with low probabilities for 
+the given topic are smaller in size. From the most probable words, 
+we can infer that the topic is mainly refers the Wikipedia category 
+\textit{Killer Whales}---one of the main categories from which, we 
+downloaded the articles for the corpus.}
+\label{fig:topic-word-cloud}
+\end{figure*}
+
+We can exploit the estimated document specific topic 
+distributions $\theta_d^{*}$s of individual articles, to rank them 
+on relevance given a topic. Let $t$ be the index for the topic of 
+interest, we calculate~\cite{George2012}
 \begin{equation}
 m(d) = \ln \theta^*_{dt} + \sum_{j \neq t}{\ln (1 - \theta^*_{dj})}
 \end{equation}
@@ -101,17 +123,58 @@ this equation will give a high value for a document, if the probability
 of occurring topic $t$ is high in that document. This means a 
 document with a higher value of this score is highly relevant for 
 the topic of interest $t$, and contains a considerable amount of 
-words from topic $t$. The next section describes a visualization 
-scheme of the ranked documents given the estimated set of topics.      
+words from topic $t$. In the next section, we will see more details 
+about \system's visualization methods for the estimated topics and 
+ranked documents given a set of estimated topics.      
 
 
-\noindent\textbf{Topic-Based Exploration}
+\noindent\textbf{Topic-Based Exploration and Lineage Search}
 
-\ceg{clint stuff}
+Here, we use the estimated document specific topic distribution, 
+$\theta^*_{d}$, of an article from the LDA model, for visualizing 
+the hidden topical content of the article. For example, Figure
+\ref{fig:doc-topic-distribution} shows a visualization based on Pie
+Charts\footnote{\texttt{https://developers.google.com/chart}} for 
+the $\theta^*_{d}$ of the Wikipedia article \textit{Killer Whale}, 
+which is an article listed under the Wikipedia category          
+\textit{Killer Whales}. Different slices of the pie chart represents
+different topics in the article \textit{Killer Whale} and the size 
+of a slice represents the probability of a topic given the article. 
+For this illustration, we manually labeled all the topic 
+distributions obtained via the LDA posterior inference on a 
+corpus---that is built using a subset of Wikipedia articles under the 
+category \textit{Whales}---with the help of the topic word clouds 
+and the Wikipedia subcategories under the category \textit{Whales}.         
+Once we find an interesting topic to pursue, we can explore all 
+the relevant documents under that topic based on the method 
+described above. 
 
-\noindent\textbf{Lineage search}
+\begin{figure}[htb]\centering 
+\includegraphics[width=.45\textwidth]{images/doc_topic_distribution.png}
+\caption{Visualization of the document specific topic distribution 
+for the Wikipedia article \textit{Killer Whale}.}
+\label{fig:doc-topic-distribution}
+\end{figure}
+
+Another way to visualize a document is to look at its 
+\textsl{paragraph} or \textsl{section} specific topic distributions. 
+Each section or paragraph is written with careful attention is every 
+peer review article or paper. For example, most of the articles in 
+Wikipedia follow a style guide. If we look at an article or paper,  
+we can easily decide which section or paragraph is of our interest. 
+This intuition can be used to improve topic based exploration. We 
+the learned LDA model for the corpus for estimating section or 
+paragraph's topic distribution using the Gensim LDA implementation 
+\cite{rehurek_lrec}. This is an online task and is performed when a 
+user selects a section or paragraph of an article, which is 
+described in detail in the \system Demonstration section.  
 
 
-%\subsection{Visualization}
-%At times it is important to allow the user to do exploritory search.
+Another interesting option to explore is how we can use an article's 
+topic distribution for searching similar articles of interest. 
+Recall the LDA model enable us to transform documents in a 
+corpus into vectors, e.g., $\theta^*_{d}$s, in a lower dimensional 
+topic space. We can then define similarity between documents via any 
+typical vector space similarities, e.g.., cosine similarity. In 
+\system we call this as article \textsl{lineage search}.         
 
