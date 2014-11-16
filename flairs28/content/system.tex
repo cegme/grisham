@@ -1,38 +1,41 @@
 \section{\system}
 
-%\ceg{This section will be split into \textbf{SEARCH} and \textbf{EXPLORATION}}
+\ceg{STILL NEED TO REARRANGE PARAGRAPH AND REWORD}
 
-\ceg{STILL NEED TO REARRANGE PARAGRAPSH AND REWORD}
-\system is a web-based system build on top of the PostgreSQL
-open source database system. Computation for visualization is performed
-using HTML, CSS and javascript.
-Calculations are performed using in-database computation through AJAX calls
-and client side javascript.
-In this section we discuss each part of \system. 
+\cpg{Need a better introduction?}
+
+\system is a web-based system build on top of the PostgreSQL open 
+source database system. Computation for visualization is performed
+using HTML, CSS and javascript. Calculations are performed using 
+in-database computation through AJAX calls and client side 
+javascript. In this section we discuss each part of \system. 
 
 \subsection{Data pre-processing and topic learning}
-First, we tokenize the raw text based on the python NLTK toolkit and a
-predefined regular expression. Second, we standardize them by removing noise terms
-and stop-words. Third, we represent each document in a sparse 
-bag-of-words format, after building a vocabulary of
-corpus-words. Last, we use them as input to the topic learning model which will
-in turn learn clusters from the term co-occurrence frequencies of the corresponding
-documents. In this project, we used the Gensim 
-package implementation of the LDA online learning algorithm 
-\cite{rehurek_lrec,hoffman2010online} for topic learning, which is 
-based on the variational inference framework.    
 
-Components of a learned topic model includes the corpus-level topic word association counts
-and document-level topic mixtures. Each estimated topic is represented
-by its topic-word-counts, which is useful for our automatic detection of paper topics. 
-The document-level topic mixtures give an idea of the topicality of a
-particular paper given a topic. This is also quite useful in finding similar papers and
-grouping them together, because topic modeling is a type of dimensionality reduction
-technique that enables us to work on the topic-space rather than on 
-the vocabulary-space.
-
-
-
+Here we describe the main pre-processing steps we perform on a 
+collection of articles for topic modeling and search. First, 
+we tokenize raw texts of articles with the help of the python 
+Natural Language Toolkit 
+(NLTK)\footnote{\texttt{http://www.nltk.org/}} and a set of 
+predefined regular expressions. Second, we standardize tokens by 
+removing noise and stop-words. We use typical standardization 
+techniques for word tokens such as \textsl{stemming}---for this 
+project, we use the popular Porter stemming algorithm 
+\cite{Porter1980} implementation in NLTK. Third, we represent each 
+document in a sparse ``bag of words'' format, after building a 
+vocabulary of corpus words. Last, we use them as input to the topic 
+learning algorithm~\cite{hoffman2010online} which will in turn learn 
+the latent topic structure of a corpus from the term co-occurrence 
+frequencies of the corresponding documents. Components of a learned 
+topic model includes the estimated corpus-level topics, $\beta_j^{*}$s, 
+and document-level topic mixtures, $\theta_d^{*}$s. As discussed, 
+$\beta_j^{*}$ is useful for our automatic detection of topics among  
+articles. Similarly, $\theta_d^{*}$ give an idea of the topicality 
+of a particular article given a topic. This is quite useful in 
+finding similar articles and grouping them together. In addition, 
+topic modeling is a type of dimensionality reduction technique that 
+enables us to work on the topic-space rather than on the 
+vocabulary-space.
 
 
 
@@ -75,39 +78,38 @@ using equation~\ref{eq:KL}. The citations of that paper that are most
 similar to the user model are ranked the highest.
 
 
-\subsection{Topic-Based Search}
+\subsection{Topic-Based Search and Exploration}
 
-\subsubsection{Ranking Function}
-We provided several ranking functions to let the user find
-the best papers.
-
-One way of ranking is to determine relevant papers 
-given an estimated topic. We use individual papers'
-document topic mixtures, $\hat{\theta_d}$, to rank them 
-on relevance given a topic. For a given 
-topic $t \in K$, we calculate
+\system provides several ranking functions to let the user find  
+the best articles. One way of ranking is to identify the topics of 
+real interest, by looking at the most probable words of the estimated 
+topics $\beta_j^{*}$ for the corpus, and then determine relevant 
+articles given the topic of interest. In the next section, we 
+describe how \system helps users visualizing the estimated topics. 
+We exploit estimated topic distributions $\theta_d^{*}$s of 
+individual articles, to rank them on relevance given a topic. Let 
+$t$ be the index for the topic of interest, we calculate
+\cite{George2012}
 \begin{equation}
-m(d) = \ln \hat{\theta}_{d,t} + \sum_{j \neq t}{\ln (1 - \hat{\theta}_{d,j})}
+m(d) = \ln \theta^*_{dt} + \sum_{j \neq t}{\ln (1 - \theta^*_{dj})}
 \end{equation}
-for all documents $d = 1, 2, \ldots, D$ in 
-the document collection, and sort them to rank
-them on relevance. Here, we assume that
-each $\hat{\theta}_d$ is normalized, 
-i.e., $\sum_{j=1}^{K}{\hat{\theta}_j} = 1$.
-Intuitively, we can see that this equation maximizes the probability
-of a topic $t \in K$ given a document.
-That means a document with a higher value of this score is 
-highly relevant for the selected topic $t$, and contains 
-a considerable amount of words from the topic distribution.    
+for all documents $d = 1, 2, \ldots, D$ in the document collection, 
+where $j = 1, 2, \ldots, K$, and sort them to rank them on relevance. 
+Here, we assume that each $\theta^*_{dt}$ is normalized, i.e., 
+$\sum_{j=1}^{K}{\theta^*_{dj}} = 1$. Intuitively, we can see that 
+this equation will give a high value for a document, if the probability 
+of occurring topic $t$ is high in that document. This means a 
+document with a higher value of this score is highly relevant for 
+the topic of interest $t$, and contains a considerable amount of 
+words from topic $t$. The next section describes a visualization 
+scheme of the ranked documents given the estimated set of topics.      
 
 
-
-\subsection{Topic-Based Exploration}
-
+\noindent\textbf{Topic-Based Exploration}
 
 \ceg{clint stuff}
 
-\subsubsection{Lineage search}
+\noindent\textbf{Lineage search}
 
 
 %\subsection{Visualization}
