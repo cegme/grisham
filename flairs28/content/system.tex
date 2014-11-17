@@ -8,13 +8,13 @@ in-database computation through AJAX calls and client side
 javascript. In this section we discuss each part of \system. 
 }
 
-{\system} system was built to process large amounts of article,
+{\system} system is built to process articles,
 provide fast response to user queries and display descriptive
-results to the user.
+results in a user interface.
 In this section we describe our preprocessing steps to extract
 topic models from the documents.
-We then discuss the User Model behind each user search, we then
-discuss our methods for topic-based search and exploration.
+We then discuss the User Model behind each user search.
+Finally we discuss our methods for topic-based search and exploration.
 
 
 
@@ -22,15 +22,14 @@ discuss our methods for topic-based search and exploration.
 
 Here we describe the main pre-processing steps we perform on a 
 collection of articles for topic modeling and search. First, 
-we tokenize raw texts of articles with the help of the python 
+we tokenize articles with the help of the python 
 Natural Language Toolkit (NLTK)~\footnote{\texttt{http://www.nltk.org/}} and a set of 
-predefined regular expressions. Second, we standardize tokens by 
-removing noise and stop-words. We use typical standardization 
-techniques for word tokens such as \textsl{stemming}---for this 
-project, we use the popular Porter stemming algorithm~\cite{Porter1980} 
-implementation in NLTK\@. Third, we represent each 
-document in a sparse ``bag of words'' format, after building a 
-vocabulary of corpus words. Last, we use them as input to the topic 
+predefined regular expressions. Next, we standardize tokens by 
+removing noise and stop-words. We use typical normalization 
+techniques for word tokens such as \textsl{stemming}, in particular we use the popular Porter stemming algorithm~\cite{Porter1980} 
+implementation in NLTK\@. 
+After building a vocabulary of corpus words, each document is represented as a sparse ``bag of words''.
+Last, we use the processed documents as input to the topic 
 learning algorithm~\cite{hoffman2010online} which will in turn learn 
 the latent topic structure of a corpus from the term co-occurrence 
 frequencies of the corresponding documents. %Components of a learned 
@@ -62,10 +61,11 @@ $$
 $$
 where $u_j \in [0,1]$, $\sum_{j = 1}^K u_j = 1$, $K$ is the number 
 of topics in the corpus.
-We graphically allow the user to select the weights that correspond to
-each topic. This allows the users to change preferences with each query
+We allow the user to interactively select the weights that correspond to
+each topic learned over the corpus. This allows the users to change preferences with each query
 for more desirable results.
 
+\subsection{Keyword Search}
 The user model is used in different ways to provide better feedback to
 the user. After a \textsl{keyword-based search}, the document results of the search 
 are re-ranked by calculating the KL-divergence of each document and the
@@ -77,14 +77,8 @@ KL(\mathcal{U}||\theta^*_{d}) = \sum_{j = 1}^K u_j \ln \frac{u_j}{\theta^*_{dj}}
 where $d \in {\cal D}$ and $\theta^*_{d}$ is the topic proportion 
 for document $d$ from the LDA model. 
 
-In the topic explorer, each topic row is color-coded like a heat 
-based map based on the similarity of the user model to that topic (see Figure~\ref{fig:topic_exploration}).
-The user can look at this heat map to adjust their topic preferences.
-We use equation~\ref{eq:KL} on the client side to calculate this preference. 
-In the graph explorer the citations for the current paper is ranked
-using equation~\ref{eq:KL}. The citations of that paper that are most
-similar to the user model are ranked the highest.
-
+%In the topic explorer, each topic row is color-coded like a heat 
+%based map based on the similarity of the user model to that topic (see Figure~\ref{fig:topic_exploration}).
 
 \subsection{Topic-Based Search}
 
@@ -136,7 +130,7 @@ see more about \system's visualization methods for the estimated
 topics and ranked documents based on them.      
 
 
-\noindent\textbf{Topic-Based Exploration and Lineage Search}
+\noindent\textbf{Topic-Based Exploration}
 
 Here, we use the estimated document specific topic distribution, 
 $\theta^*_{d}$, of an article from the LDA model, for visualizing 

@@ -29,9 +29,18 @@ Clicking on any box will open up a more complete list of papers.
 
 \paragraph{Topic Explore} The second tab on the website is for topic exploration and it allows a user to click on a specific topic to know more about the papers associated with the topic.
 Initially, all the extracted topics from the corpus are shown along with their topic words.
-This list is color coded to distinguish the relevance of topics as indicated by the user model.
+This list is color coded to distinguish the relevance of topics as indicated by the user model --- much like a heat map.
 The list is clickable and one a topic is clicked, relevant papers to that topic ranked based on the user model and displayed.
+The user can look at this heat map to adjust their topic preferences.
+We use equation~\ref{eq:KL} on the client side to calculate this preference. 
+In the graph explorer the citations for the current paper is ranked
+using equation~\ref{eq:KL}. The citations of that paper that are most
+similar to the user model are ranked the highest.
 A screenshot is shown in Figure~\ref{fig:topic_exploration}.
+
+
+
+
 
 \begin{figure}[htb]\centering 
 \includegraphics[width=.5\textwidth]{images/topical_docs.png}
