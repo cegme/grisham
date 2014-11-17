@@ -4,50 +4,49 @@
 % \ceg{Clint you can fill this in}
 
 Topic models are a set of models for the documents in a collection 
-or corpus. They enable us to represent the properties of a large 
+or corpus. They enable us to represent properties of a large 
 corpus containing numerous words with a small set of \textsl{topics}, 
 by extracting the underlying topical structure of the corpus and 
 representing the documents according to these topics. We can then 
 use these representations for organizing, summarizing, and searching 
-the corpus. Traditionally, topic models assume word occurrences 
-within a document are independent of each other---i.e., ``bag of 
+the corpus. Traditionally, topic models assume each word occurrence 
+within a document is independent. This is the assumption of ``bag of 
 words'' models. Latent Dirichlet Allocation or LDA 
 \cite{Blei2003} is a well known, generative, probabilistic   
 topic model for a corpus. A probabilistic generative model assumes 
 data as \textsl{observations} that originate from a generative 
 probabilistic process that includes \textsl{hidden} variables. The 
 hidden variable are typically inferred via \textsl{posterior 
-inference}, in which one tries to identify the posterior 
-distribution of the hidden variables conditional on the observations. 
+inference}. In posterior inference, one tries to identify the posterior 
+distribution of the hidden variables that are conditioned on the observations. 
 Loosely speaking, one can consider posterior inference as the 
-reverse of the generative process. The generative model of LDA assumes 
-that there exists a set of \textsl{latent} (hidden) topics in for a 
-give corpus. A topic is defined as a distribution---they are assumed 
-to be generated from a \textsl{Dirichlet} distribution with a set of 
-parameters---over the corpus vocabulary. For example, the 
-\textit{whales} topic typically will have words related to 
-\textit{whales}  and correlated topics, e.g., 
-\textit{blue whales}, \textit{killer whales}, \textit{whaling}, 
-etc., with high probability and words related to other uncorrelated 
-topics, e.g., \textit{sports}, \textit{medicine}, etc., with low 
-probability---assuming the corpus is built from a subset of articles 
-from the topics \textit{whales}, \textit{sports}, and 
+reverse of the generative process. LDA assumes 
+that there exists a set of \textsl{latent} (hidden) topics for a 
+give corpus. A topic is defined as a distribution over the corpus 
+vocabulary. The topics are assumed to be generated from a 
+\textsl{Dirichlet} distribution with a set of parameters. For 
+example, a topic about \textit{whales} will have words related to 
+whales and related topics (e.g., \textit{blue whales}, \textit{killer whales}, 
+\textit{whaling}, etc.) with high probability and words related to 
+other unrelated topics (e.g., \textit{sports}, \textit{medicine}, 
+etc.) with low probability---assuming the corpus is built from a 
+subset of articles from the topics \textit{whales}, \textit{sports}, and 
 \textit{medicine}. In addition, each document in the corpus is 
-described by a latent topic distribution---they are assumed to be 
-generated from another \textsl{Dirichlet} distribution with a set of 
-parameters---and the words in a document are generated from the 
-document specific topic distribution. In real life, we only observe 
+described by a latent topic distribution and the words in a document 
+are generated from the document specific topic distribution. They 
+are also assumed to be generated from another \textsl{Dirichlet} 
+distribution with a set of parameters. In real life, we only observe 
 documents and their words. As in any generative probabilistic model, 
 the latent variables in the LDA model are typically identified by 
 posterior inference. 
 
-However, in most of these generative models, posterior inference is 
-intractable due to the high dimensionality of the latent variable 
-space, and practitioners typically rely on approximate posterior 
-inference alternatives. For the LDA model, people have used 
-different approximate inference methods such as deterministic 
-\textsl{optimization methods}~\cite{Blei2003} and \textsl{sampling 
-methods}~\cite{Griffiths2004} for the inference. 
+Unfortunately, in most of these generative models, posterior 
+inference is intractable due to the high dimensionality of the 
+latent variable space, and practitioners typically rely on 
+approximate posterior inference alternatives. For the LDA model, 
+people have used different approximate inference methods such as 
+deterministic \textsl{optimization methods}~\cite{Blei2003} and 
+\textsl{sampling methods}~\cite{Griffiths2004} for the inference. 
 \citeauthor{Blei2003} employed variational methods to find 
 approximations to the posterior distribution of latent variables, by 
 posing a family of lower bounds on the log likelihood indexed 
@@ -66,23 +65,22 @@ implementation of the online variational inference algorithm for LDA
 
 
 Due to the fully generative semantics, even at the level of 
-documents, LDA is expected to overcome several drawbacks---e.g., 
-issues such as synonymy and polysemy of words---of earlier models 
-for corpora such as Term-Frequency Inverse Document Frequency 
-(TF-IDF, \citeauthor{Salton1975}~\citeyear{Salton1975}) and Latent 
-Semantic Analysis (LSA, \citeauthor{Dumais1995} 
+documents, LDA is expected to overcome several drawbacks such as 
+synonymy and polysemy of words where in earlier models, e.g., TF-IDF
+\cite{Salton1975} and Latent Semantic Analysis (LSA, \citeauthor{Dumais1995} 
 \citeyear{Dumais1995}). In this paper, we are interested in the LDA 
 model parameters such as the corpus-level latent topic distributions 
 and document-level latent topic distributions. The latent document 
 topic distributions are lower dimensional representations of 
-documents---compared to the term frequency vectors of documents, in 
-which each element of the vector stands for a term in the corpus 
-vocabulary---and very useful for finding and grouping similar 
-documents in a corpus. Similarly, the latent topics in a corpus, 
-which are distributions over the vocabulary terms, are helpful in 
-visualizing the prevalent thematic structure of a corpus and 
-exploring documents related to a specific theme of interest. Now 
-we describe the notation we use in this paper. For a given corpus, 
+documents (which were represented traditionally as vocabulary-size 
+long term frequency vectors) 
+and useful for finding and grouping similar documents in a corpus. 
+The latent topics in a corpus, which are distributions over the 
+vocabulary terms, are helpful in visualizing the prevalent thematic 
+structure of a corpus and exploring documents related to a specific 
+theme of interest. 
+
+Now we describe the notation we use in this paper. For a given corpus, 
 let $D$ be the number of documents in the corpus and $V$ be the 
 number of terms in the corpus vocabulary. The number of topics $K$ 
 in the corpus is a constant and known. For $d = 1, 2, \ldots, D$, we 
