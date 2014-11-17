@@ -20,8 +20,8 @@ Natural Language Toolkit
 predefined regular expressions. Second, we standardize tokens by 
 removing noise and stop-words. We use typical standardization 
 techniques for word tokens such as \textsl{stemming}---for this 
-project, we use the popular Porter stemming algorithm 
-\cite{Porter1980} implementation in NLTK. Third, we represent each 
+project, we use the popular Porter stemming algorithm~\cite{Porter1980} 
+implementation in NLTK. Third, we represent each 
 document in a sparse ``bag of words'' format, after building a 
 vocabulary of corpus words. Last, we use them as input to the topic 
 learning algorithm~\cite{hoffman2010online} which will in turn learn 
@@ -89,8 +89,7 @@ simplest way to identify informative terms in a topic is to
 determine the most probable words by sorting the vocabulary terms in 
 the order of their term probabilities, $\beta_{jt}^{*}$s. In the 
 literature, people have looked at several other methods for finding 
-informative terms~\citeauthor{2012-termite} and evaluating topics
-\cite{Mimno2011}. In this paper, we use a visualization scheme 
+informative terms~\cite{2012-termite} and evaluating topics~\cite{mimno2011optimizing}. In this paper, we use a visualization scheme 
 developed in~\cite{Davis2013}, for visualizing the most probable 
 words in a topic. For example, see Figure~\ref{fig:topic-word-cloud} 
 for visualizing a topic which is extracted from a corpus that is 
