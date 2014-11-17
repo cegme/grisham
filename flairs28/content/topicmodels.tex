@@ -10,8 +10,8 @@ by extracting the underlying topical structure of the corpus and
 representing the documents according to these topics. We can then 
 use these representations for organizing, summarizing, and searching 
 the corpus. Traditionally, topic models assume word occurrences 
-within a document are independent of each other---``bag of words'' 
-models. Latent Dirichlet Allocation or LDA 
+within a document are independent of each other---i.e., ``bag of 
+words'' models. Latent Dirichlet Allocation or LDA 
 \cite{Blei2003} is a well known, generative, probabilistic   
 topic model for a corpus. A probabilistic generative model assumes 
 data as \textsl{observations} that originate from a generative 
@@ -20,10 +20,10 @@ hidden variable are typically inferred via \textsl{posterior
 inference}, in which one tries to identify the posterior 
 distribution of the hidden variables conditional on the observations. 
 Loosely speaking, one can consider posterior inference as the 
-reverse of a generative process. The generative model of LDA assumes 
-that there exists a set of \textsl{latent} (hidden) topics in the 
-corpus. A topic is defined as a distribution---they are assumed to 
-be generated from a \textsl{Dirichlet} distribution with a set of 
+reverse of the generative process. The generative model of LDA assumes 
+that there exists a set of \textsl{latent} (hidden) topics in for a 
+give corpus. A topic is defined as a distribution---they are assumed 
+to be generated from a \textsl{Dirichlet} distribution with a set of 
 parameters---over the corpus vocabulary. For example, the 
 \textit{whales} topic typically will have words related to 
 \textit{whales}  and correlated topics, e.g., 
@@ -32,16 +32,15 @@ etc., with high probability and words related to other uncorrelated
 topics, e.g., \textit{sports}, \textit{medicine}, etc., with low 
 probability---assuming the corpus is built from a subset of articles 
 from the topics \textit{whales}, \textit{sports}, and 
-\textit{medicine}. In addition, each document in a corpus is 
-described by a latent topic distribution---another 
-\textsl{Dirichlet} distribution with a set of parameters---and the 
-words in a document are generated from the document specific topic 
-distribution. 
+\textit{medicine}. In addition, each document in the corpus is 
+described by a latent topic distribution---they are assumed to be 
+generated from another \textsl{Dirichlet} distribution with a set of 
+parameters---and the words in a document are generated from the 
+document specific topic distribution. In real life, we only observe 
+documents and their words. As in any generative probabilistic model, 
+the latent variables in the LDA model are typically identified by 
+posterior inference. 
 
-
-In real life, we only observe documents and their words. 
-As in any generative probabilistic model, the latent variables in 
-the LDA model are typically identified by posterior inference. 
 However, in most of these generative models, posterior inference is 
 intractable due to the high dimensionality of the latent variable 
 space, and practitioners typically rely on approximate posterior 
@@ -51,19 +50,19 @@ different approximate inference methods such as deterministic
 methods}~\cite{Griffiths2004} for the inference. 
 \citeauthor{Blei2003} employed variational methods to find 
 approximations to the posterior distribution of latent variables, by 
-considering a family of lower bounds on the log likelihood, indexed 
+posing a family of lower bounds on the log likelihood indexed 
 by a set of variational parameters. The variational parameters are 
 then identified by a deterministic optimization procedure that seeks 
 to find an optimal lower bound. \citeauthor{Griffiths2004}'s method 
 was based on Gibbs sampling---a Markov chain Monte Carlo 
 method that helps to approximate the intractable posterior integral 
-as an empirical estimate of samples generated from a Markov chain.   
+as an empirical estimate of the samples generated from a Markov chain.   
 In Gibbs sampling, one forms the Markov chain by repeatedly sampling 
 each variable conditional on the most recently sampled values of the 
 other variables~\cite{Geman1984}. In this paper, we use the scalable 
 implementation of the online variational inference algorithm for LDA
-\cite{hoffman2010online} by~\cite{rehurek_lrec}, for inference from 
-the LDA model for a corpus. 
+\cite{hoffman2010online} by~\citeauthor{rehurek_lrec} 
+\citeyear{rehurek_lrec}. 
 
 
 Due to the fully generative semantics, even at the level of 
@@ -76,8 +75,8 @@ Semantic Analysis (LSA, \citeauthor{Dumais1995}
 model parameters such as the corpus-level latent topic distributions 
 and document-level latent topic distributions. The latent document 
 topic distributions are lower dimensional representations of 
-documents---compared to document term frequency vectors, in which 
-each element of the vector stands for a term in the corpus 
+documents---compared to the term frequency vectors of documents, in 
+which each element of the vector stands for a term in the corpus 
 vocabulary---and very useful for finding and grouping similar 
 documents in a corpus. Similarly, the latent topics in a corpus, 
 which are distributions over the vocabulary terms, are helpful in 
