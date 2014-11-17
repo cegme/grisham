@@ -1,27 +1,34 @@
 \section{\system}
 
-\ceg{STILL NEED TO REARRANGE PARAGRAPH AND REWORD}
-
-\cpg{Need a better introduction?}
-
-\system is a web-based system build on top of the PostgreSQL open 
+\eat{%
+{\system} is a web-based system build on top of the PostgreSQL open 
 source database system. Computation for visualization is performed
 using HTML, CSS and javascript. Calculations are performed using 
 in-database computation through AJAX calls and client side 
 javascript. In this section we discuss each part of \system. 
+}
+
+{\system} system was built to process large amounts of article,
+provide fast response to user queries and display descriptive
+results to the user.
+In this section we describe our preprocessing steps to extract
+topic models from the documents.
+We then discuss the User Model behind each user search, we then
+discuss our methods for topic-based search and exploration.
+
+
 
 \subsection{Data pre-processing and topic learning}
 
 Here we describe the main pre-processing steps we perform on a 
 collection of articles for topic modeling and search. First, 
 we tokenize raw texts of articles with the help of the python 
-Natural Language Toolkit 
-(NLTK)\footnote{\texttt{http://www.nltk.org/}} and a set of 
+Natural Language Toolkit (NLTK)~\footnote{\texttt{http://www.nltk.org/}} and a set of 
 predefined regular expressions. Second, we standardize tokens by 
 removing noise and stop-words. We use typical standardization 
 techniques for word tokens such as \textsl{stemming}---for this 
 project, we use the popular Porter stemming algorithm~\cite{Porter1980} 
-implementation in NLTK. Third, we represent each 
+implementation in NLTK\@. Third, we represent each 
 document in a sparse ``bag of words'' format, after building a 
 vocabulary of corpus words. Last, we use them as input to the topic 
 learning algorithm~\cite{hoffman2010online} which will in turn learn 
@@ -131,8 +138,7 @@ ranked documents given a set of estimated topics.
 
 Here, we use the estimated document specific topic distribution, 
 $\theta^*_{d}$, of an article from the LDA model, for visualizing 
-the hidden topical content of the article. For example, Figure
-\ref{fig:doc-topic-distribution} shows a visualization based on Pie
+the hidden topical content of the article. For example, Figure~\ref{fig:doc-topic-distribution} shows a visualization based on Pie
 Charts\footnote{\texttt{https://developers.google.com/chart}} for 
 the $\theta^*_{d}$ of the Wikipedia article \textit{Killer Whale}, 
 which is an article listed under the Wikipedia category          
