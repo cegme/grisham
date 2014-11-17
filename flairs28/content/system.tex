@@ -1,12 +1,5 @@
 \section{\system}
 
-\eat{%
-{\system} is a web-based system build on top of the PostgreSQL open 
-source database system. Computation for visualization is performed
-using HTML, CSS and javascript. Calculations are performed using 
-in-database computation through AJAX calls and client side 
-javascript. In this section we discuss each part of \system. 
-}
 
 {\system} system is built to process articles,
 provide fast response to user queries and display descriptive
@@ -83,13 +76,13 @@ for document $d$ from the LDA model.
 \subsection{Topic-Based Search}
 
 Another method of search is to identify the topics of 
-real interest, by looking at the most \textsl{informative terms} in 
-the estimated topics $\beta_j^{*}$ for the corpus, and then 
-determine relevant articles given the topic of interest. A trivial 
-approach to identify informative terms in a topic is to determine 
-the most probable words by sorting the vocabulary terms in that 
-topic in the order of their term probabilities, $\beta_{jt}^{*}$s. 
-In the literature, people have looked at several other methods for 
+real interest, observing the most \textsl{informative terms} in 
+the estimated topics. 
+To identify informative terms in a topic we can sort vocabulary 
+terms in the order of their term probabilities.
+That is, each vector $\beta_j^{*}$ in the topic matrix is sorted.
+  
+In literature, researchers have proposed several other methods for 
 finding informative terms~\cite{2012-termite} and evaluating topics 
 \cite{mimno2011optimizing}. In this paper, we use a visualization 
 scheme called \textsl{word cloud}~\cite{Davis2013}, to visualize the 
@@ -110,44 +103,41 @@ downloaded the articles for the corpus.}
 \end{figure*}
 
 We can exploit the estimated document specific topic distributions 
-$\theta_d^{*}$s of individual articles in a corpus, to rank them on 
+ of individual articles ($\theta_d^{*}$) in a corpus, to rank them on 
 relevance for given a topic. Let $t$ be the index for the topic of 
 interest. For each document $d = 1, 2, \ldots, D$ in the corpus, we 
 can calculate~\cite{George2012}
 \begin{equation}
 m(d) = \ln \theta^*_{dt} + \sum_{j \neq t}{\ln (1 - \theta^*_{dj})},
+\label{eq:topic-exploration}
 \end{equation} 
-where $j = 1, 2, \ldots, K$, and sort them to rank them on relevance. 
-Here, we assume that each $\theta^*_{dt}$ is normalized, i.e., 
-$\sum_{j=1}^{K}{\theta^*_{dj}} = 1$. Intuitively, we can see that 
-this equation will give a high value for a document, if the 
-probability of occurring the $t$th topic is high in that document. 
-This means a document with a higher value of this score is highly 
-relevant for the topic of interest $t$, and contains a considerable 
-amount of words from that topic $t$. In the next section, we will 
-see more about \system's visualization methods for the estimated 
-topics and ranked documents based on them.      
+where $j = 1, 2, \ldots, K$ and assume that each $\theta^*_{dt}$ is 
+normalized, i.e., $\sum_{j=1}^{K}{\theta^*_{dj}} = 1$. We then sort 
+the documents based on each $m(d)$ to rank them on relevance. 
+Intuitively, we can see that Equation~\ref{eq:topic-exploration} 
+will give a high value for a document, if the document is 
+thematically related to the $t$th topic. 
 
+\subsection{Topic-Based Exploration}
 
-\noindent\textbf{Topic-Based Exploration}
-
-Here, we use the estimated document specific topic distribution, 
-$\theta^*_{d}$, of an article from the LDA model, for visualizing 
-the hidden topical content of the article. For example, Figure~\ref{fig:doc-topic-distribution} shows a Pie 
+If a user find an interesting document and she would like to
+find other similar documents she may use the topic-based method of exploration.
+To visualize the hidden topical content of the article we use the 
+estimated document topic distribution, $\theta^*_{d}$.
+For example, Figure~\ref{fig:doc-topic-distribution} shows a Pie 
 Chart\footnote{\texttt{https://developers.google.com/chart}} 
-visualization for 
-the $\theta^*_{d}$ of the Wikipedia article \textit{Killer Whale}.
+visualization for the Wikipedia article \textit{Killer Whale}.
 It is an article listed under the Wikipedia category          
 \textit{Killer Whales}. Different slices of the pie chart represent
-different topics in the article \textit{Killer Whale} and the size 
-of a slice represents the probability of a topic given that article. 
-For this illustration, we manually labeled all the topic 
+different topics in the article \textit{Killer Whale}. The size 
+of a slice represents the probability of a topic given the article. 
+For this illustration, we labeled all the topic 
 distributions obtained via the LDA posterior inference, on a 
 corpus that is built using a subset of Wikipedia articles under the 
 category \textit{Whales}. We used the topic word clouds 
 and the Wikipedia subcategories under the category \textit{Whales} 
 for labeling. Once we find an interesting topic to pursue, we can 
-explore all the relevant documents under that topic based on the 
+explore all the relevant documents under that topic using the 
 method described in the previous section. 
 
 \begin{figure}[htb]\centering 
@@ -163,20 +153,19 @@ Each section or paragraph is written with careful attention is every
 peer review article or paper. While looking at an article or paper,  
 one can easily identify which section or paragraph is of one's real 
 interest. This intuition can be used to improve topic based 
-exploration. We used the learned LDA model for a corpus for 
-estimating section or paragraph's topic distribution with the help 
-of the Gensim LDA implementation \cite{rehurek_lrec}. This is an 
+exploration. We used the learned LDA model to 
+estimate a section or paragraph's topic distribution using the
+Gensim LDA implementation~\cite{rehurek_lrec}. This is an 
 online task and is performed when a user selects a section or 
 paragraph of an article, which is described in detail in the \system 
-Demonstration section.  
+User Interface section.
 
 
 Another interesting option to explore is how we can use an article's 
 topic distribution for searching similar articles of interest. 
 Recall that LDA enables us to transform documents in a corpus into 
-vectors, e.g., $\theta^*_{d}$s, in a lower dimensional topic space 
+vectors ($\theta^*_{d}$) in a lower dimensional topic space 
 of that corpus. One can then define similarity between two documents 
 via any typical vector space similarities, e.g., cosine similarity. 
-In \system we call this as article \textsl{lineage search}.         
+%In \system we call this as article \textsl{lineage search}.         
 
-\cpg{Christan: We need to add more about lineage search?}
