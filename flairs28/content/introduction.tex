@@ -3,12 +3,10 @@
 In a variety of situations, from literature surveys to legal 
 document collections, people try to organize and explore large 
 amounts of documents. Current technology to search on documents are 
-done based on keywords with minor extensions. Sometimes in order to 
-enable keyword search, external effort---\cpg{What are they?}--- has to be put in to tag the 
-documents with relevant keywords. Keyword-based search is useful when the 
+done based on keywords with minor extensions. Keyword-based search is useful when the 
 user knows exactly what he or she is looking for. It is not 
 particularly useful when a user wants to explore or learn a new 
-topic. This is especially important when for example, a researcher 
+topic. This is especially important when, for example, a researcher 
 wants to find out the state of the art in a particular area or a 
 student would like to create a literature survey. In such situations, 
 \textsl{topic-based search} can return more relevant results. 
@@ -20,23 +18,42 @@ based on relevance to a particular topic.
 
 In our system called 
 \system we present various techniques for topic-based exploration 
-and search of peer reviewed scientific papers. Our work allows user 
-to search for scientific papers using three methods: First, users 
-may perform a traditional search \textsl{keyword-based search} for 
-papers. Second, users can specify a topic or topics he or she is 
-interested in and the most relevant papers for that topic will be 
-listed in the order of their relevance by our system. Lastly, users 
-are allowed to explore similar or related documents using a visual 
-graph like interface, i.e., given a paper or an article, a user will 
-be shown a set of papers which cite the original paper in the order 
-of their relevance to the topic. In addition, we allow the user to 
-specify a topic distribution that specifies their interest. In all 
+and search of articles. Our work allows user 
+to search for documents using three methods: 
+First, users may perform a traditional search \textsl{keyword-based search} for 
+papers. The results are re-ranked based on the user specified model. 
+Second, user may perform a \textsl{topic-based search} where the user specifies 
+a topic she is interested in and documents will be returned ordered 
+by their relevancy to the topic.
+Lastly, users 
+may explore topically similar documents using a visual 
+graph like interface. In all 
 three methods, we adapt search results to personalize results.
 
-The main contributions of our work are the \textit{user-topic ranking function} 
+\eat{The main contributions of our work are the \textit{user-topic ranking function} 
 which ranks the relevance of documents to a set of topics---\cpg{I 
 think we need to edit this; a similar ranking function is there in 
 \citeauthor{George2012}~\citeyear{George2012}}, the 
 \textit{similar document explorations} which is performed by computing the 
 similarity of papers to a topic of interest, and \textit{topic-document visualization} which 
 ranks citations for a paper by the interest of the user.
+}
+
+This work is an implementation of a system that uses a novel search and 
+exploration paradigm. The main contributions of this work are as follows:
+\begin{itemize}
+\item A search based on user-defined preferences. A user can
+interactively define a topic-based model for their search preferences.
+\item An implementation of ranking functions for topic-based search.
+\item A novel interaction model for topic-based exploration.
+\end{itemize}
+
+This paper is organized as follows. First, we give an introduction 
+to topic models. Next, we describe the theoretical structure of \system.
+We then describe the user interface and the user interaction model.
+Finally, we conclude this paper with a discussion of related work.
+
+
+
+
+
