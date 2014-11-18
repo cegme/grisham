@@ -15,7 +15,7 @@ makes any search.
 
 Initially, all the extracted topics from the corpus are shown along with their topic words.
 This list is color coded to distinguish the relevance of topics as indicated by the user model --- much like a heat map.
-The list is clickable and one a topic is clicked, relevant papers to that topic ranked based on the user model and displayed.
+The list is clickable and once a topic is clicked, relevant papers to that topic ranked based on the user model are displayed.
 The user can look at this heat map to adjust their topic preferences.
 We use equation~\ref{eq:KL} on the client side to calculate this preference. 
 In the graph explorer the citations for the current paper is ranked
@@ -88,12 +88,12 @@ decide whether we should keep this figure in the paper or not.}}
 }
 
 \paragraph{Graph Explore}
-One of the most interesting visualizations in the project is the graph explore which allows a user to conceptually drill down a graph of a paper and its citations in a recursive sequence.
+One of the most interesting visulizations in the project is the graph explore which allows a user to conceptually drill down a graph of a paper and its citations in a recursive sequence.
 This is a common method of literature exploration; a user takes up a base paper and then reads up all the papers which have been cited in that base paper.
 These steps are recursively performed for each subsequent paper until the user has found a sufficient amount of papers or they read all the papers in their collection.
 %Though effective, this technique tell the user which ones he should pursue and which ones he should now.
 
-The graph explore functionality allows a user to perform this in a more visually appealing.
-Once a user decides on a base paper (through keyboard search), the system shows a graph representation of its citations which are ranked based on her profile (user model).
+The graph explore functionality allows a user to perform this in a more visually appealing manner.
+Once a user decides on a base paper (through keyword search), the system shows a graph representation of its citations which are ranked based on her profile (user model).
 This will help her pursue the most relevant papers first.
 Clicking on any secondary paper will expand the graph further and list secondary citations ranked based on a user model.

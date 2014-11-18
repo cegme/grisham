@@ -6,7 +6,7 @@ search and exploration.
 %We are the first to our knowledge to incorporate
 %a user modeling into the loop.
 
-A system of note is Yang et al.~\cite{yang2011topic} whom apply topic modeling to 
+A system of note is Yang et al.~\cite{yang2011topic} who applied topic modeling to 
 collections of historical news papers to assist search. They 
 found that the topics generated from topic models are 
 are generally good, however once the sets of topics are 
@@ -19,11 +19,17 @@ based on topically relevant words.
 
 Termite~\cite{2012-termite} provides a visual analytic tool for assessing topic quality that allows for comparison of terms within and across latent topics. They introduce a saliency measure that enables the selection of relevant terms. For a particular topic, the system provides the word frequency distribution relative to the full corpus and shows the most representative terms according to the saliency measure.
 
-A lot of previous work~\cite{chang2009reading,mimno2011optimizing,newman2010evaluating} depended heavily on experts examining lists of the most probable words in the topic and validating the models. Hall et al.~\cite{hall2008studying} applied unsupervised topic modeling to study historical trends in computational linguistics across 14,000 publications. The work required experts  to validate the quality of the results. Only 36 out of 100 topics were retained, and there were 10 additional topics that were not produces by the model and had to be manually inserted.
+A number of previous work~\cite{chang2009reading,mimno2011optimizing,newman2010evaluating} depended heavily on experts examining lists of the most probable words in the topic and validating the models. Hall et al.~\cite{hall2008studying} applied unsupervised topic modeling to study historical trends in computational linguistics across 14,000 publications. The work required experts  to validate the quality of the results. Only 36 out of 100 topics were retained, and there were 10 additional topics that were not produced by the model and had to be manually inserted.
 
 Leake et al~\cite{leake2003topic} provide methods to aid concept mapping by suggesting relevant information in the context of topics models, represented as concept maps. 
 
-For visualizing the results, previous work~\cite{2012-termite,bertin1983semiology,henry2007matlink} matrix views to surface the relation ships between a large number of terms. However, it requires an appropriate ordering. Interacting with such visualizations can be complex because the user should already have some idea about the results in advance to be able to generate such orderings.
+For visualizing the results, previous work~\cite{2012-termite,bertin1983semiology,henry2007matlink} use
+ a matrix style view to surface the relationships between many terms. 
+%However, it requires an appropriate ordering.
+These models are created for evaluation topic models.
+Interacting with such visualizations can be complex because the user should
+already have an intuition about the results in advance in order to properly generate necessary
+orderings.
 
 
 
