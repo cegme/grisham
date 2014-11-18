@@ -2,32 +2,17 @@
 \section{User Interface}
 \label{sec:demo}
 
-\ceg{Note this section will be spread out into the other sections.}
 
-To demonstrate \system's exploratory search we loaded scientific paper from the DBLP conference~\cite{Tang:2008:EMA:1367497.1367722}.
-All the searches in the system require the keep in account the user model.
-The user model is a profile of preference provided by the user before she makes any search.
-This is done by specifying weightage to various topics.
-The {\system} website has a list of topics with a slider associated with each of them using which a user can specify the degree of interest in that particular topic.
-This array of user preference is used as the ranking factor in all the results.
-The website has three basic functionality which has been classified under three different tabs of the same name.
-They are keyword paper search, Topic explore, and Graph explore. 
+To demonstrate \system's exploratory search we loaded scientific 
+papers from the DBLP conference~\cite{Tang:2008:EMA:1367497.1367722} 
+and Wikipedia articles using MediaWiki API~\footnote{\texttt{https://www.mediawiki.org}}.
+The {\system} website has a list of topics with a slider associated 
+with each of them using which a user can specify the degree of 
+interest in that particular topic. The weightage specified by each 
+slider corresponds to the components of the user model. The user 
+model is a profile of preference provided by the user before she 
+makes any search.
 
-\paragraph{Keyword Paper Explore}
-This is a universal search facility.
-The user may enter one or more keywords representing topics, or author names etc.
-The keywords are searched in the title, abstract, and the author names of all the papers are listed.
-The listing is ranked based on the user model.
-In the first page only a few of the papers are displayed in two boxes --- one containing matching words in the title, and the other in the abstract.
-Clicking on any box will open up a more complete list of papers.
-
-\begin{figure}[htb]
-\includegraphics[width=.5\textwidth]{images/topic_exploration.png} % scale=.25,trim=0 0 300 0
-\caption{User configured topic exploration}
-\label{fig:topic_exploration}
-\end{figure}
-
-\paragraph{Topic Explore} The second tab on the website is for topic exploration and it allows a user to click on a specific topic to know more about the papers associated with the topic.
 Initially, all the extracted topics from the corpus are shown along with their topic words.
 This list is color coded to distinguish the relevance of topics as indicated by the user model --- much like a heat map.
 The list is clickable and one a topic is clicked, relevant papers to that topic ranked based on the user model and displayed.
@@ -36,7 +21,39 @@ We use equation~\ref{eq:KL} on the client side to calculate this preference.
 In the graph explorer the citations for the current paper is ranked
 using equation~\ref{eq:KL}. The citations of that paper that are most
 similar to the user model are ranked the highest.
-A screenshot is shown in Figure~\ref{fig:topic_exploration}.
+%A screenshot is shown in Figure~\ref{fig:topic_exploration}.
+
+
+%\paragraph{Keyword Paper Explore}
+In Figure~\ref{fig:topic_exploration}, the \textsl{Keyword Paper 
+Search} contains the interface for user model weighted keyword search.
+The user may enter one or more keywords representing topics, or 
+author names etc. The keywords are searched in the title, abstract, 
+and the author names of all the articles are listed. The results are  
+re-weighted using the user model. 
+\eat{
+In the first page only a few of 
+the papers are displayed in two boxes --- one containing matching words in the title, and the other in the abstract.
+Clicking on any box will open up a more complete list of papers.}
+
+\begin{figure}[htb]\centering
+\includegraphics[width=.45\textwidth]{images/topic_exploration.png} % scale=.25,trim=0 0 300 0
+\caption{The interface for examining the effect of changes to the user model on the topics.}
+\label{fig:topic_exploration}
+\end{figure}
+
+For topic exploration \system allows a user to click on a specific 
+topic to see the informative words for that topic in a word cloud 
+(Figure~\ref{fig:topic-word-cloud}). By selecting a topic the user 
+can explore more about the papers associated with the topic using 
+Force-Directed Graph~\cite{2011-d3} (Figure~\ref{fig:topic-search-viz}).
+A user can navigate to a particular document by clicking a node in 
+the graph. 
+
+On the document visualization page we show a doughnut chart with the topic distribution as well as a preview of the document contents.
+Clicking on the topics in the doughnut chart will take the user to the topic word cloud page.
+Selecting a section or paragraph changes the doughnut chart to reflect the topic distribution specific to that selection.
+The document visualization page for \textit{Killer whale} is displayed in Figure~\ref{fig:doc-para-viz}.
 
 
 
@@ -45,8 +62,10 @@ A screenshot is shown in Figure~\ref{fig:topic_exploration}.
 \begin{figure}[htb]\centering 
 \includegraphics[width=.5\textwidth]{images/topical_docs.png}
 \caption{Visualizing of Topic-Based Search in \system, orange 
-circles represent documents and blue circles represent the estimated 
-topics in a corpus.}
+nodes represent documents and blue nodes represent the estimated 
+topics in a corpus. For this illustration we only show four topics 
+(light blue nodes). Topic names appear when the user hovers over a 
+node.}
 \label{fig:topic-search-viz}
 \end{figure}
 
@@ -55,9 +74,10 @@ topics in a corpus.}
 \caption{Visualizing the topic distribution of the introduction 
 section of the Wikipedia article \textit{Killer Whale}. See Figure~\ref{fig:doc-topic-distribution} for the topic distribution of 
 the whole article.}
-\label{fig:doc-word-counts}
+\label{fig:doc-para-viz}
 \end{figure*}
 
+\eat{
 \begin{figure}[htb]\centering 
 \includegraphics[width=.5\textwidth]{images/doc_tf_bubble_chart.png}
 \caption{Visualizing the relative frequencies of terms in the 
@@ -65,6 +85,7 @@ Wikipedia article \textit{Killer Whale}. \cpg{I think we need to
 decide whether we should keep this figure in the paper or not.}}
 \label{fig:doc-word-counts}
 \end{figure}
+}
 
 \paragraph{Graph Explore}
 One of the most interesting visualizations in the project is the graph explore which allows a user to conceptually drill down a graph of a paper and its citations in a recursive sequence.
@@ -75,4 +96,4 @@ These steps are recursively performed for each subsequent paper until the user h
 The graph explore functionality allows a user to perform this in a more visually appealing.
 Once a user decides on a base paper (through keyboard search), the system shows a graph representation of its citations which are ranked based on her profile (user model).
 This will help her pursue the most relevant papers first.
-Clicking on any secondary paper will open up the graph further and list it's citations ranked taking into account the user model.
+Clicking on any secondary paper will expand the graph further and list secondary citations ranked based on a user model.
