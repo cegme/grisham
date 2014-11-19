@@ -5,7 +5,7 @@
 
 To demonstrate \system's exploratory search we loaded scientific 
 papers from the DBLP conference~\cite{Tang:2008:EMA:1367497.1367722} 
-and Wikipedia articles downloaded using the MediaWiki API~\footnote{\texttt{https://www.mediawiki.org}}.
+and also Wikipedia articles downloaded using the MediaWiki API~\footnote{\texttt{https://www.mediawiki.org}}.
 The {\system} website has a list of topics with a slider associated 
 with each of them using which a user can specify the degree of 
 interest in that particular topic. The weightage specified by each 
@@ -14,11 +14,11 @@ model is a profile of preference provided by the user before she
 makes any search.
 
 Initially, all the extracted topics from the corpus are shown along 
-with their topic words (see Figure~\ref{fig:topic_exploration}).
+with their most informative words (see Figure~\ref{fig:topic_exploration}).
 This list is color coded to distinguish the relevance of topics as indicated by the user model --- much like a heat map.
 The list is clickable and once a topic is clicked, relevant papers to that topic ranked based on the user model are displayed.
 The user can look at this heat map to adjust their topic preferences.
-We use Equation~\ref{eq:KL} on the client side to calculate this preference. 
+We use Equation~\ref{eq:KL} to calculate this preference on the \system browser. 
 In the \textsl{Graph Explorer} interface the citations for the current paper is ranked
 using Equation~\ref{eq:KL}. The citations of that paper that are most
 similar to the user model are ranked the highest.
@@ -100,4 +100,4 @@ The graph explore functionality allows a user to perform this in a more visually
 Once a user decides on a base paper (through any search scheme), the system shows a graph representation of its citations which are ranked based on her profile (\textsl{user model}).
 This will help her pursue the most relevant papers first.
 Clicking on any secondary paper will expand the graph further and 
-list secondary citations ranked based on a \textsl{user model}.
+list secondary citations ranked based on the \textsl{user model}.

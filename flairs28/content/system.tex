@@ -8,7 +8,7 @@ In this section we describe our pre-processing steps to extract
 topic models from the documents.
 We then discuss the \textsl{user model} behind each user search and 
 \textsl{user model} re-weighted keyword search.
-Finally we discuss our methods for topic-based search and exploration.
+Finally, we discuss our methods for topic-based search and exploration.
 
 
 
@@ -62,7 +62,7 @@ for more desirable results.
 \subsection{User Model Reweighted Keyword Search}
 The user model is used to provide better feedback to
 the user. After a \textsl{keyword-based filter}, the document results of the search 
-are re-ranked by calculating the KL-divergence of each document and the
+are re-ranked using the KL-divergence of each document and the
 user model. Formally, given the set of result documents $\cal D$:
 
 \begin{equation} \label{eq:KL}
