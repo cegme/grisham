@@ -4,9 +4,10 @@
 {\system} system is built to process articles,
 provide fast response to user queries and display descriptive
 results in a user interface.
-In this section we describe our preprocessing steps to extract
+In this section we describe our pre-processing steps to extract
 topic models from the documents.
-We then discuss the User Model behind each user search.
+We then discuss the \textsl{user model} behind each user search and 
+\textsl{user model} re-weighted keyword search.
 Finally we discuss our methods for topic-based search and exploration.
 
 
@@ -87,7 +88,7 @@ finding informative terms~\cite{2012-termite} and evaluating topics
 \cite{mimno2011optimizing}. In this paper, we use a visualization 
 scheme called \textsl{word cloud}~\cite{Davis2013}, to visualize the 
 most probable words in a topic. For example, see Figure 
-\ref{fig:topic-word-cloud} for the visualizing of a topic that is 
+\ref{fig:topic-word-cloud} for the visualization of a topic that is 
 extracted from a corpus, which is built from a subset of Wikipedia 
 articles under the category \textsl{Whales}. 
        
@@ -111,7 +112,7 @@ can calculate~\cite{George2012}
 m(d) = \ln \theta^*_{dt} + \sum_{j \neq t}{\ln (1 - \theta^*_{dj})},
 \label{eq:topic-exploration}
 \end{equation} 
-where $j = 1, 2, \ldots, K$ and assume that each $\theta^*_{dt}$ is 
+where $j = 1, 2, \ldots, K$ and each $\theta^*_{dt}$ is 
 normalized, i.e., $\sum_{j=1}^{K}{\theta^*_{dj}} = 1$. We then sort 
 the documents based on each $m(d)$ to rank them on relevance. 
 Intuitively, we can see that Equation~\ref{eq:topic-exploration} 
@@ -149,7 +150,7 @@ for the Wikipedia article \textit{Killer Whale}.}
 
 Another way to visualize a document is to look at its 
 \textsl{paragraph} or \textsl{section} specific topic distributions. 
-Each section or paragraph is written with careful attention is every 
+Each section or paragraph is written with careful attention in every 
 peer review article or paper. While looking at an article or paper,  
 one can easily identify which section or paragraph is of one's real 
 interest. This intuition can be used to improve topic based 

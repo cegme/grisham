@@ -5,7 +5,7 @@
 
 To demonstrate \system's exploratory search we loaded scientific 
 papers from the DBLP conference~\cite{Tang:2008:EMA:1367497.1367722} 
-and Wikipedia articles using MediaWiki API~\footnote{\texttt{https://www.mediawiki.org}}.
+and Wikipedia articles downloaded using the MediaWiki API~\footnote{\texttt{https://www.mediawiki.org}}.
 The {\system} website has a list of topics with a slider associated 
 with each of them using which a user can specify the degree of 
 interest in that particular topic. The weightage specified by each 
@@ -13,13 +13,14 @@ slider corresponds to the components of the user model. The user
 model is a profile of preference provided by the user before she 
 makes any search.
 
-Initially, all the extracted topics from the corpus are shown along with their topic words.
+Initially, all the extracted topics from the corpus are shown along 
+with their topic words (see Figure~\ref{fig:topic_exploration}).
 This list is color coded to distinguish the relevance of topics as indicated by the user model --- much like a heat map.
 The list is clickable and once a topic is clicked, relevant papers to that topic ranked based on the user model are displayed.
 The user can look at this heat map to adjust their topic preferences.
-We use equation~\ref{eq:KL} on the client side to calculate this preference. 
-In the graph explorer the citations for the current paper is ranked
-using equation~\ref{eq:KL}. The citations of that paper that are most
+We use Equation~\ref{eq:KL} on the client side to calculate this preference. 
+In the \textsl{Graph Explorer} interface the citations for the current paper is ranked
+using Equation~\ref{eq:KL}. The citations of that paper that are most
 similar to the user model are ranked the highest.
 %A screenshot is shown in Figure~\ref{fig:topic_exploration}.
 
@@ -47,8 +48,8 @@ topic to see the informative words for that topic in a word cloud
 (Figure~\ref{fig:topic-word-cloud}). By selecting a topic the user 
 can explore more about the papers associated with the topic using 
 Force-Directed Graph~\cite{2011-d3} (Figure~\ref{fig:topic-search-viz}).
-A user can navigate to a particular document by clicking a node in 
-the graph. 
+A user can navigate to a particular document by clicking a document 
+node (orange) in the graph. 
 
 On the document visualization page we show a doughnut chart with the topic distribution as well as a preview of the document contents.
 Clicking on the topics in the doughnut chart will take the user to the topic word cloud page.
@@ -61,7 +62,7 @@ The document visualization page for \textit{Killer whale} is displayed in Figure
 
 \begin{figure}[htb]\centering 
 \includegraphics[width=.5\textwidth]{images/topical_docs.png}
-\caption{Visualizing of Topic-Based Search in \system, orange 
+\caption{Visualizing \textsl{topic-based search} in \system, orange 
 nodes represent documents and blue nodes represent the estimated 
 topics in a corpus. For this illustration we only show four topics 
 (light blue nodes). Topic names appear when the user hovers over a 
@@ -87,13 +88,16 @@ decide whether we should keep this figure in the paper or not.}}
 \end{figure}
 }
 
-\paragraph{Graph Explore}
-One of the most interesting visulizations in the project is the graph explore which allows a user to conceptually drill down a graph of a paper and its citations in a recursive sequence.
+% \paragraph{Graph Explore}
+One of the most interesting visualizations in the project is the 
+\textsl{Graph Explore} interface which allows a user to conceptually 
+drill down a graph of a paper and its citations in a recursive sequence.
 This is a common method of literature exploration; a user takes up a base paper and then reads up all the papers which have been cited in that base paper.
 These steps are recursively performed for each subsequent paper until the user has found a sufficient amount of papers or they read all the papers in their collection.
 %Though effective, this technique tell the user which ones he should pursue and which ones he should now.
 
 The graph explore functionality allows a user to perform this in a more visually appealing manner.
-Once a user decides on a base paper (through keyword search), the system shows a graph representation of its citations which are ranked based on her profile (user model).
+Once a user decides on a base paper (through any search scheme), the system shows a graph representation of its citations which are ranked based on her profile (\textsl{user model}).
 This will help her pursue the most relevant papers first.
-Clicking on any secondary paper will expand the graph further and list secondary citations ranked based on a user model.
+Clicking on any secondary paper will expand the graph further and 
+list secondary citations ranked based on a \textsl{user model}.
