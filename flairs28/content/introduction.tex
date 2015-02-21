@@ -7,28 +7,26 @@ done based on keywords with minor extensions. Keyword-based search is useful whe
 user knows exactly what he or she is looking for. It is not 
 particularly useful when a user wants to explore or learn a new 
 topic. 
-The difficulty with keyword based search is especially pronounced when, for
+The difficulty with keyword-based search is especially pronounced when, for
 example, a researcher wants to find out the state of the art in a particular
 area or a student would like to create a literature survey. In such situations,
 \textsl{topic-based search} can return more relevant results. 
 Topic-based search is a classification of the search space to 
 highlight topical relevance. In order to accomplish this, the topics 
-underlying the document collection need to be extracted, and then 
-they have to be represented in terms of those topics and ranked 
+underly documents across collections need to be extracted, and then 
+the documents have to be represented in terms of those topics and ranked 
 based on relevance to a particular topic. 
 
 In our system called \system we present various techniques for topic-based exploration 
-and search of articles. Our work allows user 
-to search for documents using three methods: 
+and search of articles. Our work allows users 
+to search for documents using three paradigms. 
 First, users may perform a traditional keyword-based search for papers.
 The results are re-ranked based on a topic distribution specified by the user. 
 Second, user may perform a \textsl{topic-based search} where the user specifies 
-a topic she is interested in and documents will be returned ordered 
-by their relevancy to the topic.
-Lastly, users 
-may explore topically similar documents using a visual 
-graph like interface. In all 
-three methods, we adapt search results to personalize results.
+a topic she is interested in and documents will be returned ordered by their relevancy to the topic.
+Lastly, users may explore topically similar documents using a visual 
+graph like interface.
+%In all three methods paradigms, we adapt search results to personalize results.
 
 \eat{The main contributions of our work are the \textit{user-topic ranking function} 
 which ranks the relevance of documents to a set of topics---\cpg{I 
@@ -39,19 +37,20 @@ similarity of papers to a topic of interest, and \textit{topic-document visualiz
 ranks citations for a paper by the interest of the user.
 }
 
-This work is an implementation of a system that uses a novel search and 
-exploration paradigm. The main contributions of this work are as follows:
+This paper discussed the implementation of three search and exploration paradigm that are a developed inside of \system.
+The main contributions of this work are as follows:
 \begin{itemize}
-\item A search based on user-defined preferences. A user can
-interactively define a topic-based model for their search preferences.
+\item A search based on user-defined preferences.
+A user can interactively define a topic-based model for their search preferences.
 \item An implementation of ranking functions for topic-based search.
 \item A novel interaction model for topic-based exploration.
 \end{itemize}
 
-This paper is organized as follows. First, we give an introduction 
-to topic models. Next, we describe the theoretical structure of \system.
-We then describe the user interface and the user interaction model.
-Finally, we conclude this paper with a discussion of related work.
+This paper is organized as follows.
+In Section~\ref{sec:topicmodels}, we give an introduction to topic models.
+In Section~\ref{sec:system}, we describe the theoretical structure of \system.
+In Section~\ref{sec:demo}, we describe the user interface and the user interaction model.
+Finally, we conclude this paper with a discussion of related work in Sections~\ref{sec:discussion} and~\ref{sec:summary}.
 
 
 
