@@ -1,0 +1,180 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Bertin}{1983}]{bertin1983semiology}
+Bertin, J.
+\newblock 1983.
+\newblock {\em Semiology of Graphics}.
+\newblock University of Wisconsin Press.
+
+\bibitem[\protect\citeauthoryear{Blei, Ng, and Jordan}{2003}]{Blei2003}
+Blei, D.~M.; Ng, A.~Y.; and Jordan, M.~I.
+\newblock 2003.
+\newblock Latent dirichlet allocation.
+\newblock {\em Journal of Machine Learning Research} 3:993--1022.
+
+\bibitem[\protect\citeauthoryear{Bostock, Ogievetsky, and Heer}{2011}]{2011-d3}
+Bostock, M.; Ogievetsky, V.; and Heer, J.
+\newblock 2011.
+\newblock D3: Data-driven documents.
+\newblock {\em IEEE Trans. Visualization \& Comp. Graphics (Proc. InfoVis)}.
+
+\bibitem[\protect\citeauthoryear{Chang \bgroup et al\mbox.\egroup
+  }{2009}]{chang2009reading}
+Chang, J.; Gerrish, S.; Wang, C.; Boyd-graber, J.~L.; and Blei, D.~M.
+\newblock 2009.
+\newblock Reading tea leaves: How humans interpret topic models.
+\newblock In {\em Advances in NIPS},  288--296.
+
+\bibitem[\protect\citeauthoryear{Chuang, Manning, and
+  Heer}{2012}]{2012-termite}
+Chuang, J.; Manning, C.~D.; and Heer, J.
+\newblock 2012.
+\newblock Termite: Visualization techniques for assessing textual topic models.
+\newblock In {\em Advanced Visual Interfaces}.
+
+\bibitem[\protect\citeauthoryear{Davis}{2013}]{Davis2013}
+Davis, J.
+\newblock 2013.
+\newblock D3: Word cloud.
+\newblock online.
+
+\bibitem[\protect\citeauthoryear{{Dou, Zhicheng and Song, Ruihua and Wen,
+  Ji-Rong}}{2007}]{DZSRWJ}
+{Dou, Zhicheng and Song, Ruihua and Wen, Ji-Rong}.
+\newblock 2007.
+\newblock {A large-scale Evaluation and Analysis of Personalized Search
+  Strategies}.
+\newblock In {\em Proc of the 16th international conference on WWW}, WWW '07,
+  581--590.
+
+\bibitem[\protect\citeauthoryear{Dumais \bgroup et al\mbox.\egroup
+  }{1995}]{Dumais1995}
+Dumais, S.; Furnas, G.; Landauer, T.; Deerwester, S.; Deerwester, S.; et~al.
+\newblock 1995.
+\newblock Latent semantic indexing.
+\newblock In {\em Proc of the Text Retrieval Conference}.
+
+\bibitem[\protect\citeauthoryear{Geman and Geman}{1984}]{Geman1984}
+Geman, S., and Geman, D.
+\newblock 1984.
+\newblock Stochastic relaxation, {G}ibbs distributions, and the {B}ayesian
+  restoration of images.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence}
+  6:721--741.
+
+\bibitem[\protect\citeauthoryear{George \bgroup et al\mbox.\egroup
+  }{2012}]{George2012}
+George, C.; Wang, D.; Wilson, J.; Epstein, L.; Garland, P.; and Suh, A.
+\newblock 2012.
+\newblock A machine learning based topic exploration and categorization on
+  surveys.
+\newblock In {\em Machine Learning and Applications (ICMLA)}, volume~2,  7--12.
+
+\bibitem[\protect\citeauthoryear{Griffiths and Steyvers}{2004}]{Griffiths2004}
+Griffiths, T.~L., and Steyvers, M.
+\newblock 2004.
+\newblock Finding scientific topics.
+\newblock {\em Proc of the National Academy of Sciences} 101:5228--5235.
+
+\bibitem[\protect\citeauthoryear{Hall, Jurafsky, and
+  Manning}{2008}]{hall2008studying}
+Hall, D.; Jurafsky, D.; and Manning, C.~D.
+\newblock 2008.
+\newblock Studying the history of ideas using topic models.
+\newblock In {\em Proc of the conference on empirical methods in NLP},
+  363--371.
+\newblock ACL.
+
+\bibitem[\protect\citeauthoryear{Henry and Fekete}{2007}]{henry2007matlink}
+Henry, N., and Fekete, J.-D.
+\newblock 2007.
+\newblock Matlink: Enhanced matrix visualization for analyzing social networks.
+\newblock In {\em HCI--INTERACT 2007}. Springer.
+\newblock  288--302.
+
+\bibitem[\protect\citeauthoryear{Hoffman, Blei, and
+  Bach}{2010}]{hoffman2010online}
+Hoffman, M.; Blei, D.~M.; and Bach, F.
+\newblock 2010.
+\newblock Online learning for latent dirichlet allocation.
+\newblock In {\em NIPS}.
+
+\bibitem[\protect\citeauthoryear{Leake, Maguitman, and
+  Reichherzer}{2003}]{leake2003topic}
+Leake, D.~B.; Maguitman, A.~G.; and Reichherzer, T.
+\newblock 2003.
+\newblock Topic extraction and extension to support concept mapping.
+\newblock In {\em FLAIRS Conference},  325--329.
+
+\bibitem[\protect\citeauthoryear{{Ma, Zhongming and Pant, Gautam and Sheng,
+  Olivia R. Liu}}{2007}]{MZPGSOL}
+{Ma, Zhongming and Pant, Gautam and Sheng, Olivia R. Liu}.
+\newblock 2007.
+\newblock {Interest-based Personalized Search}.
+\newblock {\em ACM Trans. Inf. Syst.} 25(1).
+
+\bibitem[\protect\citeauthoryear{Mimno \bgroup et al\mbox.\egroup
+  }{2011}]{mimno2011optimizing}
+Mimno, D.; Wallach, H.~M.; Talley, E.; Leenders, M.; and McCallum, A.
+\newblock 2011.
+\newblock Optimizing semantic coherence in topic models.
+\newblock In {\em Proc of the Conference on Empirical Methods in NLP}, EMNLP
+  '11,  262--272.
+\newblock PA, USA: ACL.
+
+\bibitem[\protect\citeauthoryear{Newman \bgroup et al\mbox.\egroup
+  }{2010}]{newman2010evaluating}
+Newman, D.; Noh, Y.; Talley, E.; Karimi, S.; and Baldwin, T.
+\newblock 2010.
+\newblock Evaluating topic models for digital libraries.
+\newblock In {\em Proc of the 10th annual joint conference on Digital
+  libraries},  215--224.
+\newblock ACM.
+
+\bibitem[\protect\citeauthoryear{Porter}{1980}]{Porter1980}
+Porter, M.
+\newblock 1980.
+\newblock An algorithm for suffix stripping.
+\newblock {\em Program: electronic library and information systems}
+  14(3):130--137.
+
+\bibitem[\protect\citeauthoryear{{\v R}eh{\r u}{\v r}ek and
+  Sojka}{2010}]{rehurek_lrec}
+{\v R}eh{\r u}{\v r}ek, R., and Sojka, P.
+\newblock 2010.
+\newblock {Software Framework for Topic Modelling with Large Corpora}.
+\newblock In {\em Proc of the LREC 2010 Workshop on New Challenges for NLP
+  Frameworks},  45--50.
+\newblock Valletta, Malta: ELRA.
+
+\bibitem[\protect\citeauthoryear{Salton, Wong, and Yang}{1975}]{Salton1975}
+Salton, G.; Wong, A.; and Yang, C.~S.
+\newblock 1975.
+\newblock A vector space model for automatic indexing.
+\newblock {\em Commun. ACM} 18(11):613--620.
+
+\bibitem[\protect\citeauthoryear{Tang \bgroup et al\mbox.\egroup
+  }{2008}]{Tang:2008:EMA:1367497.1367722}
+Tang, J.; Zhang, J.; Yao, L.; and Li, J.
+\newblock 2008.
+\newblock Extraction and mining of an academic social network.
+\newblock In {\em Proc of the 17th international conference on WWW}, WWW '08,
+  1193--1194.
+
+\bibitem[\protect\citeauthoryear{Wu \bgroup et al\mbox.\egroup
+  }{2014}]{wu2014citeseerx}
+Wu, J.; Williams, K.; Chen, H.-H.; Khabsa, M.; Caragea, C.; Ororbia, A.;
+  Jordan, D.; and Giles, C.~L.
+\newblock 2014.
+\newblock Citeseerx: Ai in a digital library search engine.
+\newblock In {\em The Twenty-Sixth Annual Conference on Innovative Applications
+  of Artificial Intelligence}.
+
+\bibitem[\protect\citeauthoryear{Yang, Torget, and
+  Mihalcea}{2011}]{yang2011topic}
+Yang, T.; Torget, A.; and Mihalcea, R.
+\newblock 2011.
+\newblock Topic modeling on historical newspapers.
+\newblock {\em ACL HLT 2011} ~96.
+
+\end{thebibliography}
